@@ -6,8 +6,8 @@ class CustomSwitch extends StatefulWidget {
   final ValueChanged<bool>? onChanged;
   final Color? activeColor;
   final Color? inactiveColor ;
-  final String? activeText = 'M';
-  final String? inactiveText = 'M';
+  final String? activeText = 'Offers';
+  final String? inactiveText = 'Listings';
   final Color? activeTextColor ;
   final Color? inactiveTextColor;
   final Color? circleColor;
@@ -67,52 +67,74 @@ class _CustomSwitchState extends State<CustomSwitch>
              //}
           },
           child: Container(
-            width: 65.0,
-            height: 35.0,
+            width: 200.0,
+            height: 55.0,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
-                color:  !widget.value
-                    ? widget.inactiveColor
-                    : widget.activeColor),
+                borderRadius: BorderRadius.circular(30.0),
+                color:  widget.activeColor),
             child: Padding(
               padding: const EdgeInsets.only(
-                  top: 4.0, bottom: 4.0, right: 4.0, left: 4.0),
+                  top: 4.0, bottom: 4.0, right: 5.0, left: 5.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
            widget.value
-                      ? Padding(
-                    padding: const EdgeInsets.only(left: 4.0, right: 4.0),
-                    child: Text(
-                      widget.activeText.toString(),
-                      style: TextStyle(
-                          color: widget.activeTextColor,
-                          fontWeight: FontWeight.w900,
-                          fontSize: 16.0),
+                      ? Container(
+             padding: EdgeInsets.all(12.0),
+             decoration: BoxDecoration(
+               color: Colors.yellow,
+               borderRadius: BorderRadius.circular(25.0)
+             ),
+             child: Padding(
+               padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+               child: Text(
+                 widget.activeText.toString(),
+                 style: TextStyle(
+                     color: widget.activeTextColor,
+                     fontWeight: FontWeight.w700,
+                     fontSize: 16.0),
+               ),
+             ),
+           )
+                      : Padding(
+             padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+             child: Text(
+               widget.activeText.toString(),
+               style: TextStyle(
+                   color: widget.inactiveColor,
+                   fontWeight: FontWeight.w700,
+                   fontSize: 16.0),
+             ),
+           ),
+               
+                  !widget.value
+                      ? Container(
+                    padding: EdgeInsets.all(12.0),
+                    decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        borderRadius: BorderRadius.circular(25.0)
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      child: Text(
+                        widget.inactiveText.toString(),
+                        style: TextStyle(
+                            color: widget.inactiveTextColor,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16.0),
+                      ),
                     ),
                   )
-                      : Container(),
-                  Align(
-                    alignment: _circleAnimation.value,
-                    child: Container(
-                      width: 25.0,
-                      height: 25.0,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: widget.circleColor),
-                    ),
-                  ),
-                  !widget.value
-                      ? Padding(
-                    padding: const EdgeInsets.only(left: 4.0, right: 5.0),
+                      : Padding(
+                    padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                     child: Text(
                       widget.inactiveText.toString(),
                       style: TextStyle(
-                          color: widget.inactiveTextColor,
-                          fontWeight: FontWeight.w900,
+                          color: widget.inactiveColor,
+                          fontWeight: FontWeight.w700,
                           fontSize: 16.0),
                     ),
-                  )
-                      : Container(),
+                  ),
                 ],
               ),
             ),
