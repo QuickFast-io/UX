@@ -18,17 +18,19 @@ class Home_Screen extends StatefulWidget {
 class _Home_ScreenState extends State<Home_Screen> {
 
   List<String> titleheader = [
-    "Home",
-    "Stock",
-    "Clients",
-    "Task",
+    "Property",
+    "Chat",
+    "Wallet",
+    "Rabbit",
+    "More",
   ];
   late Widget screen = Container();
   bool dashView =false;
-  int currentindex = 0;
+  int currentindex = 2;
   String headerTitle = "";
 
   List<Widget> bottomPage = [
+    Container(),
     Container(),
     Container(),
     Container(),
@@ -64,7 +66,7 @@ class _Home_ScreenState extends State<Home_Screen> {
       appBar: AppBar(
         backgroundColor: AppColors.backgroundColor,
         elevation: 0.0,
-        leading: Padding(
+        /*leading: Padding(
           padding: EdgeInsets.only(left: 12.0, right: 12.0),
           child: InkWell(
             onTap: (){
@@ -76,13 +78,14 @@ class _Home_ScreenState extends State<Home_Screen> {
               height: 10.0,
             ),
           ),
-        ),
+        ),*/
         title: Text(
-          "Alpharive",
+          headerTitle,
           style: CustomWidget(context: context).CustomSizedTextStyle(
               22.0, AppColors.blackColor, FontWeight.w700, 'FontRegular'),
         ),
-        actions: [
+        centerTitle: true,
+        /*actions: [
           Padding(
             padding: EdgeInsets.only(left: 12.0, right: 12.0),
             child: SvgPicture.asset(
@@ -101,7 +104,7 @@ class _Home_ScreenState extends State<Home_Screen> {
           SizedBox(
             width: 20.0,
           )
-        ],
+        ],*/
       ),
       body: Stack(
         children: [
@@ -110,7 +113,8 @@ class _Home_ScreenState extends State<Home_Screen> {
       ),
       bottomNavigationBar: FloatingNavbar(
         backgroundColor: Color(0xFFEBF3FF),
-        selectedItemColor: AppColors.appColor,
+        selectedBackgroundColor: Colors.transparent,
+        selectedItemColor: AppColors.blackColor,
         unselectedItemColor: AppColors.blackColor,
         onTap: (int val) {
           changeIndex(val);
@@ -118,37 +122,63 @@ class _Home_ScreenState extends State<Home_Screen> {
         currentIndex: currentindex,
         items: [
           FloatingNavbarItem(
-              customWidget: SvgPicture.asset(
-                'assets/images/bmenu1.svg',
-                height: 24.0,
+              customWidget: Icon(
+                currentindex == 0?Icons.home:Icons.home_outlined,
+                size:24.0,
                 color: currentindex == 0
-                    ? AppColors.appColor
+                    ? AppColors.blackColor
                     : AppColors.blackColor,
-              )),
+              ),
+            title: 'Home',
+          ),
           FloatingNavbarItem(
-              customWidget: SvgPicture.asset(
-                'assets/images/bmenu2.svg',
-                height: 24.0,
+              customWidget: Icon(
+                currentindex == 1?Icons.chat_bubble_outlined:Icons.chat_bubble_outline_outlined,
+                size:24.0,
                 color: currentindex == 1
-                    ? AppColors.appColor
+                    ? AppColors.blackColor
                     : AppColors.blackColor,
-              )),
+              ),
+            title: 'Chat',
+          ),
           FloatingNavbarItem(
-              customWidget: SvgPicture.asset(
-                'assets/images/bmenu3.svg',
-                height: 24.0,
-                color: currentindex == 2
-                    ? AppColors.appColor
-                    : AppColors.blackColor,
-              )),
+              customWidget: Container(
+                height: 55.0,
+                width: 55.0,
+                padding: EdgeInsets.all(5.0),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.appColor,
+                ),
+                child: Icon(
+                  Icons.account_balance_wallet_outlined,
+                  size:24.0,
+                  color: currentindex == 2
+                      ? AppColors.blackColor
+                      : AppColors.blackColor,
+                ),
+              ),
+          ),
           FloatingNavbarItem(
-              customWidget: SvgPicture.asset(
-                'assets/images/bmenu4.svg',
-                height: 24.0,
+              customWidget: Icon(
+                Icons.cruelty_free_outlined,
+                size:24.0,
                 color: currentindex == 3
-                    ? AppColors.appColor
+                    ? AppColors.blackColor
                     : AppColors.blackColor,
-              )),
+              ),
+            title: 'Rabbit',
+          ),
+          FloatingNavbarItem(
+              customWidget: Icon(
+                Icons.dashboard_outlined,
+                size:24.0,
+                color: currentindex == 4
+                    ? AppColors.blackColor
+                    : AppColors.blackColor,
+              ),
+            title: 'More',
+          ),
         ],
       ),
     ), onWillPop:  () async {
