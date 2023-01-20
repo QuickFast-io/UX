@@ -7,6 +7,7 @@ import 'package:rabbit/screens/basic/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:rabbit/screens/side_menu/profile_menu_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../common/custom_widget.dart';
@@ -209,7 +210,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                Home_Screen()));
+                                                ProfileMenu_Screen()));
                                     // if (emailController.text.isEmpty) {
                                     //   CustomWidget(context: context).custombar(
                                     //       "Login", "Please Enter Email", false);
