@@ -122,7 +122,6 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                             height: 80.0,
                           ),
 
-
                           InkWell(
                             onTap: (){
                               setState(() {
