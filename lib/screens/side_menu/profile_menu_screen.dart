@@ -22,7 +22,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
         title: Text(
           "Profile".toUpperCase(),
           style: CustomWidget(context: context).CustomSizedTextStyle(
-              18.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+              16.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
         ),
       ),
       body: Container(
@@ -31,6 +31,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
         padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 10.0),
         child: Column(
           children: [
+            SizedBox(height: 15.0,),
             Container(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,6 +41,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                     child: Row(
                       children: [
                         Container(
+                          width: MediaQuery.of(context).size.width * 0.12,
                           padding : EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
                           decoration: BoxDecoration(
                               color: Colors.orangeAccent,
@@ -62,8 +64,8 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                                   AppColors.blackColor,
                                   FontWeight.w600,
                                   'FontRegular'),
+                              overflow: TextOverflow.ellipsis,
                             ),
-
                             Row(
                               children: [
                                 Text(
@@ -125,8 +127,8 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                   Container(
                     child: Row(
                       children: [
-                        Image.asset("assets/images/id-card.png",
-                          height: 35.0,),
+                        SvgPicture.asset("assets/menu/Id.svg",
+                          height: 25.0,),
                         SizedBox(width: 10.0,),
 
                         Text(
@@ -134,7 +136,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                           textAlign: TextAlign.start,
                           style: CustomWidget(context: context)
                               .CustomSizedTextStyle(
-                              18.0,
+                              16.0,
                               AppColors.blackColor,
                               FontWeight.w600,
                               'FontRegular'),
@@ -162,8 +164,8 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                   Container(
                     child: Row(
                       children: [
-                        Image.asset("assets/menu/cust-sup.png",
-                          height: 35.0,),
+                        SvgPicture.asset("assets/menu/Support_Life.svg",
+                          height: 25.0,),
                         SizedBox(width: 10.0,),
 
                         Text(
@@ -171,7 +173,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                           textAlign: TextAlign.start,
                           style: CustomWidget(context: context)
                               .CustomSizedTextStyle(
-                              18.0,
+                              16.0,
                               AppColors.blackColor,
                               FontWeight.w600,
                               'FontRegular'),
@@ -199,8 +201,8 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                   Container(
                     child: Row(
                       children: [
-                        Image.asset("assets/menu/gift-card.png",
-                          height: 35.0,),
+                        SvgPicture.asset("assets/menu/ticket.svg",
+                          height: 25.0,),
                         SizedBox(width: 10.0,),
 
                         Text(
@@ -208,7 +210,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                           textAlign: TextAlign.start,
                           style: CustomWidget(context: context)
                               .CustomSizedTextStyle(
-                              18.0,
+                              16.0,
                               AppColors.blackColor,
                               FontWeight.w600,
                               'FontRegular'),
@@ -236,8 +238,8 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                   Container(
                     child: Row(
                       children: [
-                        Image.asset("assets/menu/user.png",
-                          height: 35.0,),
+                        SvgPicture.asset("assets/menu/add-user.svg",
+                          height: 25.0,),
                         SizedBox(width: 10.0,),
 
                         Text(
@@ -245,7 +247,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                           textAlign: TextAlign.start,
                           style: CustomWidget(context: context)
                               .CustomSizedTextStyle(
-                              18.0,
+                              16.0,
                               AppColors.blackColor,
                               FontWeight.w600,
                               'FontRegular'),
@@ -273,8 +275,8 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                   Container(
                     child: Row(
                       children: [
-                        Image.asset("assets/menu/edit.png",
-                          height: 35.0,),
+                        SvgPicture.asset("assets/menu/Pen.svg",
+                          height: 25.0,),
                         SizedBox(width: 10.0,),
 
                         Text(
@@ -282,7 +284,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                           textAlign: TextAlign.start,
                           style: CustomWidget(context: context)
                               .CustomSizedTextStyle(
-                              18.0,
+                              16.0,
                               AppColors.blackColor,
                               FontWeight.w600,
                               'FontRegular'),
