@@ -255,7 +255,7 @@ class _Sellers_Terms_ScreenState extends State<Sellers_Terms_Screen> {
                               });
                             },
                             child: Container(
-                              height: 45.0,
+                              padding: EdgeInsets.fromLTRB(5.0, 15.0, 5.0, 15.0),
                               decoration: BoxDecoration(
                                 color: AppColors.whiteColor,
                                 border: Border.all(
