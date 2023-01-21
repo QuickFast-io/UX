@@ -35,7 +35,7 @@ class _Home_ScreenState extends State<Home_Screen> {
   String headerTitle = "";
 
   List<Widget> bottomPage = [
-    Container(),
+    DashBoard(),
     Chat_Menu_Screen(),
     Offers_Screen(),
     RabbitScreen(),
