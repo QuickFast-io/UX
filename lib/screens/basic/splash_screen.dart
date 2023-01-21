@@ -1,6 +1,7 @@
 
 import 'package:rabbit/screens/basic/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:rabbit/screens/home/wallet_page.dart';
 
 import '../../common/colors.dart';
 import '../../common/custom_button.dart';
@@ -30,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset('assets/images/logo.png', height: 150.0,),
+            Image.asset('assets/others/logo.png', height: 150.0,),
             SizedBox(
               height: 30.0,
             ),
@@ -56,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         Navigator.of(context).push(
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    RegisterScreen()));
+                                    Wallet()));
                       });
                     },
                     child: Container(

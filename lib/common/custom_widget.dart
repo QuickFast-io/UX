@@ -143,7 +143,7 @@ class CustomWidget {
     return GoogleFonts.urbanist(
       color: color,
       fontSize: size,
-
+      decoration: TextDecoration.none,
       fontWeight: weight,
     );
   }

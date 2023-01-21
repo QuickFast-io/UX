@@ -3,6 +3,7 @@ import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.da
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rabbit/screens/home/rabbit_page.dart';
 
 import '../../common/colors.dart';
 import '../../common/custom_widget.dart';
@@ -24,7 +25,7 @@ class _Home_ScreenState extends State<Home_Screen> {
     "Rabbit",
     "More",
   ];
-  late Widget screen = Container();
+  late Widget screen = RabbitScreen();
   bool dashView =false;
   int currentindex = 2;
   String headerTitle = "";
@@ -32,7 +33,7 @@ class _Home_ScreenState extends State<Home_Screen> {
   List<Widget> bottomPage = [
     Container(),
     Container(),
-    Container(),
+    RabbitScreen(),
     Container(),
     Container(),
 
@@ -122,22 +123,22 @@ class _Home_ScreenState extends State<Home_Screen> {
         currentIndex: currentindex,
         items: [
           FloatingNavbarItem(
-              customWidget: Icon(
-                currentindex == 0?Icons.home:Icons.home_outlined,
-                size:24.0,
-                color: currentindex == 0
-                    ? AppColors.blackColor
-                    : AppColors.blackColor,
+              customWidget: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  "assets/others/home.png",
+                  height:24.0 ,
+                ),
               ),
-            title: 'Home',
+            title: 'Property',
           ),
           FloatingNavbarItem(
-              customWidget: Icon(
-                currentindex == 1?Icons.chat_bubble_outlined:Icons.chat_bubble_outline_outlined,
-                size:24.0,
-                color: currentindex == 1
-                    ? AppColors.blackColor
-                    : AppColors.blackColor,
+              customWidget: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  "assets/others/chat.png",
+                  height:24.0 ,
+                ),
               ),
             title: 'Chat',
           ),
@@ -145,37 +146,37 @@ class _Home_ScreenState extends State<Home_Screen> {
               customWidget: Container(
                 height: 55.0,
                 width: 55.0,
-                padding: EdgeInsets.all(5.0),
+                padding: EdgeInsets.all(15.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.appColor,
                 ),
-                child: Icon(
-                  Icons.account_balance_wallet_outlined,
-                  size:24.0,
-                  color: currentindex == 2
-                      ? AppColors.blackColor
-                      : AppColors.blackColor,
+                child:Image.asset(
+                  "assets/others/wallet.png",
+                  width: 24.0,
+                  height:24.0 ,
+                  color: Colors.black,
+                  fit: BoxFit.contain,
                 ),
               ),
           ),
           FloatingNavbarItem(
-              customWidget: Icon(
-                Icons.cruelty_free_outlined,
-                size:24.0,
-                color: currentindex == 3
-                    ? AppColors.blackColor
-                    : AppColors.blackColor,
+              customWidget:Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  "assets/others/rabbit.png",
+                  height:24.0 ,
+                ),
               ),
             title: 'Rabbit',
           ),
           FloatingNavbarItem(
-              customWidget: Icon(
-                Icons.dashboard_outlined,
-                size:24.0,
-                color: currentindex == 4
-                    ? AppColors.blackColor
-                    : AppColors.blackColor,
+              customWidget: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  "assets/others/more.png",
+                  height:24.0 ,
+                ),
               ),
             title: 'More',
           ),
@@ -186,7 +187,6 @@ class _Home_ScreenState extends State<Home_Screen> {
         setState(() {
           currentindex = 0;
           dashView = true;
-
           //currentScreen = screens[currentTab];
         });
         return false;

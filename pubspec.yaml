@@ -81,6 +81,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/others/
     - assets/menu/
     - assets/language/localization_en.json
     - assets/language/localization_tr.json

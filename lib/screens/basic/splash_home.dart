@@ -54,7 +54,7 @@ class _SplashHomeState extends State<SplashHome> {
         width: MediaQuery.of(context).size.width,
         color:  AppColors.appColor,
         child: Center(
-          child:   Image.asset('assets/images/logo.png', height: 150.0,),
+          child:   Image.asset('assets/others/logo.png', height: 150.0,),
         ),
       ),
     );
