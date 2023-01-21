@@ -127,7 +127,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
             InkWell(
               onTap: (){
                 setState(() {
-                  Navigator.of(context).pushReplacement(
+                  Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
                               Sellers_Terms_Screen()));
@@ -176,7 +176,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
             InkWell(
               onTap: (){
                 setState(() {
-                  Navigator.of(context).pushReplacement(
+                  Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
                               Property_Acknowledge_Screen()));
@@ -224,7 +224,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
             InkWell(
               onTap: (){
                 setState(() {
-                  Navigator.of(context).pushReplacement(
+                  Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
                               Property_Owner_Screen()));
@@ -272,7 +272,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
             InkWell(
               onTap: (){
                 setState(() {
-                  Navigator.of(context).pushReplacement(
+                  Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
                               Chat_Menu_Screen()));
@@ -320,7 +320,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
             InkWell(
               onTap: (){
                 setState(() {
-                  Navigator.of(context).pushReplacement(
+                  Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
                               Wallet_Setup_Screen()));
