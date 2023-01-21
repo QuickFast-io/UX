@@ -22,7 +22,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.appColor,
-        elevation: 1.0,
+        elevation: 0.5,
         leading: Padding(
             padding:
             EdgeInsets.only(left: 9.0, bottom: 5.0, top: 5.0, right: 2.0),
