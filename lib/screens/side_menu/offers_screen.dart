@@ -24,13 +24,10 @@ class _Offers_ScreenState extends State<Offers_Screen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.appColor,
-        elevation: 1.0,
-        leading: Padding(
-            padding:
-            EdgeInsets.only(left: 9.0, bottom: 5.0, top: 5.0, right: 2.0),
-            child: Container(
-              height: 0.0,
-            )),
+        elevation: 0.5,
+        leading: Container(
+          height: 0.0,
+        ),
         title: Text(
           "Offers",
           style: CustomWidget(context: context).CustomSizedTextStyle(
@@ -51,29 +48,31 @@ class _Offers_ScreenState extends State<Offers_Screen> {
         ],
       ),
       resizeToAvoidBottomInset: true,
-      body: SingleChildScrollView(
-        child: Container(
-          constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width,
-            maxHeight: MediaQuery.of(context).size.height,
-          ),
-          decoration: BoxDecoration(
+      body: Container(
+        constraints: BoxConstraints(
+          maxWidth: MediaQuery.of(context).size.width,
+          maxHeight: MediaQuery.of(context).size.height,
+        ),
+        decoration: BoxDecoration(
             color: AppColors.appColor
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
 
-              Expanded(
-                  flex: 1,
-                  child:Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: Column(
+            Expanded(
+                flex: 1,
+                child:Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CustomSwitch(value: switchButton,activeColor: Colors.black,activeTextColor: Colors.black,inactiveColor: Colors.white,inactiveTextColor: Colors.black,onChanged: (test){
+                      CustomSwitch(value: switchButton,activeColor: Colors.black,activeTextColor: Colors.black,
+                          activeText:'Offers',
+                          inactiveText:'Listings',
+                          inactiveColor: Colors.white,inactiveTextColor: Colors.black,onChanged: (test){
                         setState(() {
                           switchButton=test;
                         });
@@ -82,11 +81,11 @@ class _Offers_ScreenState extends State<Offers_Screen> {
 
                     ],
                   ),
-                  )
-              ),
-              Expanded(
-                flex: 5,
-                child: Container(
+                )
+            ),
+            Expanded(
+              flex: 5,
+              child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -94,39 +93,42 @@ class _Offers_ScreenState extends State<Offers_Screen> {
                         topLeft: Radius.circular(30.0),
                         topRight: Radius.circular(30.0),
                       )),
-                    padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-                  child: Center(
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 200,
-                        ),
-                        SvgPicture.asset("assets/menu/box.svg",
-                        height: 100.0,
-                        ),
+                  padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+                  child: SingleChildScrollView(
+                    child: Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 200,
+                          ),
+                          SvgPicture.asset("assets/menu/box.svg",
+                            height: 100.0,
+                          ),
 
-                        SizedBox(
-                          height: 20.0,
-                        ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
 
-                        Text(
-                          "You haven't listed anyproperties, \n but we can fix that.",
-                          textAlign: TextAlign.center,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.blackColor,
-                              FontWeight.w600,
-                              'FontRegular'),
-                        ),
+                          Text(
+                            "You haven't listed anyproperties, \n but we can fix that.",
+                            textAlign: TextAlign.center,
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                16.0,
+                                AppColors.blackColor,
+                                FontWeight.w600,
+                                'FontRegular'),
+                          ),
 
-                      ],
+                        ],
+                      ),
                     ),
                   )
-                ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
