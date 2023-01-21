@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/screens/home/chat_menu_screen.dart';
+import 'package:rabbit/screens/home/dashboard.dart';
 import 'package:rabbit/screens/home/rabbit_page.dart';
 import 'package:rabbit/screens/side_menu/offers_screen.dart';
 import 'package:rabbit/screens/side_menu/profile_menu_screen.dart';
@@ -116,8 +117,11 @@ class _Home_ScreenState extends State<Home_Screen> {
           FloatingNavbarItem(
               customWidget: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  "assets/others/home.png",
+                child: currentindex==0?Image.asset(
+                  "assets/menu_icons/home_active.png",
+                  height:30.0 ,
+                ):Image.asset(
+                  "assets/menu_icons/home.png",
                   height:24.0 ,
                 ),
               ),
@@ -126,8 +130,11 @@ class _Home_ScreenState extends State<Home_Screen> {
           FloatingNavbarItem(
               customWidget: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  "assets/others/chat.png",
+                child: currentindex==1?Image.asset(
+                  "assets/menu_icons/chat_active.png",
+                    height:30.0 ,
+                ):Image.asset(
+                  "assets/menu_icons/chat.png",
                   height:24.0 ,
                 ),
               ),
@@ -143,7 +150,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                   color: AppColors.appColor,
                 ),
                 child:Image.asset(
-                  "assets/others/wallet.png",
+                  "assets/menu_icons/wallet.png",
                   width: 24.0,
                   height:24.0 ,
                   color: Colors.black,
@@ -154,8 +161,11 @@ class _Home_ScreenState extends State<Home_Screen> {
           FloatingNavbarItem(
               customWidget:Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  "assets/others/rabbit.png",
+                child:currentindex==3?Image.asset(
+                  "assets/menu_icons/rabbit_active.png",
+                  height:30.0 ,
+                ):Image.asset(
+                  "assets/menu_icons/rabbit.png",
                   height:24.0 ,
                 ),
               ),
@@ -164,8 +174,11 @@ class _Home_ScreenState extends State<Home_Screen> {
           FloatingNavbarItem(
               customWidget: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  "assets/others/more.png",
+                child: currentindex==4?Image.asset(
+                  "assets/menu_icons/more_active.png",
+                  height:30.0 ,
+                ):Image.asset(
+                  "assets/menu_icons/more.png",
                   height:24.0 ,
                 ),
               ),
