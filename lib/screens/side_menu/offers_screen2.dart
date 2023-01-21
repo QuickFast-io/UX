@@ -132,7 +132,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                               });
                             },
                             child: Container(
-                              height: 45.0,
+                              padding: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 15.0),
                               decoration: BoxDecoration(
                                 color: AppColors.appColor,
                                 // border: Border.all(color: Color(0xFF171717), ),

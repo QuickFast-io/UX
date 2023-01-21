@@ -89,7 +89,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       });
                     },
                     child: Container(
-                      height: 45.0,
+                      padding: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 15.0),
                       decoration: BoxDecoration(
                         color: Colors.transparent,
                         border: Border.all(color: Color(0xFF171717), ),
