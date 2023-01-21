@@ -107,6 +107,7 @@ class _Offers_ScreenState extends State<Offers_Screen> {
                           SizedBox(
                             height: 20.0,
                           ),
+
                           Text(
                             "You haven't listed anyproperties, \n but we can fix that.",
                             textAlign: TextAlign.center,
