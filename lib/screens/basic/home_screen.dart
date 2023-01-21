@@ -3,6 +3,7 @@ import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.da
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rabbit/screens/home/chat_menu_screen.dart';
 import 'package:rabbit/screens/home/rabbit_page.dart';
 import 'package:rabbit/screens/side_menu/offers_screen.dart';
 import 'package:rabbit/screens/side_menu/profile_menu_screen.dart';
@@ -34,7 +35,7 @@ class _Home_ScreenState extends State<Home_Screen> {
 
   List<Widget> bottomPage = [
     Container(),
-    Container(),
+    Chat_Menu_Screen(),
     Offers_Screen(),
     RabbitScreen(),
     ProfileMenu_Screen(),
@@ -66,37 +67,38 @@ class _Home_ScreenState extends State<Home_Screen> {
   Widget build(BuildContext context) {
     return WillPopScope(child: Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      appBar: currentindex==4|| currentindex==2?PreferredSize(child: Container(), preferredSize:Size(0.0,0.0)):AppBar(
-        backgroundColor: AppColors.backgroundColor,
-        automaticallyImplyLeading: false,
-        elevation: 0.0,
-        title: Text(
-          headerTitle,
-          style: CustomWidget(context: context).CustomSizedTextStyle(
-              22.0, AppColors.blackColor, FontWeight.w700, 'FontRegular'),
-        ),
-        centerTitle: true,
-        /*actions: [
-          Padding(
-            padding: EdgeInsets.only(left: 12.0, right: 12.0),
-            child: SvgPicture.asset(
-              'assets/images/notify.svg',
-              height: 20.0,
-              color: AppColors.blackColor,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 12.0, right: 12.0),
-            child: SvgPicture.asset(
-              'assets/images/profile.svg',
-              color: AppColors.blackColor,
-            ),
-          ),
-          SizedBox(
-            width: 20.0,
-          )
-        ],*/
-      ),
+
+      // appBar: currentindex==4|| currentindex==2?PreferredSize(child: Container(), preferredSize:Size(0.0,0.0)):AppBar(
+      //   backgroundColor: AppColors.backgroundColor,
+      //   automaticallyImplyLeading: false,
+      //   elevation: 0.0,
+      //   title: Text(
+      //     headerTitle,
+      //     style: CustomWidget(context: context).CustomSizedTextStyle(
+      //         22.0, AppColors.blackColor, FontWeight.w700, 'FontRegular'),
+      //   ),
+      //   centerTitle: true,
+      //   /*actions: [
+      //     Padding(
+      //       padding: EdgeInsets.only(left: 12.0, right: 12.0),
+      //       child: SvgPicture.asset(
+      //         'assets/images/notify.svg',
+      //         height: 20.0,
+      //         color: AppColors.blackColor,
+      //       ),
+      //     ),
+      //     Padding(
+      //       padding: EdgeInsets.only(left: 12.0, right: 12.0),
+      //       child: SvgPicture.asset(
+      //         'assets/images/profile.svg',
+      //         color: AppColors.blackColor,
+      //       ),
+      //     ),
+      //     SizedBox(
+      //       width: 20.0,
+      //     )
+      //   ],*/
+      // ),
       body: Stack(
         children: [screen,
         ],

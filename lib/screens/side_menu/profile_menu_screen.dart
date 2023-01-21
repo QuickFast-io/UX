@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
-import 'package:rabbit/screens/side_menu/chat_menu_screen.dart';
+import 'package:rabbit/screens/home/chat_menu_screen.dart';
 import 'package:rabbit/screens/side_menu/property_acknowledge_screen.dart';
 import 'package:rabbit/screens/side_menu/property_owner_screen.dart';
 import 'package:rabbit/screens/side_menu/sellers_terms_screen.dart';
