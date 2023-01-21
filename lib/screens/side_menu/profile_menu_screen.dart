@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
+import 'package:rabbit/screens/side_menu/sellers_terms_screen.dart';
 
 class ProfileMenu_Screen extends StatefulWidget {
   const ProfileMenu_Screen({Key? key}) : super(key: key);
@@ -28,7 +29,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 10.0),
+        padding: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 10.0),
         child: Column(
           children: [
             SizedBox(height: 15.0,),
@@ -75,13 +76,13 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                                       .CustomSizedTextStyle(
                                       14.0,
                                       AppColors.hintColor,
-                                      FontWeight.w600,
+                                      FontWeight.w500,
                                       'FontRegular'),
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 SizedBox(width: 8.0,),
                                 Icon(Icons.copy,
-                                color: Colors.grey,
+                                color: Colors.black,
                                   size: 14.0,
                                 )
                               ],
@@ -97,7 +98,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                     textAlign: TextAlign.start,
                     style: CustomWidget(context: context)
                         .CustomSizedTextStyle(
-                        12.0,
+                        11.0,
                         AppColors.hintColor,
                         FontWeight.w600,
                         'FontRegular'),
@@ -116,188 +117,224 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
             ),
 
             SizedBox(
-              height: 40.0,
+              height: 30.0,
             ),
 
-            Container(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        SvgPicture.asset("assets/menu/Id.svg",
-                          height: 25.0,),
-                        SizedBox(width: 10.0,),
+            InkWell(
+              onTap: (){
+                setState(() {
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Sellers_Terms_Screen()));
+                });
 
-                        Text(
-                          "ID Verification",
-                          textAlign: TextAlign.start,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.blackColor,
-                              FontWeight.w600,
-                              'FontRegular'),
-                        ),
-                      ],
+              },
+              child: Container(
+                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          SvgPicture.asset("assets/menu/Id.svg",
+                            height: 25.0,),
+                          SizedBox(width: 10.0,),
+
+                          Text(
+                            "ID Verification",
+                            textAlign: TextAlign.start,
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                16.0,
+                                AppColors.blackColor,
+                                FontWeight.w500,
+                                'FontRegular'),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Flexible(child: Icon(
-                    Icons.chevron_right,
-                    color: Colors.black,
-                    size: 20.0,
-                  ),)
-                ],
+                    Flexible(child: Icon(
+                      Icons.chevron_right,
+                      color: Colors.black,
+                      size: 20.0,
+                    ),)
+                  ],
+                ),
               ),
             ),
             SizedBox(
-              height: 25.0,
+              height: 15.0,
             ),
 
-            Container(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        SvgPicture.asset("assets/menu/Support_Life.svg",
-                          height: 25.0,),
-                        SizedBox(width: 10.0,),
+            InkWell(
+              onTap: (){
 
-                        Text(
-                          "Support",
-                          textAlign: TextAlign.start,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.blackColor,
-                              FontWeight.w600,
-                              'FontRegular'),
-                        ),
-                      ],
+              },
+              child: Container(
+                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          SvgPicture.asset("assets/menu/Support_Life.svg",
+                            height: 25.0,),
+                          SizedBox(width: 10.0,),
+
+                          Text(
+                            "Support",
+                            textAlign: TextAlign.start,
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                16.0,
+                                AppColors.blackColor,
+                                FontWeight.w500,
+                                'FontRegular'),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Flexible(child: Icon(
-                    Icons.chevron_right,
-                    color: Colors.black,
-                    size: 20.0,
-                  ),)
-                ],
+                    Flexible(child: Icon(
+                      Icons.chevron_right,
+                      color: Colors.black,
+                      size: 20.0,
+                    ),)
+                  ],
+                ),
               ),
             ),
             SizedBox(
-              height: 25.0,
+              height: 15.0,
             ),
 
-            Container(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        SvgPicture.asset("assets/menu/ticket.svg",
-                          height: 25.0,),
-                        SizedBox(width: 10.0,),
+            InkWell(
+              onTap: (){
 
-                        Text(
-                          "Platinum Membership",
-                          textAlign: TextAlign.start,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.blackColor,
-                              FontWeight.w600,
-                              'FontRegular'),
-                        ),
-                      ],
+              },
+              child: Container(
+                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          SvgPicture.asset("assets/menu/ticket.svg",
+                            height: 25.0,),
+                          SizedBox(width: 10.0,),
+
+                          Text(
+                            "Platinum Membership",
+                            textAlign: TextAlign.start,
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                16.0,
+                                AppColors.blackColor,
+                                FontWeight.w500,
+                                'FontRegular'),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Flexible(child: Icon(
-                    Icons.chevron_right,
-                    color: Colors.black,
-                    size: 20.0,
-                  ),)
-                ],
+                    Flexible(child: Icon(
+                      Icons.chevron_right,
+                      color: Colors.black,
+                      size: 20.0,
+                    ),)
+                  ],
+                ),
               ),
             ),
             SizedBox(
-              height: 25.0,
+              height: 15.0,
             ),
 
-            Container(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        SvgPicture.asset("assets/menu/add-user.svg",
-                          height: 25.0,),
-                        SizedBox(width: 10.0,),
+            InkWell(
+              onTap: (){
 
-                        Text(
-                          "Add shared lisiting",
-                          textAlign: TextAlign.start,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.blackColor,
-                              FontWeight.w600,
-                              'FontRegular'),
-                        ),
-                      ],
+              },
+              child: Container(
+                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          SvgPicture.asset("assets/menu/add-user.svg",
+                            height: 25.0,),
+                          SizedBox(width: 10.0,),
+
+                          Text(
+                            "Add shared lisiting",
+                            textAlign: TextAlign.start,
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                16.0,
+                                AppColors.blackColor,
+                                FontWeight.w500,
+                                'FontRegular'),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Flexible(child: Icon(
-                    Icons.chevron_right,
-                    color: Colors.black,
-                    size: 20.0,
-                  ),)
-                ],
+                    Flexible(child: Icon(
+                      Icons.chevron_right,
+                      color: Colors.black,
+                      size: 20.0,
+                    ),)
+                  ],
+                ),
               ),
             ),
             SizedBox(
-              height: 25.0,
+              height: 15.0,
             ),
 
-            Container(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        SvgPicture.asset("assets/menu/Pen.svg",
-                          height: 25.0,),
-                        SizedBox(width: 10.0,),
+            InkWell(
+              onTap: (){
 
-                        Text(
-                          "Set up PIN",
-                          textAlign: TextAlign.start,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.blackColor,
-                              FontWeight.w600,
-                              'FontRegular'),
-                        ),
-                      ],
+              },
+              child: Container(
+                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          SvgPicture.asset("assets/menu/Pen.svg",
+                            height: 25.0,),
+                          SizedBox(width: 10.0,),
+
+                          Text(
+                            "Set up PIN",
+                            textAlign: TextAlign.start,
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                16.0,
+                                AppColors.blackColor,
+                                FontWeight.w500,
+                                'FontRegular'),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Flexible(child: Icon(
-                    Icons.chevron_right,
-                    color: Colors.black,
-                    size: 20.0,
-                  ),)
-                ],
+                    Flexible(child: Icon(
+                      Icons.chevron_right,
+                      color: Colors.black,
+                      size: 20.0,
+                    ),)
+                  ],
+                ),
               ),
             ),
             SizedBox(

@@ -6,8 +6,8 @@ class CustomSwitch extends StatefulWidget {
   final ValueChanged<bool>? onChanged;
   final Color? activeColor;
   final Color? inactiveColor ;
-  final String? activeText = 'Offers';
-  final String? inactiveText = 'Listings';
+  final String? activeText;
+  final String? inactiveText ;
   final Color? activeTextColor ;
   final Color? inactiveTextColor;
   final Color? circleColor;
@@ -19,6 +19,8 @@ class CustomSwitch extends StatefulWidget {
     this.onChanged,
     this.activeColor,
     this.inactiveColor,
+    this.activeText,
+    this.inactiveText,
     this.circleColor,
     this.activeTextColor,
     this.inactiveTextColor,
