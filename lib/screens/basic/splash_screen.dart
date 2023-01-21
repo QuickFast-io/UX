@@ -61,7 +61,8 @@ class _SplashScreenState extends State<SplashScreen> {
                       });
                     },
                     child: Container(
-                      height: 45.0,
+
+                      padding: EdgeInsets.only(top: 15.0,bottom: 15.0),
                       decoration: BoxDecoration(
                         color: Color(0xFF171717),
                         borderRadius: BorderRadius.circular(15.0),
@@ -90,7 +91,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       });
                     },
                     child: Container(
-                      height: 45.0,
+                      padding: EdgeInsets.only(top: 15.0,bottom: 15.0),
                       decoration: BoxDecoration(
                         color: Colors.transparent,
                         border: Border.all(color: Color(0xFF171717), ),

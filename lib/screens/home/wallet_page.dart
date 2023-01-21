@@ -19,8 +19,10 @@ class _WalletState extends State<Wallet> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.appColor,
+
       appBar: AppBar(
         backgroundColor: AppColors.appColor,
+        elevation: 0.5,
         title: Text(
           AppLocalizations.instance.text("loc_wallet"),
           style: CustomWidget(context: context)
@@ -65,7 +67,7 @@ class _WalletState extends State<Wallet> {
               SizedBox(height: 10.0,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     "\$ 40,990,245",
@@ -77,7 +79,8 @@ class _WalletState extends State<Wallet> {
                         'FontRegular'),
                     textAlign: TextAlign.center,
                   ),
-                  Text(
+                  Padding(padding: EdgeInsets.only(top: 5.0),
+                  child: Text(
                     ".67",
                     style: CustomWidget(context: context)
                         .CustomSizedTextStyle(
@@ -86,7 +89,7 @@ class _WalletState extends State<Wallet> {
                         FontWeight.w600,
                         'FontRegular'),
                     textAlign: TextAlign.center,
-                  ),
+                  ),)
                 ],
               ),
               SizedBox(height: 10.0,),

@@ -66,20 +66,8 @@ class _Home_ScreenState extends State<Home_Screen> {
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
         backgroundColor: AppColors.backgroundColor,
+        automaticallyImplyLeading: false,
         elevation: 0.0,
-        /*leading: Padding(
-          padding: EdgeInsets.only(left: 12.0, right: 12.0),
-          child: InkWell(
-            onTap: (){
-
-            },
-            child: SvgPicture.asset(
-              'assets/images/menu.svg',
-              color: AppColors.blackColor,
-              height: 10.0,
-            ),
-          ),
-        ),*/
         title: Text(
           headerTitle,
           style: CustomWidget(context: context).CustomSizedTextStyle(
