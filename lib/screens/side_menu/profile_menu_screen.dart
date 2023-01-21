@@ -7,6 +7,7 @@ import 'package:rabbit/screens/side_menu/chat_menu_screen.dart';
 import 'package:rabbit/screens/side_menu/property_acknowledge_screen.dart';
 import 'package:rabbit/screens/side_menu/property_owner_screen.dart';
 import 'package:rabbit/screens/side_menu/sellers_terms_screen.dart';
+import 'package:rabbit/screens/side_menu/wallet_setup_screen.dart';
 
 class ProfileMenu_Screen extends StatefulWidget {
   const ProfileMenu_Screen({Key? key}) : super(key: key);
@@ -318,7 +319,12 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
 
             InkWell(
               onTap: (){
-
+                setState(() {
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Wallet_Setup_Screen()));
+                });
               },
               child: Container(
                 padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
