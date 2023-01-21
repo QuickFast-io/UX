@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/screens/home/rabbit_page.dart';
+import 'package:rabbit/screens/side_menu/offers_screen.dart';
+import 'package:rabbit/screens/side_menu/profile_menu_screen.dart';
 
 import '../../common/colors.dart';
 import '../../common/custom_widget.dart';
@@ -25,7 +27,7 @@ class _Home_ScreenState extends State<Home_Screen> {
     "Rabbit",
     "More",
   ];
-  late Widget screen = RabbitScreen();
+  late Widget screen = Offers_Screen();
   bool dashView =false;
   int currentindex = 2;
   String headerTitle = "";
@@ -33,9 +35,9 @@ class _Home_ScreenState extends State<Home_Screen> {
   List<Widget> bottomPage = [
     Container(),
     Container(),
+    Offers_Screen(),
     RabbitScreen(),
-    Container(),
-    Container(),
+    ProfileMenu_Screen(),
 
   ];
 
@@ -64,7 +66,7 @@ class _Home_ScreenState extends State<Home_Screen> {
   Widget build(BuildContext context) {
     return WillPopScope(child: Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      appBar: AppBar(
+      appBar: currentindex==4|| currentindex==2?PreferredSize(child: Container(), preferredSize:Size(0.0,0.0)):AppBar(
         backgroundColor: AppColors.backgroundColor,
         automaticallyImplyLeading: false,
         elevation: 0.0,
@@ -96,8 +98,7 @@ class _Home_ScreenState extends State<Home_Screen> {
         ],*/
       ),
       body: Stack(
-        children: [
-          dashView ? dashBoard(): screen,
+        children: [screen,
         ],
       ),
       bottomNavigationBar: FloatingNavbar(
@@ -189,16 +190,15 @@ class _Home_ScreenState extends State<Home_Screen> {
   }
 
   changeIndex(int index) {
+    print(index-1);
     setState(() {
       currentindex = index;
       headerTitle = titleheader[currentindex];
 
-      if (index == 0) {
-        dashView = true;
-      } else {
+
         dashView = false;
-        screen = bottomPage[index - 1];
-      }
+        screen = bottomPage[index];
+
     });
   }
 
