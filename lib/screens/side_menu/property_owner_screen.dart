@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/textformfield_custom.dart';
+import 'package:rabbit/screens/side_menu/property_info_1.dart';
 
 class Property_Owner_Screen extends StatefulWidget {
   const Property_Owner_Screen({Key? key}) : super(key: key);
@@ -268,10 +269,10 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
               InkWell(
                 onTap: (){
                   setState(() {
-                    // Navigator.of(context).push(
-                    //     MaterialPageRoute(
-                    //         builder: (context) =>
-                    //             CongratsScreen()));
+                    Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                PropertyInfo_Screen1()));
                   });
                 },
                 child: Container(
