@@ -58,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         Navigator.of(context).push(
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    Passphrase()));
+                                    Home_Screen()));
                       });
                     },
                     child: Container(
@@ -85,10 +85,12 @@ class _SplashScreenState extends State<SplashScreen> {
                   InkWell(
                     onTap: (){
                       setState(() {
+
                         Navigator.of(context).push(
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    Home_Screen()));
+                                    Passphrase()));
+
                       });
                     },
                     child: Container(

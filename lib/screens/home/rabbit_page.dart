@@ -4,6 +4,7 @@ import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/localization/localizations.dart';
 import 'package:rabbit/screens/home/congrats_page.dart';
+import 'package:rabbit/screens/home/pass_phrase.dart';
 
 class RabbitScreen extends StatefulWidget {
   const RabbitScreen({Key? key}) : super(key: key);
@@ -61,7 +62,7 @@ class _RabbitScreenState extends State<RabbitScreen> {
                 Navigator.of(context).push(
                     MaterialPageRoute(
                         builder: (context) =>
-                            CongratsScreen()));
+                            Passphrase()));
               });
             },
             child: Container(
