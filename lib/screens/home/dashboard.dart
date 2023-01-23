@@ -10,9 +10,10 @@ class DashBoard extends StatefulWidget {
   State<DashBoard> createState() => _DashBoardState();
 }
 
-class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMixin{
+class _DashBoardState extends State<DashBoard>
+    with SingleTickerProviderStateMixin {
   TabController? _tabController;
-  List<String>buyList=[
+  List<String> buyList = [
     "assets/house/h1.png",
     "assets/house/h1.png",
     "assets/house/h3.png",
@@ -20,12 +21,12 @@ class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMix
     "assets/house/h4.png",
     "assets/house/h4.png",
   ];
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _tabController = new TabController(length: 2, vsync: this);
-
   }
 
   @override
@@ -34,11 +35,15 @@ class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMix
       backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title:Row(
+        title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset("assets/others/logo.png",width: 24.0,height: 24.0,),
+            Image.asset(
+              "assets/others/logo.png",
+              width: 24.0,
+              height: 24.0,
+            ),
             Text(
               AppLocalizations.instance.text("loc_app_name"),
               style: CustomWidget(context: context).CustomSizedTextStyle(
@@ -64,7 +69,7 @@ class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMix
     );
   }
 
-  Widget dashUI(){
+  Widget dashUI() {
     return Stack(
       children: [
         Container(
@@ -76,13 +81,20 @@ class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMix
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: 10.0,),
+                SizedBox(
+                  height: 10.0,
+                ),
                 Text(
                   AppLocalizations.instance.text("loc_dash_title"),
                   style: CustomWidget(context: context).CustomSizedTextStyle(
-                      26.0, AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                      26.0,
+                      AppColors.blackColor,
+                      FontWeight.w500,
+                      'FontRegular'),
                 ),
-                SizedBox(height: 15.0,),
+                SizedBox(
+                  height: 15.0,
+                ),
                 Container(
                   padding: EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
@@ -91,19 +103,30 @@ class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMix
                     border: Border.all(
                       color: Colors.black.withOpacity(0.1),
                     ),
-                    ),
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Row(
                         children: [
-                          Image.asset("assets/others/search.png",height: 15.0,width: 15.0,),
-                          SizedBox(width: 5.0,),
+                          Image.asset(
+                            "assets/others/search.png",
+                            height: 15.0,
+                            width: 15.0,
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
                           Text(
-                            AppLocalizations.instance.text("loc_location")+"?",
-                            style: CustomWidget(context: context).CustomSizedTextStyle(
-                                16.0, AppColors.blackColor, FontWeight.w400, 'FontRegular'),
+                            AppLocalizations.instance.text("loc_location") +
+                                "?",
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                    16.0,
+                                    AppColors.blackColor,
+                                    FontWeight.w400,
+                                    'FontRegular'),
                           ),
                         ],
                       ),
@@ -111,46 +134,64 @@ class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMix
                         children: [
                           Text(
                             AppLocalizations.instance.text("loc_type"),
-                            style: CustomWidget(context: context).CustomSizedTextStyle(
-                                12.0, Color(0xFFb6b6b6), FontWeight.w400, 'FontRegular'),
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(12.0, Color(0xFFb6b6b6),
+                                    FontWeight.w400, 'FontRegular'),
                           ),
-                          SizedBox(width: 5.0,),
+                          SizedBox(
+                            width: 5.0,
+                          ),
                           Container(
                             decoration: BoxDecoration(
-                              color:Color(0xFFb6b6b6),
+                              color: Color(0xFFb6b6b6),
                               shape: BoxShape.circle,
                             ),
                             height: 5.0,
                             width: 5.0,
                           ),
-                          SizedBox(width: 5.0,),
+                          SizedBox(
+                            width: 5.0,
+                          ),
                           Text(
                             AppLocalizations.instance.text("loc_price"),
-                            style: CustomWidget(context: context).CustomSizedTextStyle(
-                                12.0, Color(0xFFb6b6b6), FontWeight.w400, 'FontRegular'),
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(12.0, Color(0xFFb6b6b6),
+                                    FontWeight.w400, 'FontRegular'),
                           ),
-                          SizedBox(width: 5.0,),
+                          SizedBox(
+                            width: 5.0,
+                          ),
                           Container(
                             decoration: BoxDecoration(
-                              color:Color(0xFFb6b6b6),
+                              color: Color(0xFFb6b6b6),
                               shape: BoxShape.circle,
                             ),
                             height: 5.0,
                             width: 5.0,
                           ),
-                          SizedBox(width: 5.0,),
+                          SizedBox(
+                            width: 5.0,
+                          ),
                           Text(
                             AppLocalizations.instance.text("loc_feature"),
-                            style: CustomWidget(context: context).CustomSizedTextStyle(
-                                12.0, Color(0xFFb6b6b6), FontWeight.w400, 'FontRegular'),
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(12.0, Color(0xFFb6b6b6),
+                                    FontWeight.w400, 'FontRegular'),
                           ),
                         ],
                       ),
-                      Image.asset("assets/others/filter.png",height: 15.0,width: 15.0,color:Color(0xFFb6b6b6),),
+                      Image.asset(
+                        "assets/others/filter.png",
+                        height: 15.0,
+                        width: 15.0,
+                        color: Color(0xFFb6b6b6),
+                      ),
                     ],
                   ),
                 ),
-                SizedBox(height: 15.0,),
+                SizedBox(
+                  height: 15.0,
+                ),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
@@ -178,10 +219,7 @@ class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMix
                       ),
                       Expanded(
                         child: TabBarView(
-                          children: [
-                            buyUI(),
-                            sellUI()
-                          ],
+                          children: [buyUI(), sellUI()],
                           controller: _tabController,
                         ),
                       ),
@@ -196,7 +234,8 @@ class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMix
           alignment: Alignment.bottomCenter,
           child: Container(
             width: 80.0,
-            padding: EdgeInsets.only(left: 12.0,right: 12.0,top: 8.0,bottom: 8.0),
+            padding:
+                EdgeInsets.only(left: 12.0, right: 12.0, top: 8.0, bottom: 8.0),
             decoration: BoxDecoration(
               color: Color(0xFFb6b6b6),
               borderRadius: BorderRadius.circular(25.0),
@@ -205,11 +244,15 @@ class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMix
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset("assets/others/location.png",width: 20.0,height: 20.0),
+                Image.asset("assets/others/location.png",
+                    width: 20.0, height: 20.0),
                 Text(
                   "Map",
                   style: CustomWidget(context: context).CustomSizedTextStyle(
-                      14.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+                      14.0,
+                      AppColors.blackColor,
+                      FontWeight.w600,
+                      'FontRegular'),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -220,7 +263,7 @@ class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMix
     );
   }
 
-  Widget buyUI(){
+  Widget buyUI() {
     return Container(
       padding: EdgeInsets.all(5.0),
       width: MediaQuery.of(context).size.width,
@@ -229,58 +272,18 @@ class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMix
         padding: EdgeInsets.all(0),
         itemCount: buyList.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          mainAxisExtent: 150.0,
-            crossAxisCount: 2,
-            crossAxisSpacing: 10.0,
-            mainAxisSpacing: 2.0
-        ),
-        itemBuilder: (BuildContext context, int index){
-          return Stack(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(image: AssetImage(buyList[index],),),
-                    borderRadius: BorderRadius.circular(20.0),
-                ),
-              ),
-              Align(
-                 alignment: Alignment.center,
-                child: Text(
-                 "Newyork",
-                  style: CustomWidget(context: context).CustomSizedTextStyle(
-                      12.0, Colors.white, FontWeight.w400, 'FontRegular'),
-                ),
-              ),
-            ],
-          );
-        },
-      ),
-    );
-  }
+          crossAxisCount: 2,
+          crossAxisSpacing: 5.0,
+          mainAxisSpacing: 10.0,
+          childAspectRatio: 1.5,
 
-  Widget sellUI(){
-    return Container(
-      padding: EdgeInsets.all(5.0),
-      width: MediaQuery.of(context).size.width,
-      child: GridView.builder(
-        padding: EdgeInsets.all(0),
-        physics: ScrollPhysics(),
-        itemCount: buyList.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisExtent: 150.0,
-            crossAxisCount: 2,
-            crossAxisSpacing: 10.0,
-            mainAxisSpacing: 2.0
         ),
-        itemBuilder: (BuildContext context, int index){
+        itemBuilder: (BuildContext context, int index) {
           return Stack(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(image: AssetImage(buyList[index],),
-                    ),
-                    borderRadius: BorderRadius.circular(20.0),
-                ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(7), // Image border
+                child: Image.asset(buyList[index], fit: BoxFit.cover),
               ),
               Align(
                 alignment: Alignment.center,
@@ -297,5 +300,44 @@ class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMix
     );
   }
 
-
+  Widget sellUI() {
+    return Container(
+      padding: EdgeInsets.all(5.0),
+      width: MediaQuery.of(context).size.width,
+      child: GridView.builder(
+        padding: EdgeInsets.all(0),
+        physics: ScrollPhysics(),
+        itemCount: buyList.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            mainAxisExtent: 150.0,
+            crossAxisCount: 2,
+            crossAxisSpacing: 10.0,
+            mainAxisSpacing: 2.0),
+        itemBuilder: (BuildContext context, int index) {
+          return Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                      buyList[index],
+                    ),
+                  ),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "Newyork",
+                  style: CustomWidget(context: context).CustomSizedTextStyle(
+                      12.0, Colors.white, FontWeight.w400, 'FontRegular'),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
 }
