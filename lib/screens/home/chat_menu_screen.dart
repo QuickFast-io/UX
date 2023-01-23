@@ -19,6 +19,11 @@ class _Chat_Menu_ScreenState extends State<Chat_Menu_Screen> {
   ];
 
   @override
+  void initState() {
+    // TODO: implement initState
+
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -79,7 +84,7 @@ class _Chat_Menu_ScreenState extends State<Chat_Menu_Screen> {
                                 // padding: EdgeInsets.all(10.0),
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage("assets/menu/profile_1.png",
+                                    image: AssetImage("assets/menu/profiles.png",
                                     ),
                                     fit: BoxFit.contain,
                                   ),
