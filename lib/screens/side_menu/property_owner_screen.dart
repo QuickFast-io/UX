@@ -216,7 +216,7 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
                      });
                    },
                    child: Container(
-                     padding: EdgeInsets.fromLTRB(5.0, 15.0, 5.0, 15.0),
+                     padding: EdgeInsets.fromLTRB(5.0, 12.0, 5.0, 12.0),
                      decoration: BoxDecoration(
                        color: AppColors.whiteColor,
                        border: Border.all(
@@ -275,7 +275,7 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
                   });
                 },
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(5.0, 15.0, 5.0, 15.0),
+                  padding: EdgeInsets.fromLTRB(5.0, 12.0, 5.0, 12.0),
                   decoration: BoxDecoration(
                     color: AppColors.appColor,
                     // border: Border.all(
