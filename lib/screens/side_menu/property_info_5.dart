@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
+import 'package:rabbit/screens/side_menu/property_info_6.dart';
 import 'package:rabbit/screens/side_menu/property_info_8.dart';
 
 class PropertyInfo_Screen5 extends StatefulWidget {
@@ -250,7 +251,7 @@ class _PropertyInfo_Screen5State extends State<PropertyInfo_Screen5> {
                     Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (context) =>
-                                PropertyInfo_Screen8()));
+                                PropertyInfo_Screen6()));
                   });
                 },
                 child: Container(
