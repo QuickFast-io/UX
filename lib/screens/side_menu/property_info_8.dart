@@ -1,18 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
-import 'package:rabbit/screens/side_menu/property_info_8.dart';
 
-class PropertyInfo_Screen5 extends StatefulWidget {
-  const PropertyInfo_Screen5({Key? key}) : super(key: key);
+class PropertyInfo_Screen8 extends StatefulWidget {
+  const PropertyInfo_Screen8({Key? key}) : super(key: key);
 
   @override
-  State<PropertyInfo_Screen5> createState() => _PropertyInfo_Screen5State();
+  State<PropertyInfo_Screen8> createState() => _PropertyInfo_Screen8State();
 }
 
-class _PropertyInfo_Screen5State extends State<PropertyInfo_Screen5> {
+class _PropertyInfo_Screen8State extends State<PropertyInfo_Screen8> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +67,7 @@ class _PropertyInfo_Screen5State extends State<PropertyInfo_Screen5> {
               SizedBox(height: 15.0,),
 
               Text(
-                "Upload Pictures of Property",
+                "Upload Property Survey Document",
                 style: CustomWidget(context: context)
                     .CustomSizedTextStyle(
                     24.0,
@@ -81,7 +79,7 @@ class _PropertyInfo_Screen5State extends State<PropertyInfo_Screen5> {
                 height: 10.0,
               ),
               Text(
-                "Upload pictures of the property to help potential buyers Visualize what it looks like.",
+                "Upload a copy of the property survey document to provide potential buyers with more information about the property's boundaries and layout.",
                 style: CustomWidget(context: context)
                     .CustomSizedTextStyle(
                     13.0,
@@ -96,7 +94,7 @@ class _PropertyInfo_Screen5State extends State<PropertyInfo_Screen5> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Upload Pictures of the Property",
+                    "Upload survey document",
                     style: CustomWidget(context: context)
                         .CustomSizedTextStyle(
                         14.0,
@@ -168,89 +166,20 @@ class _PropertyInfo_Screen5State extends State<PropertyInfo_Screen5> {
                     height: 20.0,
                   ),
 
-                  Text(
-                    "Upload Floor Plan (optional)",
-                    style: CustomWidget(context: context)
-                        .CustomSizedTextStyle(
-                        14.0,
-                        AppColors.blackColor,
-                        FontWeight.w500,
-                        'FontRegular'),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-
-                  InkWell(
-                    onTap: () async {
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      padding: EdgeInsets.fromLTRB(10, 50.0, 10, 40.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: AppColors
-                                .hintColor
-                                .withOpacity(0.2),
-                            width: 1.0),
-                        borderRadius: BorderRadius.circular(5.0),
-                        color: Colors.transparent,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/menu/upload.png',
-                            height: 20.0,
-                            width: 20.0,
-                            color: AppColors.blackColor,
-                          ),
-                          SizedBox(
-                            height: 10.0,
-                          ),
-                          Text(
-                            "Click to upload a file",
-                            textAlign: TextAlign.center,
-                            style: CustomWidget(context: context)
-                                .CustomSizedTextStyle(
-                                13.0,
-                                AppColors.blackColor,
-                                FontWeight.w600,
-                                'FontRegular'),
-                          ),
-                          SizedBox(
-                            height: 10.0,
-                          ),
-                          Text(
-                            "PNG, JPG up to 5MB",
-                            textAlign: TextAlign.center,
-                            style: CustomWidget(context: context)
-                                .CustomSizedTextStyle(
-                                13.0,
-                                AppColors.hintColor,
-                                FontWeight.w500,
-                                'FontRegular'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-
 
                 ],
               )),
               Container(
-                height: 100.0,
+                height: 150.0,
               ),
 
               InkWell(
                 onTap: (){
                   setState(() {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                PropertyInfo_Screen8()));
+                    // Navigator.of(context).push(
+                    //     MaterialPageRoute(
+                    //         builder: (context) =>
+                    //             PropertyInfo_Screen3()));
                   });
                 },
                 child: Container(
