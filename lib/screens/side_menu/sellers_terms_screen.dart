@@ -62,6 +62,8 @@ class _Sellers_Terms_ScreenState extends State<Sellers_Terms_Screen> {
         child: Container(
           margin: EdgeInsets.only(top: 35.0),
             width: double.infinity,
+
+            height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -69,197 +71,197 @@ class _Sellers_Terms_ScreenState extends State<Sellers_Terms_Screen> {
                   topRight: Radius.circular(35.0),
                 )),
             padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-            child: SingleChildScrollView(
-              child: Container(
-                padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              padding: EdgeInsets.only(top: 20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
 
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Sales Price",
-                          textAlign: TextAlign.center,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Sales Price",
+                        textAlign: TextAlign.center,
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            16.0,
+                            AppColors.blackColor,
+                            FontWeight.w600,
+                            'FontRegular'),
+                      ),
+
+                      Text(
+                        "\$500,000 ",
+                        textAlign: TextAlign.center,
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            14.0,
+                            AppColors.hintColor,
+                            FontWeight.w500,
+                            'FontRegular'),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.0,),
+
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Earnest Money",
+                        textAlign: TextAlign.center,
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            16.0,
+                            AppColors.blackColor,
+                            FontWeight.w600,
+                            'FontRegular'),
+                      ),
+
+                      Text(
+                        "\$500",
+                        textAlign: TextAlign.center,
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            14.0,
+                            AppColors.hintColor,
+                            FontWeight.w500,
+                            'FontRegular'),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.0,),
+
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Closing Date",
+                        textAlign: TextAlign.center,
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            16.0,
+                            AppColors.blackColor,
+                            FontWeight.w600,
+                            'FontRegular'),
+                      ),
+
+                      Text(
+                        "Asap".toUpperCase(),
+                        textAlign: TextAlign.center,
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            14.0,
+                            AppColors.hintColor,
+                            FontWeight.w500,
+                            'FontRegular'),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.0,),
+
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Last Title Check",
+                        textAlign: TextAlign.center,
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            16.0,
+                            AppColors.blackColor,
+                            FontWeight.w600,
+                            'FontRegular'),
+                      ),
+
+                      Text(
+                        "12/12/2024",
+                        textAlign: TextAlign.center,
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            14.0,
+                            AppColors.hintColor,
+                            FontWeight.w500,
+                            'FontRegular'),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.0,),
+
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Survey Provided",
+                        textAlign: TextAlign.center,
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            16.0,
+                            AppColors.blackColor,
+                            FontWeight.w600,
+                            'FontRegular'),
+                      ),
+
+                      Text(
+                        "Yes",
+                        textAlign: TextAlign.center,
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            14.0,
+                            AppColors.hintColor,
+                            FontWeight.w500,
+                            'FontRegular'),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.0,),
+
+                  SizedBox(
+                    height: 180,
+                  ),
+
+                  InkWell(
+                    onTap: (){
+                      setState(() {
+                        // Navigator.of(context).push(
+                        //     MaterialPageRoute(
+                        //         builder: (context) =>
+                        //             CongratsScreen()));
+                      });
+                    },
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(5.0, 15.0, 5.0, 15.0),
+                      decoration: BoxDecoration(
+                        color: AppColors.whiteColor,
+                        border: Border.all(
+                            color: AppColors.blackColor
+                        ),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Make offer",
                           style: CustomWidget(context: context)
                               .CustomSizedTextStyle(
                               16.0,
                               AppColors.blackColor,
                               FontWeight.w600,
                               'FontRegular'),
-                        ),
-
-                        Text(
-                          "\$500,000 ",
-                          textAlign: TextAlign.center,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.hintColor,
-                              FontWeight.w500,
-                              'FontRegular'),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20.0,),
-
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Earnest Money",
-                          textAlign: TextAlign.center,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.blackColor,
-                              FontWeight.w600,
-                              'FontRegular'),
-                        ),
-
-                        Text(
-                          "\$500",
-                          textAlign: TextAlign.center,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.hintColor,
-                              FontWeight.w500,
-                              'FontRegular'),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20.0,),
-
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Closing Date",
-                          textAlign: TextAlign.center,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.blackColor,
-                              FontWeight.w600,
-                              'FontRegular'),
-                        ),
-
-                        Text(
-                          "Asap".toUpperCase(),
-                          textAlign: TextAlign.center,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.hintColor,
-                              FontWeight.w500,
-                              'FontRegular'),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20.0,),
-
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Last Title Check",
-                          textAlign: TextAlign.center,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.blackColor,
-                              FontWeight.w600,
-                              'FontRegular'),
-                        ),
-
-                        Text(
-                          "12/12/2024",
-                          textAlign: TextAlign.center,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.hintColor,
-                              FontWeight.w500,
-                              'FontRegular'),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20.0,),
-
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Survey Provided",
-                          textAlign: TextAlign.center,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.blackColor,
-                              FontWeight.w600,
-                              'FontRegular'),
-                        ),
-
-                        Text(
-                          "Yes",
-                          textAlign: TextAlign.center,
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              16.0,
-                              AppColors.hintColor,
-                              FontWeight.w500,
-                              'FontRegular'),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20.0,),
-
-                    SizedBox(
-                      height: 180,
-                    ),
-
-                    InkWell(
-                      onTap: (){
-                        setState(() {
-                          // Navigator.of(context).push(
-                          //     MaterialPageRoute(
-                          //         builder: (context) =>
-                          //             CongratsScreen()));
-                        });
-                      },
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(5.0, 15.0, 5.0, 15.0),
-                        decoration: BoxDecoration(
-                          color: AppColors.whiteColor,
-                          border: Border.all(
-                              color: AppColors.blackColor
-                          ),
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Make offer",
-                            style: CustomWidget(context: context)
-                                .CustomSizedTextStyle(
-                                16.0,
-                                AppColors.blackColor,
-                                FontWeight.w600,
-                                'FontRegular'),
-                          ),
                         ),
                       ),
                     ),
+                  ),
 
-                  ],
-                ),
+                ],
               ),
             )
         ),
