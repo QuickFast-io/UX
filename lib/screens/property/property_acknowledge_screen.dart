@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
-import 'package:rabbit/screens/side_menu/property_owner_screen.dart';
+import 'package:rabbit/screens/property/property_owner_screen.dart';
 
 class Property_Acknowledge_Screen extends StatefulWidget {
   const Property_Acknowledge_Screen({Key? key}) : super(key: key);

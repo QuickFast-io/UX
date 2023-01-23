@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/textformfield_custom.dart';
-import 'package:rabbit/screens/side_menu/property_info_3.dart';
+import 'package:rabbit/screens/property/property_info_3.dart';
 
 class PropertyInfo_Screen2 extends StatefulWidget {
   const PropertyInfo_Screen2({Key? key}) : super(key: key);

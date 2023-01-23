@@ -2,21 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
-import 'package:rabbit/common/textformfield_custom.dart';
-import 'package:rabbit/screens/side_menu/property_info_4.dart';
+import 'package:rabbit/screens/property/property_info_8.dart';
 
-class PropertyInfo_Screen3 extends StatefulWidget {
-  const PropertyInfo_Screen3({Key? key}) : super(key: key);
+class PropertyInfo_Screen6 extends StatefulWidget {
+  const PropertyInfo_Screen6({Key? key}) : super(key: key);
 
   @override
-  State<PropertyInfo_Screen3> createState() => _PropertyInfo_Screen3State();
+  State<PropertyInfo_Screen6> createState() => _PropertyInfo_Screen6State();
 }
 
-class _PropertyInfo_Screen3State extends State<PropertyInfo_Screen3> {
+class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
 
-  FocusNode propertyCommendFocus = FocusNode();
-  TextEditingController propertyCommendController = TextEditingController();
-
+  String? accept;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,87 +70,69 @@ class _PropertyInfo_Screen3State extends State<PropertyInfo_Screen3> {
               SizedBox(height: 15.0,),
 
               Text(
-                "Write Property Description",
+                "Do you have a survey document?",
                 style: CustomWidget(context: context)
                     .CustomSizedTextStyle(
-                    24.0,
+                    15.0,
                     AppColors.blackColor,
-                    FontWeight.w600,
+                    FontWeight.w500,
                     'FontRegular'),
               ),
               SizedBox(
                 height: 10.0,
               ),
-              Text(
-                "Write a detailed description ofthe property, including its features, layout, and any other important details.",
-                style: CustomWidget(context: context)
-                    .CustomSizedTextStyle(
-                    13.0,
-                    AppColors.hintColor,
-                    FontWeight.w500,
-                    'FontRegular'),
+
+              Theme(data: ThemeData(
+                primarySwatch: Colors.yellow,
+                unselectedWidgetColor: Colors.grey, // Your color
               ),
-              SizedBox(
-                height: 25.0,
-              ),
-              Form(child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Describe the Property",
+                child: RadioListTile(
+                  title: Text("Yes",
+                    textAlign: TextAlign.start,
                     style: CustomWidget(context: context)
                         .CustomSizedTextStyle(
                         14.0,
-                        AppColors.blackColor,
-                        FontWeight.w500,
+                        Colors.black,
+                        FontWeight.w600,
                         'FontRegular'),
                   ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  TextFormFieldCustom(
-                    onEditComplete: () {
-                      propertyCommendFocus.unfocus();
-                    },
-                    radius: 20.0,
-                    error: "Enter Property Details",
-                    textColor: AppColors.blackColor,
-                    borderColor: AppColors.hintColor.withOpacity(0.2),
-                    fillColor: AppColors.whiteColor,
-                    hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
-                        12.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
-                    textStyle: CustomWidget(context: context).CustomTextStyle(
-                        AppColors.blackColor, FontWeight.w500, 'FontRegular'),
-                    textInputAction: TextInputAction.next,
-                    focusNode: propertyCommendFocus,
-                    maxlines: 20,
-                    text: '',
-                    hintText: "Discribe the property to a potential buyer",
-                    obscureText: false,
-                    suffix: Container(
-                      width: 0.0,
-                    ),
-                    textChanged: (value) {},
-                    onChanged: () {},
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Please enter Property Details";
-                      }
-                      return null;
-                    },
-                    enabled: true,
-                    textInputType: TextInputType.multiline,
-                    controller: propertyCommendController,
-                  ),
-                  SizedBox(
-                    height: 25.0,
-                  ),
+                  value: "yes",
+                  groupValue: accept,
+                  onChanged: (value){
+                    setState(() {
+                      accept = value.toString();
+                    });
+                  },
+                ),),
 
+              Theme(data: ThemeData(
+                primarySwatch: Colors.yellow,
+                unselectedWidgetColor: Colors.grey, // Your color
+              ),
+                child: RadioListTile(
+                  title: Text("No",
+                    textAlign: TextAlign.start,
+                    style: CustomWidget(context: context)
+                        .CustomSizedTextStyle(
+                        14.0,
+                        Colors.black,
+                        FontWeight.w600,
+                        'FontRegular'),
+                  ),
+                  value: "no",
+                  groupValue: accept,
+                  onChanged: (value){
+                    setState(() {
+                      accept = value.toString();
+                    });
+                  },
+                ),),
 
-                ],
-              )),
               SizedBox(
-                height: 40.0,
+                height: 25.0,
+              ),
+              Container(
+                height: 250.0,
               ),
 
               InkWell(
@@ -162,7 +141,7 @@ class _PropertyInfo_Screen3State extends State<PropertyInfo_Screen3> {
                     Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (context) =>
-                                PropertyInfo_Screen4()));
+                                PropertyInfo_Screen8()));
                   });
                 },
                 child: Container(
