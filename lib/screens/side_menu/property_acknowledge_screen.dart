@@ -41,11 +41,7 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
 
               ),
             )),
-        // title: Text(
-        //   "Profile".toUpperCase(),
-        //   style: CustomWidget(context: context).CustomSizedTextStyle(
-        //       16.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
-        // ),
+
         actions: [
          Container(
            padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),
@@ -143,11 +139,11 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
               ),
 
               Container(
-                height: 80.0,
+                height: 40.0,
               ),
 
               Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Theme(data: ThemeData(
@@ -184,39 +180,42 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
                 height: 15.0,
               ),
 
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Theme(data: ThemeData(
-                    primarySwatch: Colors.yellow,
-                    unselectedWidgetColor: AppColors.hintColor, // Your color
-                  ),
-                      child: Checkbox(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        value: acknowledge,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            acknowledge = value!;
-                          });
-                        },
-                      )),
-                  Flexible(child: Text(
-                    "I confirm that i have read the Terms of Service and that i am held accountable to them.",
-                    style: CustomWidget(context: context)
-                        .CustomSizedTextStyle(
-                        14.0,
-                        Colors.black,
-                        FontWeight.w500,
-                        'FontRegular'),
+             Container(
+               width: MediaQuery.of(context).size.width,
+               child:  Row(
+                 crossAxisAlignment: CrossAxisAlignment.end,
+                 mainAxisAlignment: MainAxisAlignment.start,
+                 children: [
+                   Theme(data: ThemeData(
+                     primarySwatch: Colors.yellow,
+                     unselectedWidgetColor: AppColors.hintColor, // Your color
+                   ),
+                       child: Checkbox(
+                         shape: RoundedRectangleBorder(
+                           borderRadius: BorderRadius.circular(5.0),
+                         ),
+                         value: acknowledge,
+                         onChanged: (bool? value) {
+                           setState(() {
+                             acknowledge = value!;
+                           });
+                         },
+                       )),
+                   Flexible(child: Text(
+                     "I confirm that i have read the Terms of Service and that i am held accountable to them.",
+                     style: CustomWidget(context: context)
+                         .CustomSizedTextStyle(
+                         14.0,
+                         Colors.black,
+                         FontWeight.w500,
+                         'FontRegular'),
 
-                  ),)
+                   ),)
 
-                  //Checkbox
-                ],
-              ),
+                   //Checkbox
+                 ],
+               ),
+             ),
               SizedBox(
                 height: 15.0,
               ),
