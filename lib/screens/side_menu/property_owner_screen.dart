@@ -107,7 +107,7 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
                    "Legal name ",
                    style: CustomWidget(context: context)
                        .CustomSizedTextStyle(
-                       16.0,
+                       14.0,
                        AppColors.blackColor,
                        FontWeight.w500,
                        'FontRegular'),
@@ -158,7 +158,7 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
                    "Active email",
                    style: CustomWidget(context: context)
                        .CustomSizedTextStyle(
-                       16.0,
+                       14.0,
                        AppColors.blackColor,
                        FontWeight.w500,
                        'FontRegular'),
@@ -230,7 +230,7 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
                          "Add Owner",
                          style: CustomWidget(context: context)
                              .CustomSizedTextStyle(
-                             16.0,
+                             15.0,
                              AppColors.blackColor,
                              FontWeight.w600,
                              'FontRegular'),
@@ -253,7 +253,7 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
                 "List of Owners".toUpperCase(),
                 style: CustomWidget(context: context)
                     .CustomSizedTextStyle(
-                    15.0,
+                    14.0,
                     AppColors.blackColor,
                     FontWeight.w700,
                     'FontRegular'),
