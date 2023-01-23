@@ -240,7 +240,7 @@ class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMix
               Container(
                 decoration: BoxDecoration(
                     image: DecorationImage(image: AssetImage(buyList[index],),),
-                    borderRadius: BorderRadius.circular(15.0)
+                    borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
               Align(
@@ -277,8 +277,9 @@ class _DashBoardState extends State<DashBoard> with SingleTickerProviderStateMix
             children: [
               Container(
                 decoration: BoxDecoration(
-                    image: DecorationImage(image: AssetImage(buyList[index],),),
-                    borderRadius: BorderRadius.circular(15.0)
+                    image: DecorationImage(image: AssetImage(buyList[index],),
+                    ),
+                    borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
               Align(
