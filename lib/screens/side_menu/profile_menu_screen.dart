@@ -181,6 +181,51 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                           builder: (context) =>
                               Property_Acknowledge_Screen()));
                 });
+
+              },
+              child: Container(
+                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          SvgPicture.asset("assets/menu/Id.svg",
+                            height: 25.0,),
+                          SizedBox(width: 10.0,),
+
+                          Text(
+                            "Add Property",
+                            textAlign: TextAlign.start,
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                16.0,
+                                AppColors.blackColor,
+                                FontWeight.w500,
+                                'FontRegular'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Flexible(child: Icon(
+                      Icons.chevron_right,
+                      color: Colors.black,
+                      size: 20.0,
+                    ),)
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 15.0,
+            ),
+            InkWell(
+              onTap: (){
+                setState(() {
+
+                });
               },
               child: Container(
                 padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
@@ -224,10 +269,6 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
             InkWell(
               onTap: (){
                 setState(() {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              Property_Owner_Screen()));
                 });
               },
               child: Container(
@@ -272,10 +313,6 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
             InkWell(
               onTap: (){
                 setState(() {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              Chat_Menu_Screen()));
                 });
               },
               child: Container(
@@ -320,10 +357,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
             InkWell(
               onTap: (){
                 setState(() {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              Wallet_Setup_Screen()));
+
                 });
               },
               child: Container(

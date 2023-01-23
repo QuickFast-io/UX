@@ -350,7 +350,7 @@ class _PropertyInfo_Screen1State extends State<PropertyInfo_Screen1> {
                 ],
               )),
               Container(
-                height: 100.0,
+                height: 30.0,
               ),
 
               InkWell(

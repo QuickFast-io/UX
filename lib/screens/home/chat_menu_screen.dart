@@ -74,14 +74,14 @@ class _Chat_Menu_ScreenState extends State<Chat_Menu_Screen> {
                             children: [
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.18,
-                                height: 60.0,
+                                height: 50.0,
                                 // padding : EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
                                 // padding: EdgeInsets.all(10.0),
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: AssetImage("assets/menu/profile_1.png",
                                     ),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                   ),
                                   // color: Colors.orangeAccent,
                                   shape: BoxShape.circle,
@@ -106,7 +106,7 @@ class _Chat_Menu_ScreenState extends State<Chat_Menu_Screen> {
                                           textAlign: TextAlign.start,
                                           style: CustomWidget(context: context)
                                               .CustomSizedTextStyle(
-                                              18.0,
+                                              16.0,
                                               AppColors.blackColor,
                                               FontWeight.w600,
                                               'FontRegular'),
@@ -156,7 +156,7 @@ class _Chat_Menu_ScreenState extends State<Chat_Menu_Screen> {
                                   FontWeight.w500,
                                   'FontRegular'),
                             ),
-                            SizedBox(height: 15.0,),
+                            SizedBox(height: 10.0,),
 
                             Container(
                               decoration: BoxDecoration(

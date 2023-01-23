@@ -159,6 +159,9 @@ class _WalletState extends State<Wallet> {
             ],
           ),
         ),
+        SizedBox(
+          height: 10.0,
+        ),
         Expanded(
           flex: 5,
           child: Container(
