@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
+import 'package:rabbit/screens/side_menu/property_owner_screen.dart';
 
 class Property_Acknowledge_Screen extends StatefulWidget {
   const Property_Acknowledge_Screen({Key? key}) : super(key: key);
@@ -69,7 +70,7 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
                 "Acknowledge".toUpperCase(),
                 style: CustomWidget(context: context)
                     .CustomSizedTextStyle(
-                    15.0,
+                    13.0,
                     AppColors.hintColor,
                     FontWeight.w600,
                     'FontRegular'),
@@ -78,10 +79,10 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
                 height: 15.0,
               ),
               Text(
-                "Property Listing Confirmed",
+                "Property Listing \nConfirmed",
                 style: CustomWidget(context: context)
                     .CustomSizedTextStyle(
-                    35.0,
+                    28.0,
                     AppColors.blackColor,
                     FontWeight.w600,
                     'FontRegular'),
@@ -93,7 +94,7 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
                 "Thank you for lisiting your property on Rabbit.",
                 style: CustomWidget(context: context)
                     .CustomSizedTextStyle(
-                    16.0,
+                    14.0,
                     AppColors.blackColor,
                     FontWeight.w500,
                     'FontRegular'),
@@ -105,7 +106,7 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
                 "Please not that all transactions and agreements made through our platform are subject to applicable laws and regulations.",
                 style: CustomWidget(context: context)
                     .CustomSizedTextStyle(
-                    16.0,
+                    14.0,
                     AppColors.blackColor,
                     FontWeight.w500,
                     'FontRegular'),
@@ -117,7 +118,7 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
                 "It is your responsibility to ensure that you are in compliance with all relevant laws and regulations, including but not limited to tax laws and real estate regulations.",
                 style: CustomWidget(context: context)
                     .CustomSizedTextStyle(
-                    16.0,
+                    14.0,
                     AppColors.blackColor,
                     FontWeight.w500,
                     'FontRegular'),
@@ -129,7 +130,7 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
                 "If you have any questions or need assistance, please don't hesitate to reach out to our support team. We wish you the best of luck in finding a buyer for your property",
                 style: CustomWidget(context: context)
                     .CustomSizedTextStyle(
-                    16.0,
+                    14.0,
                     AppColors.blackColor,
                     FontWeight.w500,
                     'FontRegular'),
@@ -143,7 +144,7 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
               ),
 
               Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Theme(data: ThemeData(
@@ -165,7 +166,7 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
                     "I acknowledge that i have the complete rights to sell this property.",
                     style: CustomWidget(context: context)
                         .CustomSizedTextStyle(
-                        14.0,
+                        12.0,
                         Colors.black,
                         FontWeight.w500,
                         'FontRegular'),
@@ -183,7 +184,7 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
              Container(
                width: MediaQuery.of(context).size.width,
                child:  Row(
-                 crossAxisAlignment: CrossAxisAlignment.end,
+                 crossAxisAlignment: CrossAxisAlignment.center,
                  mainAxisAlignment: MainAxisAlignment.start,
                  children: [
                    Theme(data: ThemeData(
@@ -205,7 +206,7 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
                      "I confirm that i have read the Terms of Service and that i am held accountable to them.",
                      style: CustomWidget(context: context)
                          .CustomSizedTextStyle(
-                         14.0,
+                         12.0,
                          Colors.black,
                          FontWeight.w500,
                          'FontRegular'),
@@ -222,10 +223,10 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
               InkWell(
                 onTap: (){
                   setState(() {
-                    // Navigator.of(context).push(
-                    //     MaterialPageRoute(
-                    //         builder: (context) =>
-                    //             CongratsScreen()));
+                    Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                Property_Owner_Screen()));
                   });
                 },
                 child: Container(

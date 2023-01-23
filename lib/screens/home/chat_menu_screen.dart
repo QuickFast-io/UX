@@ -74,7 +74,7 @@ class _Chat_Menu_ScreenState extends State<Chat_Menu_Screen> {
                             children: [
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.18,
-                                height: 70.0,
+                                height: 60.0,
                                 // padding : EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
                                 // padding: EdgeInsets.all(10.0),
                                 decoration: BoxDecoration(
@@ -91,14 +91,14 @@ class _Chat_Menu_ScreenState extends State<Chat_Menu_Screen> {
                                 //   height: 50.0,
                                 // ),
                               ),
-                              SizedBox(width: 15.0,),
+                              SizedBox(width: 5.0,),
 
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Container(
-                                    width: MediaQuery.of(context).size.width *0.5,
+                                    width: MediaQuery.of(context).size.width *0.6,
                                     child: Row(
                                       children: [
                                         Flexible(child: Text(
@@ -122,7 +122,7 @@ class _Chat_Menu_ScreenState extends State<Chat_Menu_Screen> {
                                   ),
                                   SizedBox(height: 6.0,),
                                   Container(
-                                    width: MediaQuery.of(context).size.width *0.5,
+                                    width: MediaQuery.of(context).size.width *0.6,
                                     child: Flexible(child: Text(
                                       "You are welcome to Rabbit, if you have any question, fill free to ask them here... ",
                                       textAlign: TextAlign.start,
@@ -163,13 +163,13 @@ class _Chat_Menu_ScreenState extends State<Chat_Menu_Screen> {
                                 borderRadius: BorderRadius.circular(20.0),
                                 color: AppColors.appColor,
                               ),
-                              padding: EdgeInsets.fromLTRB(15.0, 10.0,15.0,10.0),
+                              padding: EdgeInsets.fromLTRB(10.0, 7.0,10.0,7.0),
                               child: Text(
                                 "5",
                                 textAlign: TextAlign.start,
                                 style: CustomWidget(context: context)
                                     .CustomSizedTextStyle(
-                                    12.0,
+                                    10.0,
                                     AppColors.blackColor,
                                     FontWeight.w700,
                                     'FontRegular'),
