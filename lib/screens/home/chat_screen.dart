@@ -87,8 +87,6 @@ class _ChatScreenState extends State<ChatScreen> {
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.18,
                                 height: 50.0,
-                                // padding : EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-                                // padding: EdgeInsets.all(10.0),
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: AssetImage(
@@ -99,9 +97,6 @@ class _ChatScreenState extends State<ChatScreen> {
                                   // color: Colors.orangeAccent,
                                   shape: BoxShape.circle,
                                 ),
-                                // child: Image.asset("assets/images/group.png",
-                                //   height: 50.0,
-                                // ),
                               ),
                               SizedBox(
                                 width: 5.0,
@@ -115,19 +110,17 @@ class _ChatScreenState extends State<ChatScreen> {
                                         MediaQuery.of(context).size.width * 0.6,
                                     child: Row(
                                       children: [
-                                        Flexible(
-                                          child: Text(
-                                            username[index].toString(),
-                                            textAlign: TextAlign.start,
-                                            style:
-                                                CustomWidget(context: context)
-                                                    .CustomSizedTextStyle(
-                                                        16.0,
-                                                        AppColors.blackColor,
-                                                        FontWeight.w600,
-                                                        'FontRegular'),
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
+                                        Text(
+                                          username[index].toString(),
+                                          textAlign: TextAlign.start,
+                                          style:
+                                          CustomWidget(context: context)
+                                              .CustomSizedTextStyle(
+                                              16.0,
+                                              AppColors.blackColor,
+                                              FontWeight.w600,
+                                              'FontRegular'),
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                         SizedBox(
                                           width: 8.0,
@@ -145,19 +138,17 @@ class _ChatScreenState extends State<ChatScreen> {
                                   Container(
                                     width:
                                         MediaQuery.of(context).size.width * 0.6,
-                                    child: Flexible(
-                                      child: Text(
-                                        "You are welcome to Rabbit, if you have any question, fill free to ask them here... ",
-                                        textAlign: TextAlign.start,
-                                        style: CustomWidget(context: context)
-                                            .CustomSizedTextStyle(
-                                                12.0,
-                                                AppColors.hintColor,
-                                                FontWeight.w600,
-                                                'FontRegular'),
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 2,
-                                      ),
+                                    child:  Text(
+                                      "You are welcome to Rabbit, if you have any question, fill free to ask them here... ",
+                                      textAlign: TextAlign.start,
+                                      style: CustomWidget(context: context)
+                                          .CustomSizedTextStyle(
+                                          12.0,
+                                          AppColors.hintColor,
+                                          FontWeight.w600,
+                                          'FontRegular'),
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
                                     ),
                                   ),
                                 ],
