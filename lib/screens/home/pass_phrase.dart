@@ -21,8 +21,17 @@ class _PassphraseState extends State<Passphrase> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.black,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            setState(() {
+              if(proceedValue){
+                proceedValue=false;
+              }else{
+                Navigator.pop(context);
+              }
+            });
+          },
         ),
         title: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -291,11 +300,14 @@ class _PassphraseState extends State<Passphrase> {
         ),
         SizedBox(height: 25.0,),
         CheckboxListTile(
-          title: Text(
-            AppLocalizations.instance.text("loc_phrase_check_txt"),
-            style: CustomWidget(context: context).CustomSizedTextStyle(
-                14.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
-            textAlign: TextAlign.center,
+          title: Transform.translate(
+            offset: const Offset(-20, 0),
+            child: Text(
+              AppLocalizations.instance.text("loc_phrase_check_txt"),
+              style: CustomWidget(context: context).CustomSizedTextStyle(
+                  14.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+              textAlign: TextAlign.center,
+            ),
           ),
           checkColor: Colors.black,
           value: checkedValue,
