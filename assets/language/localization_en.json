@@ -21,6 +21,7 @@
   "loc_location": "Location",
   "loc_type": "Type",
   "loc_phrase_title": "Write down your secret \n recovery phrase",
+  "loc_confirm": "Confirm",
   "loc_confirm_phrase_title": "Confirm your secret\n recovery phrase",
   "loc_confirm_phrase_description": "This is your secret phrase.Write down in\n a physical place and keep it safe.",
   "loc_phrase_description": "This is your secret phrase.Write down in\n a physical place and keep it safe.",
