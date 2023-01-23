@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/textformfield_custom.dart';
+import 'package:rabbit/screens/property/property_info_1.dart';
 
 class Property_Owner_Screen extends StatefulWidget {
   const Property_Owner_Screen({Key? key}) : super(key: key);
@@ -106,7 +107,7 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
                    "Legal name ",
                    style: CustomWidget(context: context)
                        .CustomSizedTextStyle(
-                       16.0,
+                       14.0,
                        AppColors.blackColor,
                        FontWeight.w500,
                        'FontRegular'),
@@ -157,7 +158,7 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
                    "Active email",
                    style: CustomWidget(context: context)
                        .CustomSizedTextStyle(
-                       16.0,
+                       14.0,
                        AppColors.blackColor,
                        FontWeight.w500,
                        'FontRegular'),
@@ -216,7 +217,7 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
                      });
                    },
                    child: Container(
-                     padding: EdgeInsets.fromLTRB(5.0, 15.0, 5.0, 15.0),
+                     padding: EdgeInsets.fromLTRB(5.0, 12.0, 5.0, 12.0),
                      decoration: BoxDecoration(
                        color: AppColors.whiteColor,
                        border: Border.all(
@@ -229,7 +230,7 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
                          "Add Owner",
                          style: CustomWidget(context: context)
                              .CustomSizedTextStyle(
-                             16.0,
+                             15.0,
                              AppColors.blackColor,
                              FontWeight.w600,
                              'FontRegular'),
@@ -252,7 +253,7 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
                 "List of Owners".toUpperCase(),
                 style: CustomWidget(context: context)
                     .CustomSizedTextStyle(
-                    15.0,
+                    14.0,
                     AppColors.blackColor,
                     FontWeight.w700,
                     'FontRegular'),
@@ -268,14 +269,14 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
               InkWell(
                 onTap: (){
                   setState(() {
-                    // Navigator.of(context).push(
-                    //     MaterialPageRoute(
-                    //         builder: (context) =>
-                    //             CongratsScreen()));
+                    Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                PropertyInfo_Screen1()));
                   });
                 },
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(5.0, 15.0, 5.0, 15.0),
+                  padding: EdgeInsets.fromLTRB(5.0, 12.0, 5.0, 12.0),
                   decoration: BoxDecoration(
                     color: AppColors.appColor,
                     // border: Border.all(
