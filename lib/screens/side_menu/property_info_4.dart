@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/textformfield_custom.dart';
+import 'package:rabbit/screens/side_menu/property_info_5.dart';
 
 class PropertyInfo_Screen4 extends StatefulWidget {
   const PropertyInfo_Screen4({Key? key}) : super(key: key);
@@ -254,6 +255,7 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                     textInputType: TextInputType.datetime,
                     controller: dateController,
                   ),
+
                   SizedBox(
                     height: 20.0,
                   ),
@@ -268,10 +270,10 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
               InkWell(
                 onTap: (){
                   setState(() {
-                    // Navigator.of(context).push(
-                    //     MaterialPageRoute(
-                    //         builder: (context) =>
-                    //             PropertyInfo_Screen3()));
+                    Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                PropertyInfo_Screen5()));
                   });
                 },
                 child: Container(
