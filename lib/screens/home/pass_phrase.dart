@@ -94,7 +94,7 @@ class _PassphraseState extends State<Passphrase> {
                       ),
                     ),
                     Container(
-                      width: 125.0,
+                      width: 115.0,
                       height: 1.5,
                       color: AppColors.appColor,
                     ),
@@ -112,7 +112,7 @@ class _PassphraseState extends State<Passphrase> {
                       ),
                     ),
                     Container(
-                      width: 125.0,
+                      width: 115.0,
                       height: 1.5,
                       color: proceedValue?AppColors.appColor:Colors.black,
                     ),
@@ -224,6 +224,7 @@ class _PassphraseState extends State<Passphrase> {
               mainAxisSpacing: 20,
             ),
             shrinkWrap: true,
+            physics: ScrollPhysics(),
             itemCount: passPhrase.length,
             itemBuilder: (BuildContext context, index) {
               int sno=index+1;
@@ -355,6 +356,7 @@ class _PassphraseState extends State<Passphrase> {
             ),
             shrinkWrap: true,
             itemCount: 12,
+            physics: ScrollPhysics(),
             itemBuilder: (BuildContext context, index) {
               phrasetext.add(new TextEditingController());
               int sno=index+1;
