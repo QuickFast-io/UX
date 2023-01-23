@@ -73,7 +73,6 @@ class _DashBoardState extends State<DashBoard>
     return Stack(
       children: [
         Container(
-          /*height: MediaQuery.of(context).size.height,*/
           width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.all(10.0),
           child: SingleChildScrollView(
@@ -184,7 +183,7 @@ class _DashBoardState extends State<DashBoard>
                         "assets/others/filter.png",
                         height: 15.0,
                         width: 15.0,
-                        color: Color(0xFFb6b6b6),
+                        color: Color(0xFF000000),
                       ),
                     ],
                   ),
@@ -273,8 +272,8 @@ class _DashBoardState extends State<DashBoard>
         itemCount: buyList.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: 5.0,
-          mainAxisSpacing: 10.0,
+          crossAxisSpacing: 15.0,
+          mainAxisSpacing: 15.0,
           childAspectRatio: 1.5,
 
         ),
@@ -285,12 +284,15 @@ class _DashBoardState extends State<DashBoard>
                 borderRadius: BorderRadius.circular(7), // Image border
                 child: Image.asset(buyList[index], fit: BoxFit.cover),
               ),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Newyork",
-                  style: CustomWidget(context: context).CustomSizedTextStyle(
-                      12.0, Colors.white, FontWeight.w400, 'FontRegular'),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 5.0),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Text(
+                    "Newyork",
+                    style: CustomWidget(context: context).CustomSizedTextStyle(
+                        12.0, Colors.white, FontWeight.w400, 'FontRegular'),
+                  ),
                 ),
               ),
             ],
@@ -305,33 +307,32 @@ class _DashBoardState extends State<DashBoard>
       padding: EdgeInsets.all(5.0),
       width: MediaQuery.of(context).size.width,
       child: GridView.builder(
-        padding: EdgeInsets.all(0),
         physics: ScrollPhysics(),
+        padding: EdgeInsets.all(0),
         itemCount: buyList.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisExtent: 150.0,
-            crossAxisCount: 2,
-            crossAxisSpacing: 10.0,
-            mainAxisSpacing: 2.0),
+          crossAxisCount: 2,
+          crossAxisSpacing: 15.0,
+          mainAxisSpacing: 15.0,
+          childAspectRatio: 1.5,
+
+        ),
         itemBuilder: (BuildContext context, int index) {
           return Stack(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(
-                      buyList[index],
-                    ),
-                  ),
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(7), // Image border
+                child: Image.asset(buyList[index], fit: BoxFit.cover),
               ),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Newyork",
-                  style: CustomWidget(context: context).CustomSizedTextStyle(
-                      12.0, Colors.white, FontWeight.w400, 'FontRegular'),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 5.0),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Text(
+                    "Newyork",
+                    style: CustomWidget(context: context).CustomSizedTextStyle(
+                        12.0, Colors.white, FontWeight.w400, 'FontRegular'),
+                  ),
                 ),
               ),
             ],
