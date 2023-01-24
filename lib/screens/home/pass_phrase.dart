@@ -124,8 +124,9 @@ class _PassphraseState extends State<Passphrase> {
               stepShape: StepShape.circle,
               stepBorderRadius: 15,
               borderThickness: 2,
-              padding: 20,
+              padding: 10,
               stepRadius: 28,
+              disableScroll: true,
               finishedStepBorderColor: Colors.deepOrange,
               finishedStepTextColor: Colors.deepOrange,
               finishedStepBackgroundColor: Colors.deepOrange,
@@ -133,16 +134,18 @@ class _PassphraseState extends State<Passphrase> {
               loadingAnimation: 'assets/loading_circle.json',
               steps: const [
                 EasyStep(
-                  icon: Icon(Icons.add_task_rounded),
+                  icon: "1",
+                  activeIcon: "1",
                   title: 'Order Placed',
                 ),
                 EasyStep(
-                  icon: Icon(Icons.category_rounded),
+                  icon:"2",
+                  activeIcon: "2",
                   title: 'Preparing',
                 ),
                 EasyStep(
-                  icon: Icon(Icons.reviews_outlined),
-                  activeIcon: Icon(Icons.reviews_rounded),
+                  icon: "3",
+                  activeIcon: "3",
                   title: 'Add Review',
                 ),
               ],

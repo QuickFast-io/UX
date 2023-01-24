@@ -130,20 +130,23 @@ class BaseStep extends StatelessWidget {
                           width: radius * 2,
                           height: radius * 2,
                           child: Center(
-                            child: Icon(
+                            child: Text(
                               isActive && step.activeIcon != null
-                                  ? step.activeIcon!.icon
+                                  ? step.activeIcon.toString()
                                   : isFinished && step.finishIcon != null
-                                      ? step.finishIcon!.icon
-                                      : step.icon.icon,
-                              size: radius * 0.9,
-                              color: isFinished
-                                  ? finishedIconColor ?? Colors.white
+                                      ? step.finishIcon.toString()
+                                      : step.icon.toString(),
+                              style: TextStyle(
+                                fontSize: 10.0,
+                                color: isFinished
+                              ? finishedIconColor ?? Colors.white
                                   : isActive
-                                      ? activeIconColor ??
-                                          Theme.of(context).colorScheme.primary
-                                      : unreachedIconColor ??
-                                          Colors.grey.shade400,
+                              ? activeIconColor ??
+                                  Theme.of(context).colorScheme.primary
+                                  : unreachedIconColor ??
+                              Colors.grey.shade400,
+                              ),
+
                             ),
                           ),
                         ),
