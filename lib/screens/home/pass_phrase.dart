@@ -6,6 +6,7 @@ import 'package:rabbit/common/custom_stepper/src/core/easy_dotted_line.dart';
 import 'package:rabbit/common/custom_stepper/src/easy_step.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/localization/localizations.dart';
+import 'package:rabbit/screens/home/phrase_confirm.dart';
 
 class Passphrase extends StatefulWidget {
   const Passphrase({Key? key}) : super(key: key);
@@ -289,6 +290,7 @@ class _PassphraseState extends State<Passphrase> {
                 setState(() {
                   proceedValue = true;
                   _processIndex = 3;
+                /*  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PhraseConfirm()));*/
                 });
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(

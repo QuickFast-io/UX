@@ -3,6 +3,8 @@ import 'package:rabbit/screens/basic/change_pin.dart';
 import 'package:rabbit/screens/basic/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:rabbit/screens/home/pass_phrase.dart';
+import 'package:rabbit/screens/home/phrase_confirm.dart';
+import 'package:rabbit/screens/home/set_pin.dart';
 import 'package:rabbit/screens/home/wallet_page.dart';
 
 import '../../common/colors.dart';
@@ -86,7 +88,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
-                                    ChangePin()));
+                                    SetpinPage()));
 
                 });
               },

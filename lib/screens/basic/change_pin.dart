@@ -4,6 +4,7 @@ import 'package:rabbit/common/animator.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/localization/localizations.dart';
+import 'package:rabbit/screens/home/pass_phrase.dart';
 
 class ChangePin extends StatefulWidget {
   const ChangePin({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class ChangePin extends StatefulWidget {
 }
 
 class _ChangePinState extends State<ChangePin> {
-  String title = 'Old Pin';
+  String title = 'Create Pin';
 
   /*var helperObject = HttpRequestHandler();*/
 
@@ -35,10 +36,10 @@ class _ChangePinState extends State<ChangePin> {
   Widget pinUI() {
     handleClick() {
       if (pinValues.length > 0 && pinValues.length == 6) {
-        if (title == "Old Pin") {
+        /*if (title == "Create Pin") {
           oldPinValue = pinValues;
           setState(() {
-            title = "New Pin";
+            title = "Create Pin";
             pin1 = '';
             pin2 = '';
             pin3 = '';
@@ -47,7 +48,9 @@ class _ChangePinState extends State<ChangePin> {
             pin6 = '';
             pinValues = '';
           });
-        } else if (title == "New Pin") {
+        } else*/
+
+          if (title == "Set Pin") {
           confirmValue = pinValues;
           setState(() {
             title = "Confirm Pin";
@@ -63,6 +66,7 @@ class _ChangePinState extends State<ChangePin> {
           if (confirmValue == pinValues) {
             /*loading=true;
             SubmitPin();*/
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Passphrase()));
           } else {
             CustomWidget(context: context)
                 .custombar("Pin", "Pins do not match", false);
@@ -90,13 +94,13 @@ class _ChangePinState extends State<ChangePin> {
         pinValues = '$pin1$pin2$pin3$pin4$pin5$pin6';
         if (pinValues.length == 6) {
           //doLoginPin(pinValues);
-        } else {
-
-        }
+          handleClick();
+        } else {}
       });
     }
 
     removePinValue() {
+      print(pin6);
       setState(() {
         if (pin6.isNotEmpty)
           pin6 = '';
@@ -162,6 +166,7 @@ class _ChangePinState extends State<ChangePin> {
                           style: GoogleFonts.urbanist(
                             color: Color(0xFF333333),
                             fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ],
