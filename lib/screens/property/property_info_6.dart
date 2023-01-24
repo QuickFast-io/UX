@@ -65,6 +65,7 @@ class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
         );
       },
     );
+
     if (picked != null)
       setState(() {
         if (isDob) {
