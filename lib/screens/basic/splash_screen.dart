@@ -1,4 +1,5 @@
 
+import 'package:rabbit/screens/basic/change_pin.dart';
 import 'package:rabbit/screens/basic/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:rabbit/screens/home/pass_phrase.dart';
@@ -85,7 +86,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
-                                    Passphrase()));
+                                    ChangePin()));
 
                 });
               },
