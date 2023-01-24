@@ -35,6 +35,7 @@ class _PassphraseState extends State<Passphrase> {
     "radar"
   ];
 
+
   List<Step> getSteps() {
     return <Step>[
       Step(
@@ -59,6 +60,13 @@ class _PassphraseState extends State<Passphrase> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _processIndex = 2;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -69,6 +77,7 @@ class _PassphraseState extends State<Passphrase> {
             setState(() {
               if (proceedValue) {
                 proceedValue = false;
+                _processIndex = 2;
               } else {
                 Navigator.pop(context);
               }
@@ -111,520 +120,501 @@ class _PassphraseState extends State<Passphrase> {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            EasyStepper(
-              activeStep: _processIndex,
-              lineLength: 70,
-              lineType: LineType.normal,
-              lineColor: AppColors.appColor,
-              stepShape: StepShape.circle,
-              stepBorderRadius: 15,
-              borderThickness: 2,
-              padding: 10,
-              stepRadius: 28,
-              disableScroll: true,
-              finishedStepBorderColor: Colors.deepOrange,
-              finishedStepTextColor: Colors.deepOrange,
-              finishedStepBackgroundColor: Colors.deepOrange,
-              activeStepIconColor: Colors.deepOrange,
-              loadingAnimation: 'assets/loading_circle.json',
-              steps: const [
-                EasyStep(
-                  icon: "1",
-                  activeIcon: "1",
-                  title: 'Order Placed',
-                ),
-                EasyStep(
-                  icon:"2",
-                  activeIcon: "2",
-                  title: 'Preparing',
-                ),
-                EasyStep(
-                  icon: "3",
-                  activeIcon: "3",
-                  title: 'Add Review',
-                ),
-              ],
-              onStepReached: (index) => setState(() => _processIndex = index),
-            ),
-           /* SizedBox(
-              height: 80.0,
-              child: Theme(
-                data: ThemeData(
-                    accentColor: AppColors.appColor,
-                    primarySwatch: Colors.orange,
-                    colorScheme: ColorScheme.light(
-                      primary: AppColors.appColor,
-                    )),
-                child: Stepper(
-                  elevation: 0.0,
-                  type: StepperType.horizontal,
-                  currentStep: currentStep,
-                  onStepCancel: () => currentStep == 0
-                      ? null
-                      : setState(() {
-                          currentStep -= 1;
-                        }),
-                  onStepContinue: () {
-                    bool isLastStep = (currentStep == getSteps().length - 1);
-                    if (isLastStep) {
-                      //Do something with this information
-                    } else {
-                      setState(() {
-                        currentStep += 1;
-                      });
-                    }
-                  },
-                  onStepTapped: (step) => setState(() {
-                    currentStep = step;
-                  }),
-                  steps: getSteps(),
-                ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          EasyStepper(
+            activeStep: _processIndex,
+            lineLength: 70,
+            lineType: LineType.normal,
+            lineColor: AppColors.appColor,
+            stepShape: StepShape.circle,
+           /* stepBorderRadius: 15,*/
+            borderThickness: 5,
+            padding: 10,
+            /*stepRadius: 28,*/
+            disableScroll: true,
+            unreachedStepBackgroundColor: Colors.transparent,
+            unreachedStepBorderColor: Colors.black,
+            unreachedStepIconColor: Colors.black,
+            unreachedStepTextColor: Colors.black,
+            finishedStepBorderColor: AppColors.appColor,
+            finishedStepTextColor: AppColors.blackColor,
+            finishedStepBackgroundColor: AppColors.appColor,
+            activeStepIconColor: AppColors.blackColor,
+            finishedStepIconColor: AppColors.blackColor,
+            activeStepTextColor: AppColors.blackColor,
+            activeStepBorderColor: AppColors.appColor,
+            loadingAnimation: 'assets/loading_circle.json',
+            steps: const [
+              EasyStep(
+                icon: "1",
+                activeIcon: "1",
+                title: 'Create Wallet',
               ),
-            ),*/
-            Column(
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColors.appColor,
-                      ),
-                      padding: EdgeInsets.all(15.0),
-                      margin: EdgeInsets.only(
-                        top: 5.0,
-                        bottom: 5.0,
-                      ),
-                      child: Text(
-                        "1",
-                        style: CustomWidget(context: context)
-                            .CustomSizedTextStyle(14.0, AppColors.blackColor,
-                                FontWeight.w600, 'FontRegular'),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    Container(
-                      width: 110.0,
-                      height: 1.5,
+              EasyStep(
+                icon:"2",
+                activeIcon: "2",
+                title: 'Secure Wallet',
+              ),
+              EasyStep(
+                icon: "3",
+                activeIcon: "3",
+                title: 'Confirm Wallet',
+              ),
+            ],
+            onStepReached: (index) => setState(() {
+              print(index);
+
+            }
+           ),
+          ),
+          /*Column(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
                       color: AppColors.appColor,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColors.appColor,
-                      ),
-                      padding: EdgeInsets.all(15.0),
-                      margin: EdgeInsets.only(
-                        top: 5.0,
-                        bottom: 5.0,
-                      ),
-                      child: Text(
-                        "2",
-                        style: CustomWidget(context: context)
-                            .CustomSizedTextStyle(14.0, AppColors.blackColor,
-                                FontWeight.w600, 'FontRegular'),
-                        textAlign: TextAlign.center,
-                      ),
+                    padding: EdgeInsets.all(15.0),
+                    margin: EdgeInsets.only(
+                      top: 5.0,
+                      bottom: 5.0,
                     ),
-                    Container(
-                      width: 110.0,
-                      height: 1.5,
-                      color: proceedValue ? AppColors.appColor : Colors.black,
+                    child: Text(
+                      "1",
+                      style: CustomWidget(context: context)
+                          .CustomSizedTextStyle(14.0, AppColors.blackColor,
+                              FontWeight.w600, 'FontRegular'),
+                      textAlign: TextAlign.center,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.transparent,
-                        border: Border.all(color: Colors.black),
-                      ),
-                      padding: EdgeInsets.all(15.0),
-                      margin: EdgeInsets.only(
-                        top: 5.0,
-                        bottom: 5.0,
-                      ),
-                      child: Text(
-                        "3",
-                        style: CustomWidget(context: context)
-                            .CustomSizedTextStyle(14.0, AppColors.blackColor,
-                                FontWeight.w600, 'FontRegular'),
-                        textAlign: TextAlign.center,
-                      ),
+                  ),
+                  Container(
+                    width: 110.0,
+                    height: 1.5,
+                    color: AppColors.appColor,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.appColor,
+                    ),
+                    padding: EdgeInsets.all(15.0),
+                    margin: EdgeInsets.only(
+                      top: 5.0,
+                      bottom: 5.0,
+                    ),
+                    child: Text(
+                      "2",
+                      style: CustomWidget(context: context)
+                          .CustomSizedTextStyle(14.0, AppColors.blackColor,
+                              FontWeight.w600, 'FontRegular'),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Container(
+                    width: 110.0,
+                    height: 1.5,
+                    color: proceedValue ? AppColors.appColor : Colors.black,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.transparent,
+                      border: Border.all(color: Colors.black),
+                    ),
+                    padding: EdgeInsets.all(15.0),
+                    margin: EdgeInsets.only(
+                      top: 5.0,
+                      bottom: 5.0,
+                    ),
+                    child: Text(
+                      "3",
+                      style: CustomWidget(context: context)
+                          .CustomSizedTextStyle(14.0, AppColors.blackColor,
+                              FontWeight.w600, 'FontRegular'),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Create \n Wallet",
+                      style: CustomWidget(context: context)
+                          .CustomSizedTextStyle(12.0, AppColors.blackColor,
+                              FontWeight.w400, 'FontRegular'),
+                      textAlign: TextAlign.start,
+                    ),
+                    Text(
+                      "Secure \n Wallet",
+                      style: CustomWidget(context: context)
+                          .CustomSizedTextStyle(12.0, AppColors.blackColor,
+                              FontWeight.w400, 'FontRegular'),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      "Confirm \n Wallet",
+                      style: CustomWidget(context: context)
+                          .CustomSizedTextStyle(12, AppColors.blackColor,
+                              FontWeight.w400, 'FontRegular'),
+                      textAlign: TextAlign.end,
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Create \n Wallet",
-                        style: CustomWidget(context: context)
-                            .CustomSizedTextStyle(12.0, AppColors.blackColor,
-                                FontWeight.w400, 'FontRegular'),
-                        textAlign: TextAlign.start,
-                      ),
-                      Text(
-                        "Secure \n Wallet",
-                        style: CustomWidget(context: context)
-                            .CustomSizedTextStyle(12.0, AppColors.blackColor,
-                                FontWeight.w400, 'FontRegular'),
-                        textAlign: TextAlign.center,
-                      ),
-                      Text(
-                        "Confirm \n Wallet",
-                        style: CustomWidget(context: context)
-                            .CustomSizedTextStyle(12, AppColors.blackColor,
-                                FontWeight.w400, 'FontRegular'),
-                        textAlign: TextAlign.end,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 25.0,
-            ),
-            proceedValue ? confirmUI() : setPassUI(),
-            SizedBox(
-              height: 25.0,
-            ),
-            InkWell(
-              onTap: () {
-                if (checkedValue) {
-                  setState(() {
-                    proceedValue = true;
-                  });
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(
-                    "Please accept terms of passphrase",
-                    style: CustomWidget(context: context).CustomSizedTextStyle(
-                        14.0,
-                        AppColors.whiteColor,
-                        FontWeight.w600,
-                        'FontRegular'),
-                  )));
-                }
-              },
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.only(
-                  top: 15.0,
-                  bottom: 15.0,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25.0),
-                  color: AppColors.appColor,
-                ),
-                child: Text(
-                  !proceedValue
-                      ? AppLocalizations.instance.text("loc_proceed")
-                      : AppLocalizations.instance.text("loc_confirm"),
+              ),
+            ],
+          ),*/
+          SizedBox(
+            height: 25.0,
+          ),
+          Expanded(
+              child: proceedValue ? confirmUI() : setPassUI()),
+          SizedBox(
+            height: 25.0,
+          ),
+          InkWell(
+            onTap: () {
+              if (checkedValue) {
+                setState(() {
+                  proceedValue = true;
+                  _processIndex = 3;
+                });
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(
+                  "Please accept terms of passphrase",
                   style: CustomWidget(context: context).CustomSizedTextStyle(
-                      16.0,
-                      AppColors.blackColor,
+                      14.0,
+                      AppColors.whiteColor,
                       FontWeight.w600,
                       'FontRegular'),
-                  textAlign: TextAlign.center,
-                ),
+                )));
+              }
+            },
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.only(
+                top: 15.0,
+                bottom: 15.0,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25.0),
+                color: AppColors.appColor,
+              ),
+              child: Text(
+                !proceedValue
+                    ? AppLocalizations.instance.text("loc_proceed")
+                    : AppLocalizations.instance.text("loc_confirm"),
+                style: CustomWidget(context: context).CustomSizedTextStyle(
+                    16.0,
+                    AppColors.blackColor,
+                    FontWeight.w600,
+                    'FontRegular'),
+                textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(
-              height: 25.0,
-            ),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 25.0,
+          ),
+        ],
       ),
     );
   }
 
   Widget setPassUI() {
-    return Column(
-      children: [
-        Center(
-          child: Text(
-            AppLocalizations.instance.text("loc_phrase_title"),
-            style: CustomWidget(context: context).CustomSizedTextStyle(
-                24.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        SizedBox(
-          height: 15.0,
-        ),
-        Center(
-          child: Text(
-            AppLocalizations.instance.text("loc_phrase_description"),
-            style: CustomWidget(context: context).CustomSizedTextStyle(
-                14.0, AppColors.blackColor, FontWeight.w400, 'FontRegular'),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(
-            top: 35.0,
-          ),
-          child: GridView.builder(
-            padding: EdgeInsets.zero,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              childAspectRatio: 3 / 1,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Center(
+            child: Text(
+              AppLocalizations.instance.text("loc_phrase_title"),
+              style: CustomWidget(context: context).CustomSizedTextStyle(
+                  24.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+              textAlign: TextAlign.center,
             ),
-            physics: ScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: passPhrase.length,
-            itemBuilder: (BuildContext context, index) {
-              int sno = index + 1;
-              return Container(
-                padding: EdgeInsets.only(
-                    top: 3.0, bottom: 3.0, right: 5.0, left: 5.0),
+          ),
+          SizedBox(
+            height: 15.0,
+          ),
+          Center(
+            child: Text(
+              AppLocalizations.instance.text("loc_phrase_description"),
+              style: CustomWidget(context: context).CustomSizedTextStyle(
+                  14.0, AppColors.blackColor, FontWeight.w400, 'FontRegular'),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 35.0,
+            ),
+            child: GridView.builder(
+              padding: EdgeInsets.zero,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                childAspectRatio: 3 / 1,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+              ),
+              physics: ScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: passPhrase.length,
+              itemBuilder: (BuildContext context, index) {
+                int sno = index + 1;
+                return Container(
+                  padding: EdgeInsets.only(
+                      top: 3.0, bottom: 3.0, right: 5.0, left: 5.0),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFf8f8f8),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    sno.toString() + ". " + passPhrase[index],
+                    style: CustomWidget(context: context).CustomSizedTextStyle(
+                        12.0,
+                        AppColors.blackColor,
+                        FontWeight.w600,
+                        'FontRegular'),
+                    textAlign: TextAlign.center,
+                  ),
+                );
+              },
+            ),
+          ),
+          SizedBox(
+            height: 25.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
                 decoration: BoxDecoration(
-                  color: Color(0xFFf8f8f8),
+                  color: Color(0xFFfdf9c9),
                   borderRadius: BorderRadius.circular(25.0),
                 ),
-                alignment: Alignment.center,
-                child: Text(
-                  sno.toString() + ". " + passPhrase[index],
-                  style: CustomWidget(context: context).CustomSizedTextStyle(
-                      12.0,
-                      AppColors.blackColor,
-                      FontWeight.w600,
-                      'FontRegular'),
-                  textAlign: TextAlign.center,
+                padding: EdgeInsets.only(
+                    top: 8.0, bottom: 8.0, right: 25.0, left: 25.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "Copy",
+                      style: CustomWidget(context: context).CustomSizedTextStyle(
+                          14.0,
+                          AppColors.blackColor,
+                          FontWeight.w600,
+                          'FontRegular'),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      width: 5.0,
+                    ),
+                    Icon(
+                      Icons.content_copy_outlined,
+                      color: Colors.black.withOpacity(0.8),
+                      size: 12.0,
+                    ),
+                  ],
                 ),
-              );
+              ),
+              SizedBox(
+                width: 10.0,
+              ),
+              Container(
+                padding: EdgeInsets.only(
+                    top: 8.0, bottom: 8.0, right: 25.0, left: 25.0),
+                decoration: BoxDecoration(
+                  color: Color(0xFFfdf9c9),
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      "View QR",
+                      style: CustomWidget(context: context).CustomSizedTextStyle(
+                          14.0,
+                          AppColors.blackColor,
+                          FontWeight.w600,
+                          'FontRegular'),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      width: 5.0,
+                    ),
+                    Icon(
+                      Icons.qr_code_outlined,
+                      color: Colors.black.withOpacity(0.8),
+                      size: 12.0,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 25.0,
+          ),
+          CheckboxListTile(
+            title: Transform.translate(
+              offset: const Offset(-20, 0),
+              child: Text(
+                AppLocalizations.instance.text("loc_phrase_check_txt"),
+                style: CustomWidget(context: context).CustomSizedTextStyle(
+                    12.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+                textAlign: TextAlign.start,
+              ),
+            ),
+            checkColor: Colors.black,
+            value: checkedValue,
+            onChanged: (bool? newValue) {
+              setState(() {
+                checkedValue = newValue!;
+              });
             },
+            activeColor: AppColors.appColor,
+            controlAffinity:
+                ListTileControlAffinity.leading, //  <-- leading Checkbox
           ),
-        ),
-        SizedBox(
-          height: 25.0,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Color(0xFFfdf9c9),
-                borderRadius: BorderRadius.circular(25.0),
-              ),
-              padding: EdgeInsets.only(
-                  top: 8.0, bottom: 8.0, right: 25.0, left: 25.0),
-              child: Row(
-                children: [
-                  Text(
-                    "Copy",
-                    style: CustomWidget(context: context).CustomSizedTextStyle(
-                        14.0,
-                        AppColors.blackColor,
-                        FontWeight.w600,
-                        'FontRegular'),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    width: 5.0,
-                  ),
-                  Icon(
-                    Icons.content_copy_outlined,
-                    color: Colors.black.withOpacity(0.8),
-                    size: 12.0,
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              width: 10.0,
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                  top: 8.0, bottom: 8.0, right: 25.0, left: 25.0),
-              decoration: BoxDecoration(
-                color: Color(0xFFfdf9c9),
-                borderRadius: BorderRadius.circular(25.0),
-              ),
-              child: Row(
-                children: [
-                  Text(
-                    "View QR",
-                    style: CustomWidget(context: context).CustomSizedTextStyle(
-                        14.0,
-                        AppColors.blackColor,
-                        FontWeight.w600,
-                        'FontRegular'),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    width: 5.0,
-                  ),
-                  Icon(
-                    Icons.qr_code_outlined,
-                    color: Colors.black.withOpacity(0.8),
-                    size: 12.0,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 25.0,
-        ),
-        CheckboxListTile(
-          title: Transform.translate(
-            offset: const Offset(-20, 0),
-            child: Text(
-              AppLocalizations.instance.text("loc_phrase_check_txt"),
-              style: CustomWidget(context: context).CustomSizedTextStyle(
-                  12.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
-              textAlign: TextAlign.start,
-            ),
-          ),
-          checkColor: Colors.black,
-          value: checkedValue,
-          onChanged: (bool? newValue) {
-            setState(() {
-              checkedValue = newValue!;
-            });
-          },
-          activeColor: AppColors.appColor,
-          controlAffinity:
-              ListTileControlAffinity.leading, //  <-- leading Checkbox
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   Widget confirmUI() {
-    return Column(
-      children: [
-        SizedBox(
-          height: 15.0,
-        ),
-        Center(
-          child: Text(
-            AppLocalizations.instance.text("loc_confirm_phrase_title"),
-            style: CustomWidget(context: context).CustomSizedTextStyle(
-                24.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
-            textAlign: TextAlign.center,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(
+            height: 15.0,
           ),
-        ),
-        SizedBox(
-          height: 15.0,
-        ),
-        Center(
-          child: Text(
-            AppLocalizations.instance.text("loc_confirm_phrase_description"),
-            style: CustomWidget(context: context).CustomSizedTextStyle(
-                14.0, AppColors.blackColor, FontWeight.w400, 'FontRegular'),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(
-            top: 35.0,
-          ),
-          child: GridView.builder(
-            padding: EdgeInsets.zero,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              childAspectRatio: 3 / 1,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
+          Center(
+            child: Text(
+              AppLocalizations.instance.text("loc_confirm_phrase_title"),
+              style: CustomWidget(context: context).CustomSizedTextStyle(
+                  24.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+              textAlign: TextAlign.center,
             ),
-            shrinkWrap: true,
-            itemCount: 12,
-            itemBuilder: (BuildContext context, index) {
-              phrasetext.add(new TextEditingController());
-              int sno = index + 1;
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Text(
-                      sno.toString() + ".",
-                      style: CustomWidget(context: context)
-                          .CustomSizedTextStyle(12.0, AppColors.blackColor,
-                              FontWeight.w600, 'FontRegular'),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.only(
-                          right: 15.0, left: 15.0, bottom: 5.0, top: 5.0),
-                      decoration: BoxDecoration(
-                        color: Color(0xFFf8f8f8),
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      child: TextField(
-                        controller: phrasetext[index],
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                        ),
+          ),
+          SizedBox(
+            height: 15.0,
+          ),
+          Center(
+            child: Text(
+              AppLocalizations.instance.text("loc_confirm_phrase_description"),
+              style: CustomWidget(context: context).CustomSizedTextStyle(
+                  14.0, AppColors.blackColor, FontWeight.w400, 'FontRegular'),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 35.0,
+            ),
+            child: GridView.builder(
+              padding: EdgeInsets.zero,
+              physics: ScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                childAspectRatio: 3 / 1,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+              ),
+              shrinkWrap: true,
+              itemCount: 12,
+              itemBuilder: (BuildContext context, index) {
+                phrasetext.add(new TextEditingController());
+                int sno = index + 1;
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        sno.toString() + ".",
                         style: CustomWidget(context: context)
                             .CustomSizedTextStyle(12.0, AppColors.blackColor,
                                 FontWeight.w600, 'FontRegular'),
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    flex: 4,
-                  ),
-                ],
-              );
-            },
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(
-            top: 35.0,
-          ),
-          child: GridView.builder(
-            padding: EdgeInsets.zero,
-            physics: ScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              childAspectRatio: 3 / 1,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(
+                            right: 15.0, left: 15.0, bottom: 5.0, top: 5.0),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFf8f8f8),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        child: TextField(
+                          controller: phrasetext[index],
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                          ),
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(12.0, AppColors.blackColor,
+                                  FontWeight.w600, 'FontRegular'),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      flex: 4,
+                    ),
+                  ],
+                );
+              },
             ),
-            shrinkWrap: true,
-            itemCount: passPhrase.length,
-            itemBuilder: (BuildContext context, index) {
-              int sno = index + 1;
-              return Container(
-                padding: EdgeInsets.only(
-                    top: 3.0, bottom: 3.0, right: 5.0, left: 5.0),
-                decoration: BoxDecoration(
-                  color: Color(0xFFf8f8f8),
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  sno.toString() + ". " + passPhrase[index],
-                  style: CustomWidget(context: context).CustomSizedTextStyle(
-                      12.0,
-                      AppColors.blackColor,
-                      FontWeight.w600,
-                      'FontRegular'),
-                  textAlign: TextAlign.center,
-                ),
-              );
-            },
           ),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 35.0,
+            ),
+            child: GridView.builder(
+              padding: EdgeInsets.zero,
+              physics: ScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                childAspectRatio: 3 / 1,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+              ),
+              shrinkWrap: true,
+              itemCount: passPhrase.length,
+              itemBuilder: (BuildContext context, index) {
+                int sno = index + 1;
+                return Container(
+                  padding: EdgeInsets.only(
+                      top: 3.0, bottom: 3.0, right: 5.0, left: 5.0),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFf8f8f8),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    sno.toString() + ". " + passPhrase[index],
+                    style: CustomWidget(context: context).CustomSizedTextStyle(
+                        12.0,
+                        AppColors.blackColor,
+                        FontWeight.w600,
+                        'FontRegular'),
+                    textAlign: TextAlign.center,
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

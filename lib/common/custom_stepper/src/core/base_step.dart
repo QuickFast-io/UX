@@ -108,7 +108,7 @@ class BaseStep extends StatelessWidget {
                       : isFinished
                           ? finishedBorderColor ?? Colors.transparent
                           : unreachedBorderColor ?? Colors.grey.shade400,
-                  strokeWidth: borderThickness,
+                  // strokeWidth: borderThickness,
                   child: isActive && step.activeIcon == null
                       ? Center(
                           child: Lottie.asset(
