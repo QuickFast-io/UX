@@ -116,14 +116,14 @@ class _PropertyInfo_Screen1State extends State<PropertyInfo_Screen1> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
-              LinearProgressBar(
-                maxSteps: 6,
-                progressType: LinearProgressBar.progressTypeLinear, // Use Linear progress
-                currentStep: 2,
-                progressColor: Colors.red,
-                backgroundColor: Colors.grey,
-              ),
+              //
+              // LinearProgressBar(
+              //   maxSteps: 6,
+              //   progressType: LinearProgressBar.progressTypeLinear, // Use Linear progress
+              //   currentStep: 2,
+              //   progressColor: Colors.red,
+              //   backgroundColor: Colors.grey,
+              // ),
               SizedBox(height: 15.0,),
 
               Text(
