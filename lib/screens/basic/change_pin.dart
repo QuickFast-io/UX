@@ -798,6 +798,7 @@ class _ChangePinState extends State<ChangePin> {
     return MediaQuery(
       data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
       child: Scaffold(
+
         backgroundColor: Colors.white,
         /*  appBar: PreferredSize(
           preferredSize: Size(double.infinity, 80),
