@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/screens/property/property_owner_screen.dart';
+import 'package:rabbit/screens/property/success_property.dart';
+import 'package:rabbit/screens/side_menu/profile_menu_screen.dart';
 
 class Property_Acknowledge_Screen extends StatefulWidget {
   const Property_Acknowledge_Screen({Key? key}) : super(key: key);
@@ -44,13 +46,19 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
             )),
 
         actions: [
-         Container(
-           padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),
-           child:  Center(
-             child: Text(
-               "Cancel",
-               style: CustomWidget(context: context).CustomSizedTextStyle(
-                   15.0, AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+         InkWell(
+           onTap: (){
+             Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                 ProfileMenu_Screen()), (Route<dynamic> route) => false);
+           },
+           child: Container(
+             padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),
+             child:  Center(
+               child: Text(
+                 "Cancel",
+                 style: CustomWidget(context: context).CustomSizedTextStyle(
+                     15.0, AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+               ),
              ),
            ),
          )
@@ -78,6 +86,7 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
               SizedBox(
                 height: 15.0,
               ),
+
               Text(
                 "Property Listing \nConfirmed",
                 style: CustomWidget(context: context)
@@ -226,7 +235,7 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
                     Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (context) =>
-                                Property_Owner_Screen()));
+                                Success_Property_Screen()));
                   });
                 },
                 child: Container(

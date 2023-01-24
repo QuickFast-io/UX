@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
-import 'package:rabbit/screens/property/property_info_8.dart';
+import 'package:rabbit/screens/property/property_owner_screen.dart';
 import 'package:rabbit/screens/side_menu/profile_menu_screen.dart';
 
-class PropertyInfo_Screen7 extends StatefulWidget {
-  const PropertyInfo_Screen7({Key? key}) : super(key: key);
+class PropertyInfo_Screen9 extends StatefulWidget {
+  const PropertyInfo_Screen9({Key? key}) : super(key: key);
 
   @override
-  State<PropertyInfo_Screen7> createState() => _PropertyInfo_Screen7State();
+  State<PropertyInfo_Screen9> createState() => _PropertyInfo_Screen9State();
 }
 
-class _PropertyInfo_Screen7State extends State<PropertyInfo_Screen7> {
+class _PropertyInfo_Screen9State extends State<PropertyInfo_Screen9> {
 
   String? accept;
   @override
@@ -76,7 +76,7 @@ class _PropertyInfo_Screen7State extends State<PropertyInfo_Screen7> {
             SizedBox(height: 15.0,),
 
             Text(
-              "Do you have a survey document?",
+              "Does more then one person or business own this property?",
               style: CustomWidget(context: context)
                   .CustomSizedTextStyle(
                   15.0,
@@ -147,7 +147,7 @@ class _PropertyInfo_Screen7State extends State<PropertyInfo_Screen7> {
                   Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
-                              PropertyInfo_Screen8()));
+                              Property_Owner_Screen()));
                 });
               },
               child: Container(
@@ -175,7 +175,8 @@ class _PropertyInfo_Screen7State extends State<PropertyInfo_Screen7> {
           ],
 
         ),
-      ),
+      )
     );
   }
 }
+// TODO Implement this library.
