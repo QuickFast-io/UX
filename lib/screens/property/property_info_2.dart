@@ -4,6 +4,7 @@ import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/textformfield_custom.dart';
 import 'package:rabbit/screens/property/property_info_3.dart';
+import 'package:rabbit/screens/side_menu/profile_menu_screen.dart';
 
 class PropertyInfo_Screen2 extends StatefulWidget {
   const PropertyInfo_Screen2({Key? key}) : super(key: key);
@@ -70,13 +71,19 @@ class _PropertyInfo_Screen2State extends State<PropertyInfo_Screen2> {
         //       16.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
         // ),
         actions: [
-          Container(
-            padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),
-            child:  Center(
-              child: Text(
-                "Cancel",
-                style: CustomWidget(context: context).CustomSizedTextStyle(
-                    15.0, AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+          InkWell(
+            onTap: (){
+              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                  ProfileMenu_Screen()), (Route<dynamic> route) => false);
+            },
+            child: Container(
+              padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),
+              child:  Center(
+                child: Text(
+                  "Cancel",
+                  style: CustomWidget(context: context).CustomSizedTextStyle(
+                      15.0, AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                ),
               ),
             ),
           )

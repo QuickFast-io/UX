@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
+import 'package:rabbit/screens/property/property_info_9.dart';
+import 'package:rabbit/screens/side_menu/profile_menu_screen.dart';
 
 class PropertyInfo_Screen8 extends StatefulWidget {
   const PropertyInfo_Screen8({Key? key}) : super(key: key);
@@ -43,13 +45,19 @@ class _PropertyInfo_Screen8State extends State<PropertyInfo_Screen8> {
         //       16.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
         // ),
         actions: [
-          Container(
-            padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),
-            child:  Center(
-              child: Text(
-                "Cancel",
-                style: CustomWidget(context: context).CustomSizedTextStyle(
-                    15.0, AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+          InkWell(
+            onTap: (){
+              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                  ProfileMenu_Screen()), (Route<dynamic> route) => false);
+            },
+            child: Container(
+              padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),
+              child:  Center(
+                child: Text(
+                  "Cancel",
+                  style: CustomWidget(context: context).CustomSizedTextStyle(
+                      15.0, AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                ),
               ),
             ),
           )
@@ -176,10 +184,10 @@ class _PropertyInfo_Screen8State extends State<PropertyInfo_Screen8> {
               InkWell(
                 onTap: (){
                   setState(() {
-                    // Navigator.of(context).push(
-                    //     MaterialPageRoute(
-                    //         builder: (context) =>
-                    //             PropertyInfo_Screen3()));
+                    Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                PropertyInfo_Screen9()));
                   });
                 },
                 child: Container(
