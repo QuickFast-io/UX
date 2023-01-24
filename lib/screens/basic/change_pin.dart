@@ -90,12 +90,13 @@ class _ChangePinState extends State<ChangePin> {
         pinValues = '$pin1$pin2$pin3$pin4$pin5$pin6';
         if (pinValues.length == 6) {
           //doLoginPin(pinValues);
-        } else {}
+        } else {
+
+        }
       });
     }
 
     removePinValue() {
-      print(pin6);
       setState(() {
         if (pin6.isNotEmpty)
           pin6 = '';
