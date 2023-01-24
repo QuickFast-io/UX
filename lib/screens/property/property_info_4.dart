@@ -354,18 +354,14 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                       ),
                     ),
                   ),
-
                   SizedBox(
                     height: 20.0,
                   ),
-
-
                 ],
               )),
               Container(
                 height: 50.0,
               ),
-
               InkWell(
                 onTap: (){
                   setState(() {
