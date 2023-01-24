@@ -45,6 +45,7 @@ dependencies:
   country_calling_code_picker:
   floating_bottom_navigation_bar:
   image_picker:
+  easy_stepper: ^0.3.0
 
 
   roundcheckbox:

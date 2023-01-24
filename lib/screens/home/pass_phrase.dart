@@ -14,7 +14,31 @@ class _PassphraseState extends State<Passphrase> {
   bool checkedValue=false;
   bool proceedValue=false;
  List<TextEditingController> phrasetext=[];
+  int currentStep = 0;
   List<String>passPhrase=["agent","edit","send","amount","deer","update","kitchen","giggle","rapid","goat","fragile","radar"];
+
+  List<Step> getSteps() {
+    return <Step>[
+      Step(
+        state: currentStep > 0 ? StepState.complete : StepState.indexed,
+        isActive: currentStep >= 0,
+        title: SizedBox(),
+        content: SizedBox(),
+      ),
+      Step(
+        state: currentStep > 1 ? StepState.complete : StepState.indexed,
+        isActive: currentStep >= 1,
+        title: SizedBox(),
+        content: SizedBox(),
+      ),
+      Step(
+        state: currentStep > 2 ? StepState.complete : StepState.indexed,
+        isActive: currentStep >= 2,
+        title: SizedBox(),
+        content: SizedBox(),
+      ),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +98,42 @@ class _PassphraseState extends State<Passphrase> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+        SizedBox(
+          height: 80.0,
+          child: Theme(
+            data: ThemeData(
+                accentColor: AppColors.appColor,
+                primarySwatch: Colors.orange,
+                colorScheme: ColorScheme.light(
+                    primary: AppColors.appColor,
+                )
+            ),
+            child: Stepper(
+              elevation: 0.0,
+              type: StepperType.horizontal,
+              currentStep: currentStep,
+              onStepCancel: () => currentStep == 0
+                  ? null
+                  : setState(() {
+                currentStep -= 1;
+              }),
+              onStepContinue: () {
+                bool isLastStep = (currentStep == getSteps().length - 1);
+                if (isLastStep) {
+                  //Do something with this information
+                } else {
+                  setState(() {
+                    currentStep += 1;
+                  });
+                }
+              },
+              onStepTapped: (step) => setState(() {
+                currentStep = step;
+              }),
+              steps: getSteps(),
+            ),
+          ),
+        ),
             Column(
               children: [
                 Row(
@@ -94,7 +154,7 @@ class _PassphraseState extends State<Passphrase> {
                       ),
                     ),
                     Container(
-                      width: 125.0,
+                      width: 110.0,
                       height: 1.5,
                       color: AppColors.appColor,
                     ),
@@ -112,7 +172,7 @@ class _PassphraseState extends State<Passphrase> {
                       ),
                     ),
                     Container(
-                      width: 125.0,
+                      width: 110.0,
                       height: 1.5,
                       color: proceedValue?AppColors.appColor:Colors.black,
                     ),
@@ -133,7 +193,7 @@ class _PassphraseState extends State<Passphrase> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 10.0,right: 10.0),
+                  padding: const EdgeInsets.only(left: 20.0,right: 20.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -223,6 +283,7 @@ class _PassphraseState extends State<Passphrase> {
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
             ),
+            physics: ScrollPhysics(),
             shrinkWrap: true,
             itemCount: passPhrase.length,
             itemBuilder: (BuildContext context, index) {
@@ -305,8 +366,8 @@ class _PassphraseState extends State<Passphrase> {
             child: Text(
               AppLocalizations.instance.text("loc_phrase_check_txt"),
               style: CustomWidget(context: context).CustomSizedTextStyle(
-                  14.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
-              textAlign: TextAlign.center,
+                  12.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+              textAlign: TextAlign.start,
             ),
           ),
           checkColor: Colors.black,
@@ -395,6 +456,7 @@ class _PassphraseState extends State<Passphrase> {
           padding: const EdgeInsets.only(top: 35.0,),
           child: GridView.builder(
             padding: EdgeInsets.zero,
+            physics: ScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
               childAspectRatio: 3/1,
