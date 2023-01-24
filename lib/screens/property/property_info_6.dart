@@ -351,6 +351,7 @@ class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
                           border: Border.all(color: AppColors.hintColor.withOpacity(0.3)),
                           color: Colors.white
                       ),
+
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
