@@ -14,7 +14,7 @@ class ChangePin extends StatefulWidget {
 }
 
 class _ChangePinState extends State<ChangePin> {
-  String title = 'Create Pin';
+  String title = 'Set Pin';
 
   /*var helperObject = HttpRequestHandler();*/
 

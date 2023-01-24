@@ -469,7 +469,36 @@ class _PassphraseState extends State<Passphrase> {
           SizedBox(
             height: 25.0,
           ),
-          CheckboxListTile(
+          Row(
+            children: <Widget>[
+              Checkbox(
+                value: this.checkedValue,
+                checkColor: Colors.white,
+                activeColor: AppColors.appColor,
+                onChanged: (bool? value) {
+                  setState(() {
+                    this.checkedValue = value!;
+                  });
+                },
+              ), //Checkbox
+              SizedBox(
+                width: 5.0,
+              ), //SizedBox
+              Text(
+                AppLocalizations.instance.text("loc_phrase_check_txt"),
+                style: CustomWidget(context: context)
+                    .CustomSizedTextStyle(
+                    12.0,
+                    AppColors.blackColor,
+                    FontWeight.w600,
+                    'FontRegular'),
+              ), //Text
+              SizedBox(width: 10), //SizedBox
+              /** Checkbox Widget **/
+
+            ], //<Widget>[]
+          ),
+         /* CheckboxListTile(
             title: Transform.translate(
               offset: const Offset(-20, 0),
               child: Text(
@@ -489,7 +518,7 @@ class _PassphraseState extends State<Passphrase> {
             activeColor: AppColors.appColor,
             controlAffinity:
                 ListTileControlAffinity.leading, //  <-- leading Checkbox
-          ),
+          ),*/
         ],
       ),
     );
