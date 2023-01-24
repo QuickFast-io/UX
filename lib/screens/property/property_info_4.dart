@@ -306,7 +306,7 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                   InkWell(
                     onTap: (){
                       selectedClosingDate = DateTime(
-                          (DateTime.now()).year - 18,
+                          (DateTime.now()).year,
                           (DateTime.now()).month,
                           (DateTime.now()).day);
                       _selectDate(
