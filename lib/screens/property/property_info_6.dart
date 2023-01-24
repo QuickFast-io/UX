@@ -31,10 +31,15 @@ class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
   ];
   String seectedValue= "";
 
-  DateTime? selectedDateOfBirth;
+  DateTime? selectedOccupiedDate;
   DateTime? selectedExDate;
 
-  TextEditingController dobController = TextEditingController();
+  DateTime? selectedLeaseEpire;
+  DateTime? selectedNonExDate;
+
+  TextEditingController OccupiedController = TextEditingController();
+
+  TextEditingController ExpiredController = TextEditingController();
 
 
   @override
@@ -69,11 +74,46 @@ class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
     if (picked != null)
       setState(() {
         if (isDob) {
-          selectedDateOfBirth = picked;
-          dobController =
+          selectedOccupiedDate = picked;
+          OccupiedController =
               TextEditingController(text: picked.toString().split(' ')[0]);
         } else {
           selectedExDate = picked;
+        }
+      });
+  }
+
+
+  Future<Null> _seleectDate(BuildContext context, bool isDob,
+      DateTime initialDate, DateTime firstDate, DateTime lastDate) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: initialDate,
+      firstDate: firstDate,
+      lastDate: lastDate,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: AppColors.blackColor,
+            accentColor: AppColors.whiteColor,
+            colorScheme: ColorScheme.light(
+              primary: AppColors.appColor,
+            ),
+            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (picked != null)
+      setState(() {
+        if (isDob) {
+          selectedLeaseEpire = picked;
+          ExpiredController =
+              TextEditingController(text: picked.toString().split(' ')[0]);
+        } else {
+          selectedNonExDate = picked;
         }
       });
   }
@@ -284,25 +324,25 @@ class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
 
                   InkWell(
                     onTap: (){
-                      selectedDateOfBirth = DateTime(
-                          (DateTime.now()).year - 18,
+                      selectedOccupiedDate = DateTime(
+                          (DateTime.now()).year,
                           (DateTime.now()).month,
                           (DateTime.now()).day);
                       _selectDate(
                           context,
                           true,
                           DateTime(
-                              selectedDateOfBirth!.year,
-                              selectedDateOfBirth!.month,
-                              selectedDateOfBirth!.day),
+                              selectedOccupiedDate!.year,
+                              selectedOccupiedDate!.month,
+                              selectedOccupiedDate!.day),
                           DateTime(
-                              selectedDateOfBirth!.year - 100,
-                              selectedDateOfBirth!.month,
-                              selectedDateOfBirth!.day),
+                              selectedOccupiedDate!.year - 100,
+                              selectedOccupiedDate!.month,
+                              selectedOccupiedDate!.day),
                           DateTime(
-                              selectedDateOfBirth!.year,
-                              selectedDateOfBirth!.month,
-                              selectedDateOfBirth!.day));
+                              selectedOccupiedDate!.year,
+                              selectedOccupiedDate!.month,
+                              selectedOccupiedDate!.day));
                     },
                     child: Container(
                       padding: EdgeInsets.fromLTRB(10.0, 13.0, 10.0, 13.0),
@@ -316,11 +356,11 @@ class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "mm/dd/yy",
+                            OccupiedController.text.toString(),
                             style: CustomWidget(context: context)
                                 .CustomSizedTextStyle(
                                 14.0,
-                                AppColors.hintColor,
+                                AppColors.blackColor,
                                 FontWeight.w500,
                                 'FontRegular'),
                           ),
@@ -352,25 +392,25 @@ class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
 
                   InkWell(
                     onTap: (){
-                      selectedDateOfBirth = DateTime(
-                          (DateTime.now()).year - 18,
+                      selectedLeaseEpire = DateTime(
+                          (DateTime.now()).year + 10,
                           (DateTime.now()).month,
                           (DateTime.now()).day);
-                      _selectDate(
+                      _seleectDate(
                           context,
                           true,
                           DateTime(
-                              selectedDateOfBirth!.year,
-                              selectedDateOfBirth!.month,
-                              selectedDateOfBirth!.day),
+                              selectedLeaseEpire!.year,
+                              selectedLeaseEpire!.month,
+                              selectedLeaseEpire!.day),
                           DateTime(
-                              selectedDateOfBirth!.year - 100,
-                              selectedDateOfBirth!.month,
-                              selectedDateOfBirth!.day),
+                              selectedLeaseEpire!.year - 100,
+                              selectedLeaseEpire!.month,
+                              selectedLeaseEpire!.day),
                           DateTime(
-                              selectedDateOfBirth!.year,
-                              selectedDateOfBirth!.month,
-                              selectedDateOfBirth!.day));
+                              selectedLeaseEpire!.year,
+                              selectedLeaseEpire!.month,
+                              selectedLeaseEpire!.day));
                     },
                     child: Container(
                       padding: EdgeInsets.fromLTRB(10.0, 13.0, 10.0, 13.0),
@@ -384,11 +424,11 @@ class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "mm/dd/yy",
+                            ExpiredController.text.toString(),
                             style: CustomWidget(context: context)
                                 .CustomSizedTextStyle(
                                 14.0,
-                                AppColors.hintColor,
+                                AppColors.blackColor,
                                 FontWeight.w500,
                                 'FontRegular'),
                           ),
