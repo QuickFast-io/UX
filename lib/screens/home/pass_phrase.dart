@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
+import 'package:rabbit/common/custom_stepper/easy_stepper.dart';
+import 'package:rabbit/common/custom_stepper/src/core/base_step.dart';
+import 'package:rabbit/common/custom_stepper/src/core/easy_dotted_line.dart';
+import 'package:rabbit/common/custom_stepper/src/easy_step.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/localization/localizations.dart';
 
@@ -11,11 +15,25 @@ class Passphrase extends StatefulWidget {
 }
 
 class _PassphraseState extends State<Passphrase> {
-  bool checkedValue=false;
-  bool proceedValue=false;
- List<TextEditingController> phrasetext=[];
+  bool checkedValue = false;
+  bool proceedValue = false;
+  List<TextEditingController> phrasetext = [];
   int currentStep = 0;
-  List<String>passPhrase=["agent","edit","send","amount","deer","update","kitchen","giggle","rapid","goat","fragile","radar"];
+  int _processIndex = 0;
+  List<String> passPhrase = [
+    "agent",
+    "edit",
+    "send",
+    "amount",
+    "deer",
+    "update",
+    "kitchen",
+    "giggle",
+    "rapid",
+    "goat",
+    "fragile",
+    "radar"
+  ];
 
   List<Step> getSteps() {
     return <Step>[
@@ -49,9 +67,9 @@ class _PassphraseState extends State<Passphrase> {
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             setState(() {
-              if(proceedValue){
-                proceedValue=false;
-              }else{
+              if (proceedValue) {
+                proceedValue = false;
+              } else {
                 Navigator.pop(context);
               }
             });
@@ -88,52 +106,83 @@ class _PassphraseState extends State<Passphrase> {
     );
   }
 
-  passUI(){
+  passUI() {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.only(left: 15.0,right: 15.0,top: 15.0),
+      padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-        SizedBox(
-          height: 80.0,
-          child: Theme(
-            data: ThemeData(
-                accentColor: AppColors.appColor,
-                primarySwatch: Colors.orange,
-                colorScheme: ColorScheme.light(
-                    primary: AppColors.appColor,
-                )
+            EasyStepper(
+              activeStep: _processIndex,
+              lineLength: 70,
+              lineType: LineType.normal,
+              lineColor: AppColors.appColor,
+              stepShape: StepShape.circle,
+              stepBorderRadius: 15,
+              borderThickness: 2,
+              padding: 20,
+              stepRadius: 28,
+              finishedStepBorderColor: Colors.deepOrange,
+              finishedStepTextColor: Colors.deepOrange,
+              finishedStepBackgroundColor: Colors.deepOrange,
+              activeStepIconColor: Colors.deepOrange,
+              loadingAnimation: 'assets/loading_circle.json',
+              steps: const [
+                EasyStep(
+                  icon: Icon(Icons.add_task_rounded),
+                  title: 'Order Placed',
+                ),
+                EasyStep(
+                  icon: Icon(Icons.category_rounded),
+                  title: 'Preparing',
+                ),
+                EasyStep(
+                  icon: Icon(Icons.reviews_outlined),
+                  activeIcon: Icon(Icons.reviews_rounded),
+                  title: 'Add Review',
+                ),
+              ],
+              onStepReached: (index) => setState(() => _processIndex = index),
             ),
-            child: Stepper(
-              elevation: 0.0,
-              type: StepperType.horizontal,
-              currentStep: currentStep,
-              onStepCancel: () => currentStep == 0
-                  ? null
-                  : setState(() {
-                currentStep -= 1;
-              }),
-              onStepContinue: () {
-                bool isLastStep = (currentStep == getSteps().length - 1);
-                if (isLastStep) {
-                  //Do something with this information
-                } else {
-                  setState(() {
-                    currentStep += 1;
-                  });
-                }
-              },
-              onStepTapped: (step) => setState(() {
-                currentStep = step;
-              }),
-              steps: getSteps(),
-            ),
-          ),
-        ),
+           /* SizedBox(
+              height: 80.0,
+              child: Theme(
+                data: ThemeData(
+                    accentColor: AppColors.appColor,
+                    primarySwatch: Colors.orange,
+                    colorScheme: ColorScheme.light(
+                      primary: AppColors.appColor,
+                    )),
+                child: Stepper(
+                  elevation: 0.0,
+                  type: StepperType.horizontal,
+                  currentStep: currentStep,
+                  onStepCancel: () => currentStep == 0
+                      ? null
+                      : setState(() {
+                          currentStep -= 1;
+                        }),
+                  onStepContinue: () {
+                    bool isLastStep = (currentStep == getSteps().length - 1);
+                    if (isLastStep) {
+                      //Do something with this information
+                    } else {
+                      setState(() {
+                        currentStep += 1;
+                      });
+                    }
+                  },
+                  onStepTapped: (step) => setState(() {
+                    currentStep = step;
+                  }),
+                  steps: getSteps(),
+                ),
+              ),
+            ),*/
             Column(
               children: [
                 Row(
@@ -146,10 +195,15 @@ class _PassphraseState extends State<Passphrase> {
                         color: AppColors.appColor,
                       ),
                       padding: EdgeInsets.all(15.0),
-                      margin: EdgeInsets.only(top: 5.0,bottom: 5.0,),
-                      child:Text("1",
-                        style: CustomWidget(context: context).CustomSizedTextStyle(
-                            14.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+                      margin: EdgeInsets.only(
+                        top: 5.0,
+                        bottom: 5.0,
+                      ),
+                      child: Text(
+                        "1",
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(14.0, AppColors.blackColor,
+                                FontWeight.w600, 'FontRegular'),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -164,17 +218,22 @@ class _PassphraseState extends State<Passphrase> {
                         color: AppColors.appColor,
                       ),
                       padding: EdgeInsets.all(15.0),
-                      margin: EdgeInsets.only(top: 5.0,bottom: 5.0,),
-                      child:Text("2",
-                        style: CustomWidget(context: context).CustomSizedTextStyle(
-                            14.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+                      margin: EdgeInsets.only(
+                        top: 5.0,
+                        bottom: 5.0,
+                      ),
+                      child: Text(
+                        "2",
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(14.0, AppColors.blackColor,
+                                FontWeight.w600, 'FontRegular'),
                         textAlign: TextAlign.center,
                       ),
                     ),
                     Container(
                       width: 110.0,
                       height: 1.5,
-                      color: proceedValue?AppColors.appColor:Colors.black,
+                      color: proceedValue ? AppColors.appColor : Colors.black,
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -183,35 +242,45 @@ class _PassphraseState extends State<Passphrase> {
                         border: Border.all(color: Colors.black),
                       ),
                       padding: EdgeInsets.all(15.0),
-                      margin: EdgeInsets.only(top: 5.0,bottom: 5.0,),
-                      child:Text("3",
-                        style: CustomWidget(context: context).CustomSizedTextStyle(
-                            14.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+                      margin: EdgeInsets.only(
+                        top: 5.0,
+                        bottom: 5.0,
+                      ),
+                      child: Text(
+                        "3",
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(14.0, AppColors.blackColor,
+                                FontWeight.w600, 'FontRegular'),
                         textAlign: TextAlign.center,
                       ),
                     ),
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 20.0,right: 20.0),
+                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Create \n Wallet",
-                        style: CustomWidget(context: context).CustomSizedTextStyle(
-                            12.0, AppColors.blackColor, FontWeight.w400, 'FontRegular'),
+                      Text(
+                        "Create \n Wallet",
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(12.0, AppColors.blackColor,
+                                FontWeight.w400, 'FontRegular'),
                         textAlign: TextAlign.start,
                       ),
-                      Text("Secure \n Wallet",
-                        style: CustomWidget(context: context).CustomSizedTextStyle(
-                            12.0, AppColors.blackColor, FontWeight.w400, 'FontRegular'),
+                      Text(
+                        "Secure \n Wallet",
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(12.0, AppColors.blackColor,
+                                FontWeight.w400, 'FontRegular'),
                         textAlign: TextAlign.center,
                       ),
-
-                      Text("Confirm \n Wallet",
-                        style: CustomWidget(context: context).CustomSizedTextStyle(
-                            12, AppColors.blackColor, FontWeight.w400, 'FontRegular'),
+                      Text(
+                        "Confirm \n Wallet",
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(12, AppColors.blackColor,
+                                FontWeight.w400, 'FontRegular'),
                         textAlign: TextAlign.end,
                       ),
                     ],
@@ -219,67 +288,94 @@ class _PassphraseState extends State<Passphrase> {
                 ),
               ],
             ),
-            SizedBox(height: 25.0,),
-            proceedValue?confirmUI():setPassUI(),
-            SizedBox(height: 25.0,),
+            SizedBox(
+              height: 25.0,
+            ),
+            proceedValue ? confirmUI() : setPassUI(),
+            SizedBox(
+              height: 25.0,
+            ),
             InkWell(
-              onTap: (){
-                if(checkedValue){
+              onTap: () {
+                if (checkedValue) {
                   setState(() {
-                    proceedValue=true;
+                    proceedValue = true;
                   });
-                }else{
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text("Please accept terms of passphrase",style:CustomWidget(context: context).CustomSizedTextStyle(
-                      14.0, AppColors.whiteColor, FontWeight.w600, 'FontRegular'),) ));
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                    "Please accept terms of passphrase",
+                    style: CustomWidget(context: context).CustomSizedTextStyle(
+                        14.0,
+                        AppColors.whiteColor,
+                        FontWeight.w600,
+                        'FontRegular'),
+                  )));
                 }
               },
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.only(top: 15.0,bottom: 15.0,),
+                padding: EdgeInsets.only(
+                  top: 15.0,
+                  bottom: 15.0,
+                ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25.0),
                   color: AppColors.appColor,
                 ),
                 child: Text(
-                  !proceedValue?AppLocalizations.instance.text("loc_proceed"):AppLocalizations.instance.text("loc_confirm"),
+                  !proceedValue
+                      ? AppLocalizations.instance.text("loc_proceed")
+                      : AppLocalizations.instance.text("loc_confirm"),
                   style: CustomWidget(context: context).CustomSizedTextStyle(
-                      16.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+                      16.0,
+                      AppColors.blackColor,
+                      FontWeight.w600,
+                      'FontRegular'),
                   textAlign: TextAlign.center,
                 ),
               ),
             ),
-            SizedBox(height: 25.0,),
+            SizedBox(
+              height: 25.0,
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget setPassUI(){
+  Widget setPassUI() {
     return Column(
       children: [
         Center(
-          child: Text(AppLocalizations.instance.text("loc_phrase_title"),
+          child: Text(
+            AppLocalizations.instance.text("loc_phrase_title"),
             style: CustomWidget(context: context).CustomSizedTextStyle(
                 24.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
             textAlign: TextAlign.center,
           ),
         ),
-        SizedBox(height: 15.0,),
+        SizedBox(
+          height: 15.0,
+        ),
         Center(
-          child: Text(AppLocalizations.instance.text("loc_phrase_description"),
+          child: Text(
+            AppLocalizations.instance.text("loc_phrase_description"),
             style: CustomWidget(context: context).CustomSizedTextStyle(
                 14.0, AppColors.blackColor, FontWeight.w400, 'FontRegular'),
             textAlign: TextAlign.center,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 35.0,),
+          padding: const EdgeInsets.only(
+            top: 35.0,
+          ),
           child: GridView.builder(
             padding: EdgeInsets.zero,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              childAspectRatio: 3/1,
+              childAspectRatio: 3 / 1,
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
             ),
@@ -287,25 +383,31 @@ class _PassphraseState extends State<Passphrase> {
             shrinkWrap: true,
             itemCount: passPhrase.length,
             itemBuilder: (BuildContext context, index) {
-              int sno=index+1;
+              int sno = index + 1;
               return Container(
-                padding: EdgeInsets.only(top: 3.0,bottom: 3.0,right: 5.0,left: 5.0),
+                padding: EdgeInsets.only(
+                    top: 3.0, bottom: 3.0, right: 5.0, left: 5.0),
                 decoration: BoxDecoration(
                   color: Color(0xFFf8f8f8),
                   borderRadius: BorderRadius.circular(25.0),
                 ),
                 alignment: Alignment.center,
-                child:Text(
-                  sno.toString() +". "+passPhrase[index],
+                child: Text(
+                  sno.toString() + ". " + passPhrase[index],
                   style: CustomWidget(context: context).CustomSizedTextStyle(
-                      12.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+                      12.0,
+                      AppColors.blackColor,
+                      FontWeight.w600,
+                      'FontRegular'),
                   textAlign: TextAlign.center,
                 ),
               );
             },
           ),
         ),
-        SizedBox(height: 25.0,),
+        SizedBox(
+          height: 25.0,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -315,40 +417,54 @@ class _PassphraseState extends State<Passphrase> {
                 color: Color(0xFFfdf9c9),
                 borderRadius: BorderRadius.circular(25.0),
               ),
-              padding: EdgeInsets.only(top: 8.0,bottom: 8.0,right: 25.0,left: 25.0),
-              child:Row(
+              padding: EdgeInsets.only(
+                  top: 8.0, bottom: 8.0, right: 25.0, left: 25.0),
+              child: Row(
                 children: [
                   Text(
                     "Copy",
                     style: CustomWidget(context: context).CustomSizedTextStyle(
-                        14.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+                        14.0,
+                        AppColors.blackColor,
+                        FontWeight.w600,
+                        'FontRegular'),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(width: 5.0,),
+                  SizedBox(
+                    width: 5.0,
+                  ),
                   Icon(
                     Icons.content_copy_outlined,
-                    color: Colors.black.withOpacity(0.8) ,
+                    color: Colors.black.withOpacity(0.8),
                     size: 12.0,
                   ),
                 ],
               ),
             ),
-            SizedBox(width: 10.0,),
+            SizedBox(
+              width: 10.0,
+            ),
             Container(
-              padding: EdgeInsets.only(top: 8.0,bottom: 8.0,right: 25.0,left: 25.0),
+              padding: EdgeInsets.only(
+                  top: 8.0, bottom: 8.0, right: 25.0, left: 25.0),
               decoration: BoxDecoration(
                 color: Color(0xFFfdf9c9),
                 borderRadius: BorderRadius.circular(25.0),
               ),
-              child:Row(
+              child: Row(
                 children: [
                   Text(
                     "View QR",
                     style: CustomWidget(context: context).CustomSizedTextStyle(
-                        14.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+                        14.0,
+                        AppColors.blackColor,
+                        FontWeight.w600,
+                        'FontRegular'),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(width: 5.0,),
+                  SizedBox(
+                    width: 5.0,
+                  ),
                   Icon(
                     Icons.qr_code_outlined,
                     color: Colors.black.withOpacity(0.8),
@@ -359,7 +475,9 @@ class _PassphraseState extends State<Passphrase> {
             ),
           ],
         ),
-        SizedBox(height: 25.0,),
+        SizedBox(
+          height: 25.0,
+        ),
         CheckboxListTile(
           title: Transform.translate(
             offset: const Offset(-20, 0),
@@ -374,43 +492,51 @@ class _PassphraseState extends State<Passphrase> {
           value: checkedValue,
           onChanged: (bool? newValue) {
             setState(() {
-              checkedValue=newValue!;
+              checkedValue = newValue!;
             });
           },
           activeColor: AppColors.appColor,
-          controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
+          controlAffinity:
+              ListTileControlAffinity.leading, //  <-- leading Checkbox
         ),
       ],
     );
   }
 
-
-  Widget confirmUI(){
+  Widget confirmUI() {
     return Column(
       children: [
-        SizedBox(height: 15.0,),
+        SizedBox(
+          height: 15.0,
+        ),
         Center(
-          child: Text(AppLocalizations.instance.text("loc_confirm_phrase_title"),
+          child: Text(
+            AppLocalizations.instance.text("loc_confirm_phrase_title"),
             style: CustomWidget(context: context).CustomSizedTextStyle(
                 24.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
             textAlign: TextAlign.center,
           ),
         ),
-        SizedBox(height: 15.0,),
+        SizedBox(
+          height: 15.0,
+        ),
         Center(
-          child: Text(AppLocalizations.instance.text("loc_confirm_phrase_description"),
+          child: Text(
+            AppLocalizations.instance.text("loc_confirm_phrase_description"),
             style: CustomWidget(context: context).CustomSizedTextStyle(
                 14.0, AppColors.blackColor, FontWeight.w400, 'FontRegular'),
             textAlign: TextAlign.center,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 35.0,),
+          padding: const EdgeInsets.only(
+            top: 35.0,
+          ),
           child: GridView.builder(
             padding: EdgeInsets.zero,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              childAspectRatio: 3/1,
+              childAspectRatio: 3 / 1,
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
             ),
@@ -418,30 +544,35 @@ class _PassphraseState extends State<Passphrase> {
             itemCount: 12,
             itemBuilder: (BuildContext context, index) {
               phrasetext.add(new TextEditingController());
-              int sno=index+1;
+              int sno = index + 1;
               return Row(
-                 mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: Text(sno.toString()+".",style:CustomWidget(context: context).CustomSizedTextStyle(
-                        12.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+                    child: Text(
+                      sno.toString() + ".",
+                      style: CustomWidget(context: context)
+                          .CustomSizedTextStyle(12.0, AppColors.blackColor,
+                              FontWeight.w600, 'FontRegular'),
                       textAlign: TextAlign.center,
                     ),
                   ),
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.only(right: 15.0,left: 15.0,bottom: 5.0,top: 5.0),
+                      padding: EdgeInsets.only(
+                          right: 15.0, left: 15.0, bottom: 5.0, top: 5.0),
                       decoration: BoxDecoration(
                         color: Color(0xFFf8f8f8),
                         borderRadius: BorderRadius.circular(25.0),
                       ),
-                      child:TextField(
+                      child: TextField(
                         controller: phrasetext[index],
                         decoration: InputDecoration(
                           border: InputBorder.none,
                         ),
-                        style: CustomWidget(context: context).CustomSizedTextStyle(
-                            12.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(12.0, AppColors.blackColor,
+                                FontWeight.w600, 'FontRegular'),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -453,31 +584,37 @@ class _PassphraseState extends State<Passphrase> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 35.0,),
+          padding: const EdgeInsets.only(
+            top: 35.0,
+          ),
           child: GridView.builder(
             padding: EdgeInsets.zero,
             physics: ScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              childAspectRatio: 3/1,
+              childAspectRatio: 3 / 1,
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
             ),
             shrinkWrap: true,
             itemCount: passPhrase.length,
             itemBuilder: (BuildContext context, index) {
-              int sno=index+1;
+              int sno = index + 1;
               return Container(
-                padding: EdgeInsets.only(top: 3.0,bottom: 3.0,right: 5.0,left: 5.0),
+                padding: EdgeInsets.only(
+                    top: 3.0, bottom: 3.0, right: 5.0, left: 5.0),
                 decoration: BoxDecoration(
                   color: Color(0xFFf8f8f8),
                   borderRadius: BorderRadius.circular(25.0),
                 ),
                 alignment: Alignment.center,
-                child:Text(
-                  sno.toString() +". "+passPhrase[index],
+                child: Text(
+                  sno.toString() + ". " + passPhrase[index],
                   style: CustomWidget(context: context).CustomSizedTextStyle(
-                      12.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+                      12.0,
+                      AppColors.blackColor,
+                      FontWeight.w600,
+                      'FontRegular'),
                   textAlign: TextAlign.center,
                 ),
               );
@@ -487,5 +624,4 @@ class _PassphraseState extends State<Passphrase> {
       ],
     );
   }
-
 }

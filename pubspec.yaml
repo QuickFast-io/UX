@@ -45,11 +45,9 @@ dependencies:
   country_calling_code_picker:
   floating_bottom_navigation_bar:
   image_picker:
-  easy_stepper: ^0.3.0
-
-
   roundcheckbox:
   flutter_paypal:
+  lottie: ^2.1.0
 
 
 dev_dependencies:
