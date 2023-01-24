@@ -31,12 +31,91 @@ class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
   ];
   String seectedValue= "";
 
+  DateTime? selectedOccupiedDate;
+  DateTime? selectedExDate;
+
+  DateTime? selectedLeaseEpire;
+  DateTime? selectedNonExDate;
+
+  TextEditingController OccupiedController = TextEditingController();
+
+  TextEditingController ExpiredController = TextEditingController();
+
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     seectedValue = _selectedProperty.first;
+  }
+
+  Future<Null> _selectDate(BuildContext context, bool isDob,
+      DateTime initialDate, DateTime firstDate, DateTime lastDate) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: initialDate,
+      firstDate: firstDate,
+      lastDate: lastDate,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: AppColors.blackColor,
+            accentColor: AppColors.whiteColor,
+            colorScheme: ColorScheme.light(
+              primary: AppColors.appColor,
+            ),
+            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (picked != null)
+      setState(() {
+        if (isDob) {
+          selectedOccupiedDate = picked;
+          OccupiedController =
+              TextEditingController(text: picked.toString().split(' ')[0]);
+        } else {
+          selectedExDate = picked;
+        }
+      });
+  }
+
+
+  Future<Null> _seleectDate(BuildContext context, bool isDob,
+      DateTime initialDate, DateTime firstDate, DateTime lastDate) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: initialDate,
+      firstDate: firstDate,
+      lastDate: lastDate,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: AppColors.blackColor,
+            accentColor: AppColors.whiteColor,
+            colorScheme: ColorScheme.light(
+              primary: AppColors.appColor,
+            ),
+            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (picked != null)
+      setState(() {
+        if (isDob) {
+          selectedLeaseEpire = picked;
+          ExpiredController =
+              TextEditingController(text: picked.toString().split(' ')[0]);
+        } else {
+          selectedNonExDate = picked;
+        }
+      });
   }
 
 
@@ -171,7 +250,7 @@ class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
                         });
                       },
                       hint: Text(
-                        "Occupied Since",
+                        " ",
                         style: CustomWidget(context: context).CustomSizedTextStyle(
                             12.0,
                             Theme.of(context).errorColor,
@@ -202,44 +281,97 @@ class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
                   SizedBox(
                     height: 10.0,
                   ),
-                  TextFormFieldCustom(
-                    onEditComplete: () {
-                      occupiedDateFocus.unfocus();
-                      FocusScope.of(context).requestFocus(expireDateFocus);
+                  // TextFormFieldCustom(
+                  //   onEditComplete: () {
+                  //     occupiedDateFocus.unfocus();
+                  //     FocusScope.of(context).requestFocus(expireDateFocus);
+                  //   },
+                  //   radius: 20.0,
+                  //   error: "Enter Occupied Details",
+                  //   textColor: AppColors.blackColor,
+                  //   borderColor: AppColors.hintColor.withOpacity(0.2),
+                  //   fillColor: AppColors.whiteColor,
+                  //   hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
+                  //       15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
+                  //   textStyle: CustomWidget(context: context).CustomTextStyle(
+                  //       AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                  //   textInputAction: TextInputAction.next,
+                  //   focusNode: occupiedDateFocus,
+                  //   maxlines: 1,
+                  //   text: '',
+                  //   hintText: "mm/dd/yy",
+                  //   obscureText: false,
+                  //   suffix: Container(
+                  //     child: Icon(
+                  //       Icons.date_range_outlined,
+                  //       size: 20.0,
+                  //       color: AppColors.blackColor,
+                  //     ),
+                  //   ),
+                  //   textChanged: (value) {},
+                  //   onChanged: () {},
+                  //   validator: (value) {
+                  //     if (value!.isEmpty) {
+                  //       return "Please enter Occupied Details";
+                  //     }
+                  //     return null;
+                  //   },
+                  //   enabled: true,
+                  //   textInputType: TextInputType.datetime,
+                  //   controller: occupiedDateController,
+                  // ),
+
+                  InkWell(
+                    onTap: (){
+                      selectedOccupiedDate = DateTime(
+                          (DateTime.now()).year,
+                          (DateTime.now()).month,
+                          (DateTime.now()).day);
+                      _selectDate(
+                          context,
+                          true,
+                          DateTime(
+                              selectedOccupiedDate!.year,
+                              selectedOccupiedDate!.month,
+                              selectedOccupiedDate!.day),
+                          DateTime(
+                              selectedOccupiedDate!.year - 100,
+                              selectedOccupiedDate!.month,
+                              selectedOccupiedDate!.day),
+                          DateTime(
+                              selectedOccupiedDate!.year,
+                              selectedOccupiedDate!.month,
+                              selectedOccupiedDate!.day));
                     },
-                    radius: 20.0,
-                    error: "Enter Occupied Details",
-                    textColor: AppColors.blackColor,
-                    borderColor: AppColors.hintColor.withOpacity(0.2),
-                    fillColor: AppColors.whiteColor,
-                    hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
-                        15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
-                    textStyle: CustomWidget(context: context).CustomTextStyle(
-                        AppColors.blackColor, FontWeight.w500, 'FontRegular'),
-                    textInputAction: TextInputAction.next,
-                    focusNode: occupiedDateFocus,
-                    maxlines: 1,
-                    text: '',
-                    hintText: "mm/dd/yy",
-                    obscureText: false,
-                    suffix: Container(
-                      child: Icon(
-                        Icons.date_range_outlined,
-                        size: 20.0,
-                        color: AppColors.blackColor,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(10.0, 13.0, 10.0, 13.0),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.0),
+                          border: Border.all(color: AppColors.hintColor.withOpacity(0.3)),
+                          color: Colors.white
+                      ),
+
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            OccupiedController.text.toString(),
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                14.0,
+                                AppColors.blackColor,
+                                FontWeight.w500,
+                                'FontRegular'),
+                          ),
+                          Icon(
+                            Icons.date_range_outlined,
+                            size: 20.0,
+                            color: AppColors.blackColor,
+                          ),
+                        ],
                       ),
                     ),
-                    textChanged: (value) {},
-                    onChanged: () {},
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Please enter Occupied Details";
-                      }
-                      return null;
-                    },
-                    enabled: true,
-                    textInputType: TextInputType.datetime,
-                    controller: occupiedDateController,
                   ),
                   SizedBox(
                     height: 20.0,
@@ -257,44 +389,57 @@ class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
                   SizedBox(
                     height: 10.0,
                   ),
-                  TextFormFieldCustom(
-                    onEditComplete: () {
-                      expireDateFocus.unfocus();
-                      FocusScope.of(context).requestFocus(pRentFocus);
+
+                  InkWell(
+                    onTap: (){
+                      selectedLeaseEpire = DateTime(
+                          (DateTime.now()).year + 10,
+                          (DateTime.now()).month,
+                          (DateTime.now()).day);
+                      _seleectDate(
+                          context,
+                          true,
+                          DateTime(
+                              selectedLeaseEpire!.year,
+                              selectedLeaseEpire!.month,
+                              selectedLeaseEpire!.day),
+                          DateTime(
+                              selectedLeaseEpire!.year - 100,
+                              selectedLeaseEpire!.month,
+                              selectedLeaseEpire!.day),
+                          DateTime(
+                              selectedLeaseEpire!.year,
+                              selectedLeaseEpire!.month,
+                              selectedLeaseEpire!.day));
                     },
-                    radius: 20.0,
-                    error: "Enter Lease Expire Details",
-                    textColor: AppColors.blackColor,
-                    borderColor: AppColors.hintColor.withOpacity(0.2),
-                    fillColor: AppColors.whiteColor,
-                    hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
-                        15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
-                    textStyle: CustomWidget(context: context).CustomTextStyle(
-                        AppColors.blackColor, FontWeight.w500, 'FontRegular'),
-                    textInputAction: TextInputAction.next,
-                    focusNode: expireDateFocus,
-                    maxlines: 1,
-                    text: '',
-                    hintText: "mm/dd/yy",
-                    obscureText: false,
-                    suffix: Container(
-                      child: Icon(
-                        Icons.date_range_outlined,
-                        size: 20.0,
-                        color: AppColors.blackColor,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(10.0, 13.0, 10.0, 13.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        border: Border.all(color: AppColors.hintColor.withOpacity(0.3)),
+                        color: Colors.white
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            ExpiredController.text.toString(),
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                14.0,
+                                AppColors.blackColor,
+                                FontWeight.w500,
+                                'FontRegular'),
+                          ),
+                          Icon(
+                            Icons.date_range_outlined,
+                            size: 20.0,
+                            color: AppColors.blackColor,
+                          ),
+                        ],
                       ),
                     ),
-                    textChanged: (value) {},
-                    onChanged: () {},
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Please enter Lease Expire Details";
-                      }
-                      return null;
-                    },
-                    enabled: true,
-                    textInputType: TextInputType.datetime,
-                    controller: expireDateController,
                   ),
 
                   SizedBox(

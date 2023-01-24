@@ -22,6 +22,46 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
   TextEditingController eMoneyController = TextEditingController();
   TextEditingController dateController = TextEditingController();
 
+
+  DateTime? selectedClosingDate;
+  DateTime? selectedExDate;
+
+
+  Future<Null> _selectDate(BuildContext context, bool isDob,
+      DateTime initialDate, DateTime firstDate, DateTime lastDate) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: initialDate,
+      firstDate: firstDate,
+      lastDate: lastDate,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: AppColors.blackColor,
+            accentColor: AppColors.whiteColor,
+            colorScheme: ColorScheme.light(
+              primary: AppColors.appColor,
+            ),
+            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (picked != null)
+      setState(() {
+        if (isDob) {
+          selectedClosingDate = picked;
+          dateController =
+              TextEditingController(text: picked.toString().split(' ')[0]);
+        } else {
+          selectedExDate = picked;
+        }
+      });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -222,57 +262,105 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                   SizedBox(
                     height: 10.0,
                   ),
-                  TextFormFieldCustom(
-                    onEditComplete: () {
-                      // yearbuildFocus.unfocus();
-                      // FocusScope.of(context).requestFocus(squareFocus);
+                  // TextFormFieldCustom(
+                  //   onEditComplete: () {
+                  //     // yearbuildFocus.unfocus();
+                  //     // FocusScope.of(context).requestFocus(squareFocus);
+                  //   },
+                  //   radius: 20.0,
+                  //   error: "Enter Date Details",
+                  //   textColor: AppColors.blackColor,
+                  //   borderColor: AppColors.hintColor.withOpacity(0.2),
+                  //   fillColor: AppColors.whiteColor,
+                  //   hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
+                  //       15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
+                  //   textStyle: CustomWidget(context: context).CustomTextStyle(
+                  //       AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                  //   textInputAction: TextInputAction.next,
+                  //   focusNode: dateFocus,
+                  //   maxlines: 1,
+                  //   text: '',
+                  //   hintText: "mm/dd/yy",
+                  //   obscureText: false,
+                  //   suffix: Container(
+                  //     child: Icon(
+                  //       Icons.date_range_outlined,
+                  //       size: 20.0,
+                  //       color: AppColors.blackColor,
+                  //     ),
+                  //   ),
+                  //   textChanged: (value) {},
+                  //   onChanged: () {},
+                  //   validator: (value) {
+                  //     if (value!.isEmpty) {
+                  //       return "Please enter Date Details";
+                  //     }
+                  //     return null;
+                  //   },
+                  //   enabled: true,
+                  //   textInputType: TextInputType.datetime,
+                  //   controller: dateController,
+                  // ),
+
+                  InkWell(
+                    onTap: (){
+                      selectedClosingDate = DateTime(
+                          (DateTime.now()).year,
+                          (DateTime.now()).month,
+                          (DateTime.now()).day);
+                      _selectDate(
+                          context,
+                          true,
+                          DateTime(
+                              selectedClosingDate!.year,
+                              selectedClosingDate!.month,
+                              selectedClosingDate!.day),
+                          DateTime(
+                              selectedClosingDate!.year - 100,
+                              selectedClosingDate!.month,
+                              selectedClosingDate!.day),
+                          DateTime(
+                              selectedClosingDate!.year,
+                              selectedClosingDate!.month,
+                              selectedClosingDate!.day));
                     },
-                    radius: 20.0,
-                    error: "Enter Date Details",
-                    textColor: AppColors.blackColor,
-                    borderColor: AppColors.hintColor.withOpacity(0.2),
-                    fillColor: AppColors.whiteColor,
-                    hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
-                        15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
-                    textStyle: CustomWidget(context: context).CustomTextStyle(
-                        AppColors.blackColor, FontWeight.w500, 'FontRegular'),
-                    textInputAction: TextInputAction.next,
-                    focusNode: dateFocus,
-                    maxlines: 1,
-                    text: '',
-                    hintText: "mm/dd/yy",
-                    obscureText: false,
-                    suffix: Container(
-                      child: Icon(
-                        Icons.date_range_outlined,
-                        size: 20.0,
-                        color: AppColors.blackColor,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(10.0, 13.0, 10.0, 13.0),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.0),
+                          border: Border.all(color: AppColors.hintColor.withOpacity(0.3)),
+                          color: Colors.white
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            dateController.text.toString(),
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                14.0,
+                                AppColors.blackColor,
+                                FontWeight.w500,
+                                'FontRegular'),
+                          ),
+                          Icon(
+                            Icons.date_range_outlined,
+                            size: 20.0,
+                            color: AppColors.blackColor,
+                          ),
+                        ],
                       ),
                     ),
-                    textChanged: (value) {},
-                    onChanged: () {},
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Please enter Date Details";
-                      }
-                      return null;
-                    },
-                    enabled: true,
-                    textInputType: TextInputType.datetime,
-                    controller: dateController,
                   ),
-
                   SizedBox(
                     height: 20.0,
                   ),
-
-
                 ],
               )),
               Container(
                 height: 50.0,
               ),
-
               InkWell(
                 onTap: (){
                   setState(() {
