@@ -73,6 +73,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
             SizedBox(
               height: 10.0,
             ),
+
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
