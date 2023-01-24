@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
+import 'package:rabbit/common/textformfield_custom.dart';
 import 'package:rabbit/screens/property/property_info_7.dart';
+import 'package:rabbit/screens/side_menu/profile_menu_screen.dart';
 
 class PropertyInfo_Screen6 extends StatefulWidget {
   const PropertyInfo_Screen6({Key? key}) : super(key: key);
@@ -13,7 +15,31 @@ class PropertyInfo_Screen6 extends StatefulWidget {
 
 class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
 
-  String? accept;
+  FocusNode expireDateFocus = FocusNode();
+  FocusNode occupiedDateFocus = FocusNode();
+  FocusNode pRentFocus = FocusNode();
+  FocusNode tRentFocus = FocusNode();
+  TextEditingController sPriceController = TextEditingController();
+  TextEditingController occupiedDateController = TextEditingController();
+  TextEditingController expireDateController = TextEditingController();
+  TextEditingController pRentController = TextEditingController();
+  TextEditingController tRentController = TextEditingController();
+
+
+  List _selectedProperty = [
+    "1 BHK","2 BHK", "3 BHK","Ground Floor",
+  ];
+  String seectedValue= "";
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    seectedValue = _selectedProperty.first;
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,13 +72,19 @@ class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
         //       16.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
         // ),
         actions: [
-          Container(
-            padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),
-            child:  Center(
-              child: Text(
-                "Cancel",
-                style: CustomWidget(context: context).CustomSizedTextStyle(
-                    15.0, AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+          InkWell(
+            onTap: (){
+              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                  ProfileMenu_Screen()), (Route<dynamic> route) => false);
+            },
+            child: Container(
+              padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),
+              child:  Center(
+                child: Text(
+                  "Cancel",
+                  style: CustomWidget(context: context).CustomSizedTextStyle(
+                      15.0, AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                ),
               ),
             ),
           )
@@ -70,69 +102,315 @@ class _PropertyInfo_Screen6State extends State<PropertyInfo_Screen6> {
               SizedBox(height: 15.0,),
 
               Text(
-                "Do you have a survey document?",
+                "Provide Property Occupant Details",
                 style: CustomWidget(context: context)
                     .CustomSizedTextStyle(
-                    15.0,
+                    24.0,
                     AppColors.blackColor,
-                    FontWeight.w500,
+                    FontWeight.w600,
                     'FontRegular'),
               ),
               SizedBox(
                 height: 10.0,
               ),
-
-              Theme(data: ThemeData(
-                primarySwatch: Colors.yellow,
-                unselectedWidgetColor: Colors.grey, // Your color
+              Text(
+                "Provide details about the current occupants of the property and relevant info.",
+                style: CustomWidget(context: context)
+                    .CustomSizedTextStyle(
+                    13.0,
+                    AppColors.hintColor,
+                    FontWeight.w500,
+                    'FontRegular'),
               ),
-                child: RadioListTile(
-                  title: Text("Yes",
-                    textAlign: TextAlign.start,
-                    style: CustomWidget(context: context)
-                        .CustomSizedTextStyle(
-                        14.0,
-                        Colors.black,
-                        FontWeight.w600,
-                        'FontRegular'),
-                  ),
-                  value: "yes",
-                  groupValue: accept,
-                  onChanged: (value){
-                    setState(() {
-                      accept = value.toString();
-                    });
-                  },
-                ),),
-
-              Theme(data: ThemeData(
-                primarySwatch: Colors.yellow,
-                unselectedWidgetColor: Colors.grey, // Your color
-              ),
-                child: RadioListTile(
-                  title: Text("No",
-                    textAlign: TextAlign.start,
-                    style: CustomWidget(context: context)
-                        .CustomSizedTextStyle(
-                        14.0,
-                        Colors.black,
-                        FontWeight.w600,
-                        'FontRegular'),
-                  ),
-                  value: "no",
-                  groupValue: accept,
-                  onChanged: (value){
-                    setState(() {
-                      accept = value.toString();
-                    });
-                  },
-                ),),
-
               SizedBox(
                 height: 25.0,
               ),
+              Form(child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Current Occupant ",
+                    style: CustomWidget(context: context)
+                        .CustomSizedTextStyle(
+                        14.0,
+                        AppColors.blackColor,
+                        FontWeight.w500,
+                        'FontRegular'),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.hintColor.withOpacity(0.3)),
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                    child: DropdownButton(
+                      underline: Container(
+                        height: 0.0,
+                      ),
+                      menuMaxHeight: MediaQuery.of(context).size.height * 0.7,
+                      items: _selectedProperty
+                          .map((value) => DropdownMenuItem(
+                        child: Text(
+                          value.toString(),
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(
+                              14.0,
+                              AppColors.blackColor,
+                              FontWeight.w500,
+                              'FontRegular'),
+                        ),
+                        value: value,
+                      ))
+                          .toList(),
+                      onChanged: (value) async {
+                        setState(() {
+                          seectedValue=value.toString();
+
+                        });
+                      },
+                      hint: Text(
+                        "Occupied Since",
+                        style: CustomWidget(context: context).CustomSizedTextStyle(
+                            12.0,
+                            Theme.of(context).errorColor,
+                            FontWeight.w500,
+                            'FontRegular'),
+                      ),
+                      isExpanded: true,
+                      value: seectedValue,
+                      icon: const Icon(
+                        Icons.arrow_drop_down,
+                        // color: AppColors.otherTextColor,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+
+                  Text(
+                    "Occupied Since",
+                    style: CustomWidget(context: context)
+                        .CustomSizedTextStyle(
+                        14.0,
+                        AppColors.blackColor,
+                        FontWeight.w500,
+                        'FontRegular'),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  TextFormFieldCustom(
+                    onEditComplete: () {
+                      occupiedDateFocus.unfocus();
+                      FocusScope.of(context).requestFocus(expireDateFocus);
+                    },
+                    radius: 20.0,
+                    error: "Enter Occupied Details",
+                    textColor: AppColors.blackColor,
+                    borderColor: AppColors.hintColor.withOpacity(0.2),
+                    fillColor: AppColors.whiteColor,
+                    hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
+                        15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
+                    textStyle: CustomWidget(context: context).CustomTextStyle(
+                        AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                    textInputAction: TextInputAction.next,
+                    focusNode: occupiedDateFocus,
+                    maxlines: 1,
+                    text: '',
+                    hintText: "mm/dd/yy",
+                    obscureText: false,
+                    suffix: Container(
+                      child: Icon(
+                        Icons.date_range_outlined,
+                        size: 20.0,
+                        color: AppColors.blackColor,
+                      ),
+                    ),
+                    textChanged: (value) {},
+                    onChanged: () {},
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Please enter Occupied Details";
+                      }
+                      return null;
+                    },
+                    enabled: true,
+                    textInputType: TextInputType.datetime,
+                    controller: occupiedDateController,
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+
+                  Text(
+                    "Lease expiration Date",
+                    style: CustomWidget(context: context)
+                        .CustomSizedTextStyle(
+                        14.0,
+                        AppColors.blackColor,
+                        FontWeight.w500,
+                        'FontRegular'),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  TextFormFieldCustom(
+                    onEditComplete: () {
+                      expireDateFocus.unfocus();
+                      FocusScope.of(context).requestFocus(pRentFocus);
+                    },
+                    radius: 20.0,
+                    error: "Enter Lease Expire Details",
+                    textColor: AppColors.blackColor,
+                    borderColor: AppColors.hintColor.withOpacity(0.2),
+                    fillColor: AppColors.whiteColor,
+                    hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
+                        15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
+                    textStyle: CustomWidget(context: context).CustomTextStyle(
+                        AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                    textInputAction: TextInputAction.next,
+                    focusNode: expireDateFocus,
+                    maxlines: 1,
+                    text: '',
+                    hintText: "mm/dd/yy",
+                    obscureText: false,
+                    suffix: Container(
+                      child: Icon(
+                        Icons.date_range_outlined,
+                        size: 20.0,
+                        color: AppColors.blackColor,
+                      ),
+                    ),
+                    textChanged: (value) {},
+                    onChanged: () {},
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Please enter Lease Expire Details";
+                      }
+                      return null;
+                    },
+                    enabled: true,
+                    textInputType: TextInputType.datetime,
+                    controller: expireDateController,
+                  ),
+
+                  SizedBox(
+                    height: 20.0,
+                  ),
+
+                  Text(
+                    "Projected rent for this year(\$USD)",
+                    style: CustomWidget(context: context)
+                        .CustomSizedTextStyle(
+                        14.0,
+                        AppColors.blackColor,
+                        FontWeight.w500,
+                        'FontRegular'),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  TextFormFieldCustom(
+                    onEditComplete: () {
+                      pRentFocus.unfocus();
+                      FocusScope.of(context).requestFocus(tRentFocus);
+                    },
+                    radius: 20.0,
+                    error: "Enter Project Rent",
+                    textColor: AppColors.blackColor,
+                    borderColor: AppColors.hintColor.withOpacity(0.2),
+                    fillColor: AppColors.whiteColor,
+                    hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
+                        15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
+                    textStyle: CustomWidget(context: context).CustomTextStyle(
+                        AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                    textInputAction: TextInputAction.next,
+                    focusNode: pRentFocus,
+                    maxlines: 1,
+                    text: '',
+                    hintText: " ",
+                    obscureText: false,
+                    suffix: Container(
+                      width: 0.0,
+                    ),
+                    textChanged: (value) {},
+                    onChanged: () {},
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Enter Project Rent for this Year";
+                      }
+                      return null;
+                    },
+                    enabled: true,
+                    textInputType: TextInputType.number,
+                    controller: pRentController,
+                  ),
+
+                  SizedBox(
+                    height: 20.0,
+                  ),
+
+
+                  Text(
+                    "Total rent from last year(\$USD)",
+                    style: CustomWidget(context: context)
+                        .CustomSizedTextStyle(
+                        14.0,
+                        AppColors.blackColor,
+                        FontWeight.w500,
+                        'FontRegular'),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  TextFormFieldCustom(
+                    onEditComplete: () {
+                      tRentFocus.unfocus();
+                    },
+                    radius: 20.0,
+                    error: "Enter Total Rent for last year",
+                    textColor: AppColors.blackColor,
+                    borderColor: AppColors.hintColor.withOpacity(0.2),
+                    fillColor: AppColors.whiteColor,
+                    hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
+                        15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
+                    textStyle: CustomWidget(context: context).CustomTextStyle(
+                        AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                    textInputAction: TextInputAction.next,
+                    focusNode: tRentFocus,
+                    maxlines: 1,
+                    text: '',
+                    hintText: " ",
+                    obscureText: false,
+                    suffix: Container(
+                      width: 0.0,
+                    ),
+                    textChanged: (value) {},
+                    onChanged: () {},
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Enter Total Rent for last year";
+                      }
+                      return null;
+                    },
+                    enabled: true,
+                    textInputType: TextInputType.number,
+                    controller: tRentController,
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+
+
+
+                ],
+              )),
               Container(
-                height: 250.0,
+                height: 50.0,
               ),
 
               InkWell(

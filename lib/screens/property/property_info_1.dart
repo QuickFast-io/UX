@@ -4,6 +4,7 @@ import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/textformfield_custom.dart';
 import 'package:rabbit/screens/property/property_info_2.dart';
+import 'package:rabbit/screens/side_menu/profile_menu_screen.dart';
 
 class PropertyInfo_Screen1 extends StatefulWidget {
   const PropertyInfo_Screen1({Key? key}) : super(key: key);
@@ -29,13 +30,32 @@ class _PropertyInfo_Screen1State extends State<PropertyInfo_Screen1> {
   String seectedValue= "";
   String seelectedState= "";
 
+  // late AnimationController controller;
+
+
 @override
   void initState() {
     // TODO: implement initState
     super.initState();
     seectedValue=_selectedCity.first;
     seelectedState = _selectedState.first;
+
+    // controller = AnimationController(
+    //   vsync: this,
+    //   duration: const Duration(seconds: 0),
+    // )..addListener(() {
+    //   setState(() {});
+    // });
+    // controller.animateTo(5.0);
+
   }
+
+  // @override
+  // void dispose() {
+  //   controller.dispose();
+  //   super.dispose();
+  // }
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +65,8 @@ class _PropertyInfo_Screen1State extends State<PropertyInfo_Screen1> {
         shape: Border(
             bottom: BorderSide(
                 color: AppColors.appColor,
-                width: 2.0
-            )
+                width: 2.0,
+            ),
         ),
         backgroundColor: AppColors.whiteColor,
         elevation: 0.0,
@@ -69,13 +89,19 @@ class _PropertyInfo_Screen1State extends State<PropertyInfo_Screen1> {
         //       16.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
         // ),
         actions: [
-          Container(
-            padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),
-            child:  Center(
-              child: Text(
-                "Cancel",
-                style: CustomWidget(context: context).CustomSizedTextStyle(
-                    15.0, AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+          InkWell(
+            onTap: (){
+              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                  ProfileMenu_Screen()), (Route<dynamic> route) => false);
+            },
+            child: Container(
+              padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),
+              child:  Center(
+                child: Text(
+                  "Cancel",
+                  style: CustomWidget(context: context).CustomSizedTextStyle(
+                      15.0, AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                ),
               ),
             ),
           )
@@ -90,6 +116,12 @@ class _PropertyInfo_Screen1State extends State<PropertyInfo_Screen1> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              LinearProgressIndicator(
+                backgroundColor: AppColors.hintColor.withOpacity(0.3),
+                // valueColor: AlwaysStoppedAnimation<Color>(AppColors.appColor),
+                // value: <color>,
+                color: AppColors.appColor,
+              ),
               SizedBox(height: 15.0,),
 
               Text(
