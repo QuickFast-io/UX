@@ -74,7 +74,7 @@ class TextFormFieldCustom extends StatelessWidget {
         onEditingComplete: onEditComplete,
         decoration: InputDecoration(
           contentPadding:
-          const EdgeInsets.only(left: 12, right: 0, top: 0, bottom:0),
+          const EdgeInsets.only(left: 12, right: 0, top: 10, bottom:0),
           hintText: hintText,
           hintStyle: hintStyle,
           suffixIcon: suffix,

@@ -56,99 +56,97 @@ class _Wallet_Setup_ScreenState extends State<Wallet_Setup_Screen> {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          padding: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 10.0),
-          color: AppColors.whiteColor,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Wallet Setup",
-                style: CustomWidget(context: context).CustomSizedTextStyle(
-                    35.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
-              ),
-              SizedBox(height: 15.0,),
-              Text(
-                "Import wallet or create a new one",
-                style: CustomWidget(context: context).CustomSizedTextStyle(
-                    18.0, AppColors.blackColor, FontWeight.w500, 'FontRegular'),
-              ),
-              SizedBox(height: 15.0,),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        padding: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 10.0),
+        color: AppColors.whiteColor,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Wallet Setup",
+              style: CustomWidget(context: context).CustomSizedTextStyle(
+                  35.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+            ),
+            SizedBox(height: 15.0,),
+            Text(
+              "Import wallet or create a new one",
+              style: CustomWidget(context: context).CustomSizedTextStyle(
+                  18.0, AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+            ),
+            SizedBox(height: 15.0,),
 
-              Container(
-                height: 220,
-              ),
+            Container(
+              height: 220,
+            ),
 
-              InkWell(
-                onTap: (){
-                  setState(() {
-                    // Navigator.of(context).push(
-                    //     MaterialPageRoute(
-                    //         builder: (context) =>
-                    //             CongratsScreen()));
-                  });
-                },
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(5.0, 15.0, 5.0, 15.0),
-                  decoration: BoxDecoration(
-                    color: AppColors.appColor,
-                    // border: Border.all(
-                    //     color: AppColors.blackColor
-                    // ),
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Create a new one",
-                      style: CustomWidget(context: context)
-                          .CustomSizedTextStyle(
-                          16.0,
-                          AppColors.blackColor,
-                          FontWeight.w600,
-                          'FontRegular'),
-                    ),
+            InkWell(
+              onTap: (){
+                setState(() {
+                  // Navigator.of(context).push(
+                  //     MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             CongratsScreen()));
+                });
+              },
+              child: Container(
+                padding: EdgeInsets.fromLTRB(5.0, 15.0, 5.0, 15.0),
+                decoration: BoxDecoration(
+                  color: AppColors.appColor,
+                  // border: Border.all(
+                  //     color: AppColors.blackColor
+                  // ),
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: Center(
+                  child: Text(
+                    "Create a new one",
+                    style: CustomWidget(context: context)
+                        .CustomSizedTextStyle(
+                        16.0,
+                        AppColors.blackColor,
+                        FontWeight.w600,
+                        'FontRegular'),
                   ),
                 ),
               ),
-              SizedBox(height: 15.0,),
-              InkWell(
-                onTap: (){
-                  setState(() {
-                    // Navigator.of(context).push(
-                    //     MaterialPageRoute(
-                    //         builder: (context) =>
-                    //             CongratsScreen()));
-                  });
-                },
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(5.0, 15.0, 5.0, 15.0),
-                  decoration: BoxDecoration(
-                    color: AppColors.whiteColor,
-                    border: Border.all(
-                        color: AppColors.blackColor
-                    ),
-                    borderRadius: BorderRadius.circular(15.0),
+            ),
+            SizedBox(height: 15.0,),
+            InkWell(
+              onTap: (){
+                setState(() {
+                  // Navigator.of(context).push(
+                  //     MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             CongratsScreen()));
+                });
+              },
+              child: Container(
+                padding: EdgeInsets.fromLTRB(5.0, 15.0, 5.0, 15.0),
+                decoration: BoxDecoration(
+                  color: AppColors.whiteColor,
+                  border: Border.all(
+                      color: AppColors.blackColor
                   ),
-                  child: Center(
-                    child: Text(
-                      "Import your wallet",
-                      style: CustomWidget(context: context)
-                          .CustomSizedTextStyle(
-                          16.0,
-                          AppColors.blackColor,
-                          FontWeight.w600,
-                          'FontRegular'),
-                    ),
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: Center(
+                  child: Text(
+                    "Import your wallet",
+                    style: CustomWidget(context: context)
+                        .CustomSizedTextStyle(
+                        16.0,
+                        AppColors.blackColor,
+                        FontWeight.w600,
+                        'FontRegular'),
                   ),
                 ),
               ),
-            ],
+            ),
+          ],
 
-          ),
         ),
       ),
     );

@@ -20,6 +20,10 @@ class _DashBoardState extends State<DashBoard>
     "assets/house/h4.png",
     "assets/house/h4.png",
     "assets/house/h4.png",
+    "assets/house/h3.png",
+    "assets/house/h4.png",
+    "assets/house/h4.png",
+    "assets/house/h4.png",
   ];
 
   @override
@@ -75,158 +79,156 @@ class _DashBoardState extends State<DashBoard>
         Container(
           width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.all(10.0),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 10.0,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                AppLocalizations.instance.text("loc_dash_title"),
+                style: CustomWidget(context: context).CustomSizedTextStyle(
+                    26.0,
+                    AppColors.blackColor,
+                    FontWeight.w500,
+                    'FontRegular'),
+              ),
+              SizedBox(
+                height: 15.0,
+              ),
+              Container(
+                padding: EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(25.0),
+                  border: Border.all(
+                    color: Colors.black.withOpacity(0.1),
+                  ),
                 ),
-                Text(
-                  AppLocalizations.instance.text("loc_dash_title"),
-                  style: CustomWidget(context: context).CustomSizedTextStyle(
-                      26.0,
-                      AppColors.blackColor,
-                      FontWeight.w500,
-                      'FontRegular'),
-                ),
-                SizedBox(
-                  height: 15.0,
-                ),
-                Container(
-                  padding: EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(25.0),
-                    border: Border.all(
-                      color: Colors.black.withOpacity(0.1),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Image.asset(
+                          "assets/others/search.png",
+                          height: 12.0,
+                          width: 12.0,
+                        ),
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Text(
+                          AppLocalizations.instance.text("loc_location") +
+                              "?",
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(
+                              14.0,
+                              AppColors.blackColor,
+                              FontWeight.w400,
+                              'FontRegular'),
+                        ),
+                      ],
                     ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          Image.asset(
-                            "assets/others/search.png",
-                            height: 15.0,
-                            width: 15.0,
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text(
-                            AppLocalizations.instance.text("loc_location") +
-                                "?",
-                            style: CustomWidget(context: context)
-                                .CustomSizedTextStyle(
-                                    16.0,
-                                    AppColors.blackColor,
-                                    FontWeight.w400,
-                                    'FontRegular'),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            AppLocalizations.instance.text("loc_type"),
-                            style: CustomWidget(context: context)
-                                .CustomSizedTextStyle(12.0, Color(0xFFb6b6b6),
-                                    FontWeight.w400, 'FontRegular'),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xFFb6b6b6),
-                              shape: BoxShape.circle,
-                            ),
-                            height: 5.0,
-                            width: 5.0,
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text(
-                            AppLocalizations.instance.text("loc_price"),
-                            style: CustomWidget(context: context)
-                                .CustomSizedTextStyle(12.0, Color(0xFFb6b6b6),
-                                    FontWeight.w400, 'FontRegular'),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xFFb6b6b6),
-                              shape: BoxShape.circle,
-                            ),
-                            height: 5.0,
-                            width: 5.0,
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text(
-                            AppLocalizations.instance.text("loc_feature"),
-                            style: CustomWidget(context: context)
-                                .CustomSizedTextStyle(12.0, Color(0xFFb6b6b6),
-                                    FontWeight.w400, 'FontRegular'),
-                          ),
-                        ],
-                      ),
-                      Image.asset(
-                        "assets/others/filter.png",
-                        height: 15.0,
-                        width: 15.0,
-                        color: Color(0xFF000000),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 15.0,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  child: Column(
-                    children: [
-                      TabBar(
-                        unselectedLabelColor: Colors.grey,
-                        indicatorColor: Colors.black,
-                        labelStyle: TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w400,
+                    Row(
+                      children: [
+                        Text(
+                          AppLocalizations.instance.text("loc_type"),
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(12.0, Color(0xFFb6b6b6),
+                              FontWeight.w400, 'FontRegular'),
                         ),
-                        labelColor: Colors.black,
-                        isScrollable: false,
-                        tabs: [
-                          Tab(
-                            text: 'Buy',
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xFFb6b6b6),
+                            shape: BoxShape.circle,
                           ),
-                          Tab(
-                            text: 'Sell',
-                          )
-                        ],
+                          height: 5.0,
+                          width: 5.0,
+                        ),
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Text(
+                          AppLocalizations.instance.text("loc_price"),
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(12.0, Color(0xFFb6b6b6),
+                              FontWeight.w400, 'FontRegular'),
+                        ),
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xFFb6b6b6),
+                            shape: BoxShape.circle,
+                          ),
+                          height: 5.0,
+                          width: 5.0,
+                        ),
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Text(
+                          AppLocalizations.instance.text("loc_feature"),
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(12.0, Color(0xFFb6b6b6),
+                              FontWeight.w400, 'FontRegular'),
+                        ),
+                      ],
+                    ),
+                    Image.asset(
+                      "assets/others/filter.png",
+                      height: 15.0,
+                      width: 15.0,
+                      color: Color(0xFF000000),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 15.0,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height*0.58,
+                child: Column(
+                  children: [
+                    TabBar(
+                      unselectedLabelColor: Colors.grey,
+                      indicatorColor: Colors.black,
+                      labelStyle: TextStyle(
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      labelColor: Colors.black,
+                      isScrollable: false,
+                      tabs: [
+                        Tab(
+                          text: 'Buy',
+                        ),
+                        Tab(
+                          text: 'Sell',
+                        )
+                      ],
+                      controller: _tabController,
+                      indicatorSize: TabBarIndicatorSize.tab,
+                    ),
+                    Expanded(
+                      child: TabBarView(
+                        children: [buyUI(), sellUI()],
                         controller: _tabController,
-                        indicatorSize: TabBarIndicatorSize.tab,
                       ),
-                      Expanded(
-                        child: TabBarView(
-                          children: [buyUI(), sellUI()],
-                          controller: _tabController,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         Align(
@@ -267,7 +269,7 @@ class _DashBoardState extends State<DashBoard>
       padding: EdgeInsets.all(5.0),
       width: MediaQuery.of(context).size.width,
       child: GridView.builder(
-        physics: ScrollPhysics(),
+        shrinkWrap: true,
         padding: EdgeInsets.all(0),
         itemCount: buyList.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

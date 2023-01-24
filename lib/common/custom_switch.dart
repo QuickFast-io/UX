@@ -69,20 +69,20 @@ class _CustomSwitchState extends State<CustomSwitch>
              //}
           },
           child: Container(
-            width: 200.0,
-            height: 55.0,
+            width: 180.0,
+            height: 48.0,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30.0),
                 color:  widget.activeColor),
             child: Padding(
               padding: const EdgeInsets.only(
-                  top: 4.0, bottom: 4.0, right: 5.0, left: 5.0),
+                  top: 2.0, bottom: 2.0, right: 5.0, left: 5.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
            widget.value
                       ? Container(
-             padding: EdgeInsets.all(12.0),
+             padding: EdgeInsets.all(8.0),
              decoration: BoxDecoration(
                color: Colors.yellow,
                borderRadius: BorderRadius.circular(25.0)
@@ -94,7 +94,7 @@ class _CustomSwitchState extends State<CustomSwitch>
                  style: TextStyle(
                      color: widget.activeTextColor,
                      fontWeight: FontWeight.w700,
-                     fontSize: 16.0),
+                     fontSize: 14.0),
                ),
              ),
            )
@@ -105,13 +105,13 @@ class _CustomSwitchState extends State<CustomSwitch>
                style: TextStyle(
                    color: widget.inactiveColor,
                    fontWeight: FontWeight.w700,
-                   fontSize: 16.0),
+                   fontSize: 15.0),
              ),
            ),
                
                   !widget.value
                       ? Container(
-                    padding: EdgeInsets.all(12.0),
+                    padding: EdgeInsets.all(8.0),
                     decoration: BoxDecoration(
                         color: Colors.yellow,
                         borderRadius: BorderRadius.circular(25.0)
@@ -123,7 +123,7 @@ class _CustomSwitchState extends State<CustomSwitch>
                         style: TextStyle(
                             color: widget.inactiveTextColor,
                             fontWeight: FontWeight.w700,
-                            fontSize: 16.0),
+                            fontSize: 14.0),
                       ),
                     ),
                   )
@@ -134,7 +134,7 @@ class _CustomSwitchState extends State<CustomSwitch>
                       style: TextStyle(
                           color: widget.inactiveColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: 16.0),
+                          fontSize: 14.0),
                     ),
                   ),
                 ],

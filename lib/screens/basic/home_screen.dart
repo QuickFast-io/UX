@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/screens/home/chat_menu_screen.dart';
+import 'package:rabbit/screens/home/chat_screen.dart';
 import 'package:rabbit/screens/home/dashboard.dart';
 import 'package:rabbit/screens/home/rabbit_page.dart';
 import 'package:rabbit/screens/home/wallet_page.dart';
@@ -37,7 +38,7 @@ class _Home_ScreenState extends State<Home_Screen> {
 
   List<Widget> bottomPage = [
     DashBoard(),
-    Chat_Menu_Screen(),
+    ChatScreen(),
     Wallet(),
     RabbitScreen(),
     ProfileMenu_Screen(),
@@ -143,8 +144,7 @@ class _Home_ScreenState extends State<Home_Screen> {
           ),
           FloatingNavbarItem(
               customWidget: Container(
-                height: 55.0,
-                width: 55.0,
+
                 padding: EdgeInsets.all(15.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,

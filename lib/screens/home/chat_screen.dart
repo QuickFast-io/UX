@@ -1,28 +1,35 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 
-class Chat_Menu_Screen extends StatefulWidget {
-  const Chat_Menu_Screen({Key? key}) : super(key: key);
+class ChatScreen extends StatefulWidget {
+  const ChatScreen({Key? key}) : super(key: key);
 
   @override
-  State<Chat_Menu_Screen> createState() => _Chat_Menu_ScreenState();
+  State<ChatScreen> createState() => _ChatScreenState();
 }
 
-class _Chat_Menu_ScreenState extends State<Chat_Menu_Screen> {
-
+class _ChatScreenState extends State<ChatScreen> {
   ScrollController controller = ScrollController();
-  List username = [
-    "Rabbit Support","Jeeva","Mano","Lucky","Chandru","Sadham", "Subash Jeevanantham","Manoharan","Lekshmi Narayanan","Vinoth Kumar"
-
+  List<String> username = [
+    "Rabbit Support",
+    "Jeeva",
+    "Mano",
+    "Lucky",
+    "Chandru",
+    "Sadham",
+    "Subash Jeevanantham",
+    "Manoharan",
+    "Lekshmi Narayanan",
+    "Vinoth Kumar"
   ];
 
   @override
   void initState() {
     // TODO: implement initState
-
+    super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +47,8 @@ class _Chat_Menu_ScreenState extends State<Chat_Menu_Screen> {
         centerTitle: true,
         actions: [
           Padding(
-              padding:
-              EdgeInsets.only(left: 5.0, bottom: 5.0, top: 5.0, right: 10.0),
+              padding: EdgeInsets.only(
+                  left: 5.0, bottom: 5.0, top: 5.0, right: 10.0),
               child: InkWell(
                 onTap: () {
                   Navigator.pop(context);
@@ -55,11 +62,11 @@ class _Chat_Menu_ScreenState extends State<Chat_Menu_Screen> {
         ],
       ),
       body: Container(
-        color: AppColors.whiteColor,
-        width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        color: AppColors.whiteColor,
         padding: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 10.0),
-        child:  ListView.builder(
+        child: ListView.builder(
           itemCount: 10,
           shrinkWrap: true,
           controller: controller,
@@ -80,55 +87,58 @@ class _Chat_Menu_ScreenState extends State<Chat_Menu_Screen> {
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.18,
                                 height: 50.0,
-                                // padding : EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-                                // padding: EdgeInsets.all(10.0),
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage("assets/menu/profiles.png",
+                                    image: AssetImage(
+                                      "assets/menu/profiles.png",
                                     ),
                                     fit: BoxFit.contain,
                                   ),
                                   // color: Colors.orangeAccent,
                                   shape: BoxShape.circle,
-
                                 ),
-                                // child: Image.asset("assets/images/group.png",
-                                //   height: 50.0,
-                                // ),
                               ),
-                              SizedBox(width: 5.0,),
-
+                              SizedBox(
+                                width: 5.0,
+                              ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Container(
-                                    width: MediaQuery.of(context).size.width *0.6,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.6,
                                     child: Row(
                                       children: [
-                                        Flexible(child: Text(
+                                        Text(
                                           username[index].toString(),
                                           textAlign: TextAlign.start,
-                                          style: CustomWidget(context: context)
+                                          style:
+                                          CustomWidget(context: context)
                                               .CustomSizedTextStyle(
                                               16.0,
                                               AppColors.blackColor,
                                               FontWeight.w600,
                                               'FontRegular'),
                                           overflow: TextOverflow.ellipsis,
-                                        ),),
-                                        SizedBox(width: 8.0,),
-                                        Image.asset("assets/menu/verify.png",
+                                        ),
+                                        SizedBox(
+                                          width: 8.0,
+                                        ),
+                                        Image.asset(
+                                          "assets/menu/verify.png",
                                           height: 20.0,
                                         ),
-
                                       ],
                                     ),
                                   ),
-                                  SizedBox(height: 6.0,),
+                                  SizedBox(
+                                    height: 6.0,
+                                  ),
                                   Container(
-                                    width: MediaQuery.of(context).size.width *0.6,
-                                    child: Flexible(child: Text(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.6,
+                                    child:  Text(
                                       "You are welcome to Rabbit, if you have any question, fill free to ask them here... ",
                                       textAlign: TextAlign.start,
                                       style: CustomWidget(context: context)
@@ -139,55 +149,58 @@ class _Chat_Menu_ScreenState extends State<Chat_Menu_Screen> {
                                           'FontRegular'),
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 2,
-                                    ),),
+                                    ),
                                   ),
-
                                 ],
                               ),
                             ],
                           ),
                         ),
-                        Flexible(child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "9:35am".toUpperCase(),
-                              textAlign: TextAlign.start,
-                              style: CustomWidget(context: context)
-                                  .CustomSizedTextStyle(
-                                  11.0,
-                                  AppColors.blackColor,
-                                  FontWeight.w500,
-                                  'FontRegular'),
-                            ),
-                            SizedBox(height: 10.0,),
-
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20.0),
-                                color: AppColors.appColor,
-                              ),
-                              padding: EdgeInsets.fromLTRB(10.0, 7.0,10.0,7.0),
-                              child: Text(
-                                "5",
+                        Flexible(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "9:35am".toUpperCase(),
                                 textAlign: TextAlign.start,
                                 style: CustomWidget(context: context)
                                     .CustomSizedTextStyle(
-                                    10.0,
-                                    AppColors.blackColor,
-                                    FontWeight.w700,
-                                    'FontRegular'),
+                                        11.0,
+                                        AppColors.blackColor,
+                                        FontWeight.w500,
+                                        'FontRegular'),
                               ),
-                            ),
-
-                          ],
-                        ),)
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  color: AppColors.appColor,
+                                ),
+                                padding:
+                                    EdgeInsets.fromLTRB(10.0, 7.0, 10.0, 7.0),
+                                child: Text(
+                                  "5",
+                                  textAlign: TextAlign.start,
+                                  style: CustomWidget(context: context)
+                                      .CustomSizedTextStyle(
+                                          10.0,
+                                          AppColors.blackColor,
+                                          FontWeight.w700,
+                                          'FontRegular'),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),
-                  SizedBox(height: 25.0,),
-
+                  SizedBox(
+                    height: 25.0,
+                  ),
                 ],
               ),
             );
