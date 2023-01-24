@@ -86,6 +86,7 @@ class _Property_Acknowledge_ScreenState extends State<Property_Acknowledge_Scree
               SizedBox(
                 height: 15.0,
               ),
+
               Text(
                 "Property Listing \nConfirmed",
                 style: CustomWidget(context: context)
