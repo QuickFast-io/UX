@@ -88,8 +88,6 @@ class _ChangePinState extends State<ChangePin> {
         else if (pin6.isEmpty)
           pin6 = value;
         pinValues = '$pin1$pin2$pin3$pin4$pin5$pin6';
-
-        print(pinValues);
         if (pinValues.length == 6) {
           //doLoginPin(pinValues);
         } else {}
@@ -97,12 +95,13 @@ class _ChangePinState extends State<ChangePin> {
     }
 
     removePinValue() {
+      print(pin6);
       setState(() {
         if (pin6.isNotEmpty)
           pin6 = '';
         else if (pin5.isNotEmpty)
           pin5 = '';
-        if (pin4.isNotEmpty)
+        else if (pin4.isNotEmpty)
           pin4 = '';
         else if (pin3.isNotEmpty)
           pin3 = '';
@@ -110,7 +109,6 @@ class _ChangePinState extends State<ChangePin> {
           pin2 = '';
         else if (pin1.isNotEmpty) pin1 = '';
         pinValues = '$pin1$pin2$pin3$pin4$pin5$pin6';
-        print(pinValues);
       });
     }
 
