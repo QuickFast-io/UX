@@ -210,7 +210,6 @@ class _EasyStepperState extends State<EasyStepper> {
     if (!widget.disableScroll) {
       WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
     }
-
     return Align(
       alignment: widget.alignment,
       child: NotificationListener<OverscrollIndicatorNotification>(

@@ -126,14 +126,14 @@ class _PassphraseState extends State<Passphrase> {
         children: [
           EasyStepper(
             activeStep: _processIndex,
-            lineLength: 70,
+            lineLength: 80,
             lineType: LineType.normal,
             lineColor: AppColors.appColor,
             stepShape: StepShape.circle,
-           /* stepBorderRadius: 15,*/
+            stepBorderRadius: 15,
             borderThickness: 5,
             padding: 10,
-            /*stepRadius: 28,*/
+            stepRadius: 24,
             disableScroll: true,
             unreachedStepBackgroundColor: Colors.transparent,
             unreachedStepBorderColor: Colors.black,
