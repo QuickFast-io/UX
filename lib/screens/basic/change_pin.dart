@@ -1,9 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rabbit/common/animator.dart';
+import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
+import 'package:rabbit/common/localization/localizations.dart';
 
 class ChangePin extends StatefulWidget {
   const ChangePin({Key? key}) : super(key: key);
@@ -14,6 +14,7 @@ class ChangePin extends StatefulWidget {
 
 class _ChangePinState extends State<ChangePin> {
   String title = 'Old Pin';
+
   /*var helperObject = HttpRequestHandler();*/
 
   var pin1 = '';
@@ -22,17 +23,18 @@ class _ChangePinState extends State<ChangePin> {
   var pin4 = '';
   var pin5 = '';
   var pin6 = '';
-  
-  bool loading=false;
+
+  bool loading = false;
   var pinValues = '';
   var confirmValue = '';
   var oldPinValue = '';
   var createPin = '';
   var emails = '';
   var pins = '';
+
   Widget pinUI() {
     handleClick() {
-      if (pinValues.length > 0 && pinValues.length == 4) {
+      if (pinValues.length > 0 && pinValues.length == 6) {
         if (title == "Old Pin") {
           oldPinValue = pinValues;
           setState(() {
@@ -62,13 +64,12 @@ class _ChangePinState extends State<ChangePin> {
             /*loading=true;
             SubmitPin();*/
           } else {
-            CustomWidget(context:context).custombar("Pin", "Pins do not match", false);
-
+            CustomWidget(context: context)
+                .custombar("Pin", "Pins do not match", false);
           }
         }
       } else {
-        CustomWidget(context:context).custombar("Pin", "Enter Pin!", false);
-
+        CustomWidget(context: context).custombar("Pin", "Enter Pin!", false);
       }
     }
 
@@ -84,9 +85,11 @@ class _ChangePinState extends State<ChangePin> {
           pin4 = value;
         else if (pin5.isEmpty)
           pin5 = value;
-        else if (pin6.isEmpty) pin6 = value;
+        else if (pin6.isEmpty)
+          pin6 = value;
         pinValues = '$pin1$pin2$pin3$pin4$pin5$pin6';
 
+        print(pinValues);
         if (pinValues.length == 6) {
           //doLoginPin(pinValues);
         } else {}
@@ -97,7 +100,8 @@ class _ChangePinState extends State<ChangePin> {
       setState(() {
         if (pin6.isNotEmpty)
           pin6 = '';
-        else if (pin5.isNotEmpty) pin5 = '';
+        else if (pin5.isNotEmpty)
+          pin5 = '';
         if (pin4.isNotEmpty)
           pin4 = '';
         else if (pin3.isNotEmpty)
@@ -106,11 +110,12 @@ class _ChangePinState extends State<ChangePin> {
           pin2 = '';
         else if (pin1.isNotEmpty) pin1 = '';
         pinValues = '$pin1$pin2$pin3$pin4$pin5$pin6';
+        print(pinValues);
       });
     }
 
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         Align(
           alignment: Alignment.center,
@@ -119,23 +124,48 @@ class _ChangePinState extends State<ChangePin> {
             width: MediaQuery.of(context).size.width,
             child: Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-
-                    ],
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          "assets/others/logo.png",
+                          width: 45.0,
+                          height: 45.0,
+                          color: AppColors.blackColor,
+                        ),
+                        SizedBox(
+                          height: 5.0,
+                        ),
+                        Text(
+                          AppLocalizations.instance.text("loc_app_name"),
+                          style: CustomWidget(context: context).CustomSizedTextStyle(
+                              24.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
                   ),
+
                   Container(
-                    padding: EdgeInsets.all(5.0),
-                    child: Text(
-                      title,
-                      style: GoogleFonts.urbanist(
-                        color: Color(0xFF333333),
-                        fontSize: 25.0,
-                      ),
+                    padding: EdgeInsets.only(top: 65.0,bottom: 5.0,left: 5.0,right: 5.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Icon(
+                          Icons.lock_outlined,
+                        ),
+                        Text(
+                          title,
+                          style: GoogleFonts.urbanist(
+                            color: Color(0xFF333333),
+                            fontSize: 18.0,
+                          ),
+                        ),
+                      ],
                     ),
                     alignment: Alignment.center,
                   ),
@@ -152,7 +182,9 @@ class _ChangePinState extends State<ChangePin> {
                           color: Colors.transparent,
                           child: new Container(
                             decoration: new BoxDecoration(
-                                color: pin1.isEmpty ? Colors.white : Color(0xFF999999),
+                                color: pin1.isEmpty
+                                    ? Colors.white
+                                    : AppColors.appColor,
                                 border: Border.all(color: Color(0xFF999999)),
                                 borderRadius: new BorderRadius.only(
                                   topLeft: const Radius.circular(40.0),
@@ -169,7 +201,9 @@ class _ChangePinState extends State<ChangePin> {
                           color: Colors.transparent,
                           child: new Container(
                             decoration: new BoxDecoration(
-                                color: pin2.isEmpty ? Colors.white : Color(0xFF999999),
+                                color: pin2.isEmpty
+                                    ? Colors.white
+                                    : AppColors.appColor,
                                 border: Border.all(color: Color(0xFF999999)),
                                 borderRadius: new BorderRadius.only(
                                   topLeft: const Radius.circular(40.0),
@@ -186,7 +220,9 @@ class _ChangePinState extends State<ChangePin> {
                           color: Colors.transparent,
                           child: new Container(
                             decoration: new BoxDecoration(
-                                color: pin3.isEmpty ? Colors.white : Color(0xFF999999),
+                                color: pin3.isEmpty
+                                    ? Colors.white
+                                    : AppColors.appColor,
                                 border: Border.all(color: Color(0xFF999999)),
                                 borderRadius: new BorderRadius.only(
                                   topLeft: const Radius.circular(40.0),
@@ -203,7 +239,9 @@ class _ChangePinState extends State<ChangePin> {
                           color: Colors.transparent,
                           child: new Container(
                             decoration: new BoxDecoration(
-                                color: pin4.isEmpty ? Colors.white : Color(0xFF999999),
+                                color: pin4.isEmpty
+                                    ? Colors.white
+                                    : AppColors.appColor,
                                 border: Border.all(color: Color(0xFF999999)),
                                 borderRadius: new BorderRadius.only(
                                   topLeft: const Radius.circular(40.0),
@@ -220,9 +258,10 @@ class _ChangePinState extends State<ChangePin> {
                           color: Colors.transparent,
                           child: new Container(
                             decoration: new BoxDecoration(
-                                color:
-                                pin5.isEmpty ? Colors.white : Colors.white,
-                                border: Border.all(color:  Color(0xFF999999)),
+                                color: pin5.isEmpty
+                                    ? Colors.white
+                                    : AppColors.appColor,
+                                border: Border.all(color: Color(0xFF999999)),
                                 borderRadius: new BorderRadius.only(
                                   topLeft: const Radius.circular(40.0),
                                   topRight: const Radius.circular(40.0),
@@ -238,9 +277,10 @@ class _ChangePinState extends State<ChangePin> {
                           color: Colors.transparent,
                           child: new Container(
                             decoration: new BoxDecoration(
-                                color:
-                                pin6.isEmpty ? Colors.white :  Colors.white,
-                                border: Border.all(color:  Colors.white),
+                                color: pin6.isEmpty
+                                    ? Colors.white
+                                    : AppColors.appColor,
+                                border: Border.all(color: Color(0xFF999999)),
                                 borderRadius: new BorderRadius.only(
                                   topLeft: const Radius.circular(40.0),
                                   topRight: const Radius.circular(40.0),
@@ -278,6 +318,19 @@ class _ChangePinState extends State<ChangePin> {
                             width: MediaQuery.of(context).size.width,
                             margin: EdgeInsets.all(8.0),
                             child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    Colors.transparent,
+                                  ),
+                                  elevation:
+                                      MaterialStateProperty.resolveWith<double>(
+                                    (Set<MaterialState> states) {
+                                      if (states.contains(
+                                          MaterialState.pressed)) return 0.0;
+                                      return 0.0;
+                                    },
+                                  ),
+                                ),
                                 onPressed: () {
                                   if (pinValues.length < 6) {
                                     getPinValue('1');
@@ -287,7 +340,8 @@ class _ChangePinState extends State<ChangePin> {
                                   children: <Widget>[
                                     Text(
                                       '1',
-                                      style: TextStyle(color: Colors.black, fontSize: 18.0),
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18.0),
                                       textAlign: TextAlign.center,
                                     ),
                                   ],
@@ -304,6 +358,19 @@ class _ChangePinState extends State<ChangePin> {
                             ),
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    Colors.transparent,
+                                  ),
+                                  elevation:
+                                  MaterialStateProperty.resolveWith<double>(
+                                        (Set<MaterialState> states) {
+                                      if (states.contains(
+                                          MaterialState.pressed)) return 0.0;
+                                      return 0.0;
+                                    },
+                                  ),
+                                ),
                                 onPressed: () {
                                   if (pinValues.length < 6) {
                                     getPinValue('2');
@@ -313,7 +380,8 @@ class _ChangePinState extends State<ChangePin> {
                                   children: <Widget>[
                                     Text(
                                       '2',
-                                      style: TextStyle(color: Colors.black, fontSize: 18.0),
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18.0),
                                       textAlign: TextAlign.center,
                                     ),
                                   ],
@@ -330,6 +398,19 @@ class _ChangePinState extends State<ChangePin> {
                             ),
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    Colors.transparent,
+                                  ),
+                                  elevation:
+                                  MaterialStateProperty.resolveWith<double>(
+                                        (Set<MaterialState> states) {
+                                      if (states.contains(
+                                          MaterialState.pressed)) return 0.0;
+                                      return 0.0;
+                                    },
+                                  ),
+                                ),
                                 onPressed: () {
                                   if (pinValues.length < 6) {
                                     getPinValue('3');
@@ -339,7 +420,8 @@ class _ChangePinState extends State<ChangePin> {
                                   children: <Widget>[
                                     Text(
                                       '3',
-                                      style: TextStyle(color: Colors.black, fontSize: 18.0),
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18.0),
                                       textAlign: TextAlign.center,
                                     ),
                                   ],
@@ -361,6 +443,19 @@ class _ChangePinState extends State<ChangePin> {
                             ),
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    Colors.transparent,
+                                  ),
+                                  elevation:
+                                  MaterialStateProperty.resolveWith<double>(
+                                        (Set<MaterialState> states) {
+                                      if (states.contains(
+                                          MaterialState.pressed)) return 0.0;
+                                      return 0.0;
+                                    },
+                                  ),
+                                ),
                                 onPressed: () {
                                   if (pinValues.length < 6) {
                                     getPinValue('4');
@@ -370,7 +465,8 @@ class _ChangePinState extends State<ChangePin> {
                                   children: <Widget>[
                                     Text(
                                       '4',
-                                      style: TextStyle(color: Colors.black, fontSize: 18.0),
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18.0),
                                       textAlign: TextAlign.center,
                                     ),
                                   ],
@@ -387,6 +483,19 @@ class _ChangePinState extends State<ChangePin> {
                             ),
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    Colors.transparent,
+                                  ),
+                                  elevation:
+                                  MaterialStateProperty.resolveWith<double>(
+                                        (Set<MaterialState> states) {
+                                      if (states.contains(
+                                          MaterialState.pressed)) return 0.0;
+                                      return 0.0;
+                                    },
+                                  ),
+                                ),
                                 onPressed: () {
                                   if (pinValues.length < 6) {
                                     getPinValue('5');
@@ -396,7 +505,8 @@ class _ChangePinState extends State<ChangePin> {
                                   children: <Widget>[
                                     Text(
                                       '5',
-                                      style: TextStyle(color: Colors.black, fontSize: 18.0),
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18.0),
                                       textAlign: TextAlign.center,
                                     ),
                                   ],
@@ -413,6 +523,19 @@ class _ChangePinState extends State<ChangePin> {
                             ),
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    Colors.transparent,
+                                  ),
+                                  elevation:
+                                  MaterialStateProperty.resolveWith<double>(
+                                        (Set<MaterialState> states) {
+                                      if (states.contains(
+                                          MaterialState.pressed)) return 0.0;
+                                      return 0.0;
+                                    },
+                                  ),
+                                ),
                                 onPressed: () {
                                   if (pinValues.length < 6) {
                                     getPinValue('6');
@@ -422,7 +545,8 @@ class _ChangePinState extends State<ChangePin> {
                                   children: <Widget>[
                                     Text(
                                       '6',
-                                      style: TextStyle(color: Colors.black, fontSize: 18.0),
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18.0),
                                       textAlign: TextAlign.center,
                                     ),
                                   ],
@@ -444,6 +568,19 @@ class _ChangePinState extends State<ChangePin> {
                             ),
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    Colors.transparent,
+                                  ),
+                                  elevation:
+                                  MaterialStateProperty.resolveWith<double>(
+                                        (Set<MaterialState> states) {
+                                      if (states.contains(
+                                          MaterialState.pressed)) return 0.0;
+                                      return 0.0;
+                                    },
+                                  ),
+                                ),
                                 onPressed: () {
                                   if (pinValues.length < 6) {
                                     getPinValue('7');
@@ -453,7 +590,8 @@ class _ChangePinState extends State<ChangePin> {
                                   children: <Widget>[
                                     Text(
                                       '7',
-                                      style: TextStyle(color: Colors.black, fontSize: 18.0),
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18.0),
                                       textAlign: TextAlign.center,
                                     ),
                                   ],
@@ -470,6 +608,19 @@ class _ChangePinState extends State<ChangePin> {
                             ),
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    Colors.transparent,
+                                  ),
+                                  elevation:
+                                  MaterialStateProperty.resolveWith<double>(
+                                        (Set<MaterialState> states) {
+                                      if (states.contains(
+                                          MaterialState.pressed)) return 0.0;
+                                      return 0.0;
+                                    },
+                                  ),
+                                ),
                                 onPressed: () {
                                   if (pinValues.length < 6) {
                                     getPinValue('8');
@@ -479,7 +630,8 @@ class _ChangePinState extends State<ChangePin> {
                                   children: <Widget>[
                                     Text(
                                       '8',
-                                      style: TextStyle(color: Colors.black, fontSize: 18.0),
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18.0),
                                       textAlign: TextAlign.center,
                                     ),
                                   ],
@@ -496,6 +648,19 @@ class _ChangePinState extends State<ChangePin> {
                             ),
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    Colors.transparent,
+                                  ),
+                                  elevation:
+                                  MaterialStateProperty.resolveWith<double>(
+                                        (Set<MaterialState> states) {
+                                      if (states.contains(
+                                          MaterialState.pressed)) return 0.0;
+                                      return 0.0;
+                                    },
+                                  ),
+                                ),
                                 onPressed: () {
                                   if (pinValues.length < 6) {
                                     getPinValue('9');
@@ -505,7 +670,8 @@ class _ChangePinState extends State<ChangePin> {
                                   children: <Widget>[
                                     Text(
                                       '9',
-                                      style: TextStyle(color: Colors.black, fontSize: 18.0),
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18.0),
                                       textAlign: TextAlign.center,
                                     ),
                                   ],
@@ -523,10 +689,36 @@ class _ChangePinState extends State<ChangePin> {
                             margin: EdgeInsets.all(8.0),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5.0),
+                              color: Color(0xFF8D1F28),
+                            ),
+                            width: MediaQuery.of(context).size.width,
+                            child: Container(),
+                          ),
+                          flex: 1,
+                        ),
+                        Flexible(
+                          child: Container(
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5.0),
                               color: Colors.white,
                             ),
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    Colors.transparent,
+                                  ),
+                                  elevation:
+                                  MaterialStateProperty.resolveWith<double>(
+                                        (Set<MaterialState> states) {
+                                      if (states.contains(
+                                          MaterialState.pressed)) return 0.0;
+                                      return 0.0;
+                                    },
+                                  ),
+                                ),
                                 onPressed: () {
                                   if (pinValues.length < 6) {
                                     getPinValue('0');
@@ -536,13 +728,14 @@ class _ChangePinState extends State<ChangePin> {
                                   children: <Widget>[
                                     Text(
                                       '0',
-                                      style: TextStyle(color: Colors.black, fontSize: 18.0),
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18.0),
                                       textAlign: TextAlign.center,
                                     ),
                                   ],
                                 )),
                           ),
-                          flex: 2,
+                          flex: 1,
                         ),
                         Flexible(
                           child: Container(
@@ -560,7 +753,7 @@ class _ChangePinState extends State<ChangePin> {
                               },
                               icon: Icon(
                                 Icons.backspace,
-                                color: Colors.black,
+                                color: Colors.grey,
                               ),
                             ),
                           ),
@@ -606,7 +799,7 @@ class _ChangePinState extends State<ChangePin> {
       data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
       child: Scaffold(
         backgroundColor: Colors.white,
-      /*  appBar: PreferredSize(
+        /*  appBar: PreferredSize(
           preferredSize: Size(double.infinity, 80),
           child: Container(
             color: Color(0xFF8D1F28),
@@ -666,15 +859,18 @@ class _ChangePinState extends State<ChangePin> {
                     child: Center(
                       child: pinUI(),
                     )),
-                loading?CustomWidget(context: context).loadingIndicator(Color(0xFF8D1F28),):Container()
-
+                loading
+                    ? CustomWidget(context: context).loadingIndicator(
+                        Color(0xFF8D1F28),
+                      )
+                    : Container()
               ],
             )),
       ),
     );
   }
 
-  /*SubmitPin() {
+/*SubmitPin() {
     helperObject.changePin(oldPinValue.toString(), confirmValue.toString()).then((CommonModel loginData) {
       if (loginData.statusCode.toString() == "200") {
         title = "Old Pin";
