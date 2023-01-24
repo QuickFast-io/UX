@@ -55,8 +55,7 @@ class _Success_Property_ScreenState extends State<Success_Property_Screen> {
 
           GestureDetector(
             onTap: (){
-              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                  ProfileMenu_Screen()), (Route<dynamic> route) => false);
+             Navigator.of(context).popUntil((route) => route.isFirst);
             },
             child: Container(
               padding: EdgeInsets.fromLTRB(5.0, 12.0, 5.0, 12.0),

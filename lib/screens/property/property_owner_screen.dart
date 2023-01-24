@@ -57,8 +57,7 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
         actions: [
           InkWell(
             onTap: (){
-              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                  ProfileMenu_Screen()), (Route<dynamic> route) => false);
+             Navigator.of(context).popUntil((route) => route.isFirst);
             },
             child: Container(
               padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),

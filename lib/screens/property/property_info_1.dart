@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/textformfield_custom.dart';
@@ -91,8 +92,7 @@ class _PropertyInfo_Screen1State extends State<PropertyInfo_Screen1> {
         actions: [
           InkWell(
             onTap: (){
-              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                  ProfileMenu_Screen()), (Route<dynamic> route) => false);
+             Navigator.of(context).popUntil((route) => route.isFirst);
             },
             child: Container(
               padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),
@@ -116,11 +116,13 @@ class _PropertyInfo_Screen1State extends State<PropertyInfo_Screen1> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              LinearProgressIndicator(
-                backgroundColor: AppColors.hintColor.withOpacity(0.3),
-                // valueColor: AlwaysStoppedAnimation<Color>(AppColors.appColor),
-                // value: <color>,
-                color: AppColors.appColor,
+
+              LinearProgressBar(
+                maxSteps: 6,
+                progressType: LinearProgressBar.progressTypeLinear, // Use Linear progress
+                currentStep: 2,
+                progressColor: Colors.red,
+                backgroundColor: Colors.grey,
               ),
               SizedBox(height: 15.0,),
 
