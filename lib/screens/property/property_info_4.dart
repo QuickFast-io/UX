@@ -23,7 +23,7 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
   TextEditingController dateController = TextEditingController();
 
 
-  DateTime? selectedDateOfBirth;
+  DateTime? selectedClosingDate;
   DateTime? selectedExDate;
 
 
@@ -52,7 +52,7 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
     if (picked != null)
       setState(() {
         if (isDob) {
-          selectedDateOfBirth = picked;
+          selectedClosingDate = picked;
           dateController =
               TextEditingController(text: picked.toString().split(' ')[0]);
         } else {
@@ -305,7 +305,7 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
 
                   InkWell(
                     onTap: (){
-                      selectedDateOfBirth = DateTime(
+                      selectedClosingDate = DateTime(
                           (DateTime.now()).year - 18,
                           (DateTime.now()).month,
                           (DateTime.now()).day);
@@ -313,17 +313,17 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                           context,
                           true,
                           DateTime(
-                              selectedDateOfBirth!.year,
-                              selectedDateOfBirth!.month,
-                              selectedDateOfBirth!.day),
+                              selectedClosingDate!.year,
+                              selectedClosingDate!.month,
+                              selectedClosingDate!.day),
                           DateTime(
-                              selectedDateOfBirth!.year - 100,
-                              selectedDateOfBirth!.month,
-                              selectedDateOfBirth!.day),
+                              selectedClosingDate!.year - 100,
+                              selectedClosingDate!.month,
+                              selectedClosingDate!.day),
                           DateTime(
-                              selectedDateOfBirth!.year,
-                              selectedDateOfBirth!.month,
-                              selectedDateOfBirth!.day));
+                              selectedClosingDate!.year,
+                              selectedClosingDate!.month,
+                              selectedClosingDate!.day));
                     },
                     child: Container(
                       padding: EdgeInsets.fromLTRB(10.0, 13.0, 10.0, 13.0),
@@ -337,11 +337,11 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "mm/dd/yy",
+                            dateController.text.toString(),
                             style: CustomWidget(context: context)
                                 .CustomSizedTextStyle(
                                 14.0,
-                                AppColors.hintColor,
+                                AppColors.blackColor,
                                 FontWeight.w500,
                                 'FontRegular'),
                           ),
