@@ -290,7 +290,7 @@ class _PassphraseState extends State<Passphrase> {
                 setState(() {
                   proceedValue = true;
                   _processIndex = 3;
-                /*  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PhraseConfirm()));*/
+                  /*Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PhraseConfirm()));*/
                 });
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -473,7 +473,7 @@ class _PassphraseState extends State<Passphrase> {
             children: <Widget>[
               Checkbox(
                 value: this.checkedValue,
-                checkColor: Colors.white,
+                checkColor: Colors.black,
                 activeColor: AppColors.appColor,
                 onChanged: (bool? value) {
                   setState(() {

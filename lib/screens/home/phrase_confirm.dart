@@ -102,15 +102,17 @@ class _PhraseConfirmState extends State<PhraseConfirm> {
                   ), //SizedBox
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
-                    child: Text(
-                      'I understand my digital assets are held and \n controlled on this device.Rabbit has no custody \n access or control over my asset.',
-                      style: CustomWidget(context: context)
-                          .CustomSizedTextStyle(
-                          14.0,
-                          AppColors.blackColor,
-                          FontWeight.w400,
-                          'FontRegular'),
-                      textAlign: TextAlign.start,
+                    child: Flexible(
+                      child: Text(
+                        'I understand my digital assets are held and \n controlled on this device.Rabbit has no custody \n access or control over my asset.',
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            14.0,
+                            AppColors.blackColor,
+                            FontWeight.w400,
+                            'FontRegular'),
+                        textAlign: TextAlign.start,
+                      ),
                     ),
                   ), //Text
                   SizedBox(width: 10), //SizedBox
