@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/common/colors.dart';
@@ -15,70 +17,28 @@ class Wallet extends StatefulWidget {
 
 class _WalletState extends State<Wallet> {
   bool switchVal = true;
-  List<dynamic> transList=[];
-  List<dynamic> propertyList=[];
- final data = const [
-    {
-      "sqrFit": "A",
-      "bedrooms": "2",
-      "kitchen": "2",
-      "title": "Exquisitely finished detached 6 Bedroom mansion",
-      "location": "123 Happy street alpharetta",
-      "cost": "85,60,000",
-      "propertyImage":"assets/others/home.png"
-    },
-    {
-      "sqrFit": "A",
-      "bedrooms": "2",
-      "kitchen": "2",
-      "title": "Exquisitely finished detached 6 Bedroom mansion",
-      "location": "123 Happy street alpharetta",
-      "cost": "85,60,000",
-      "propertyImage":"assets/others/home.png"
-    },
-    {
-      "sqrFit": "A",
-      "bedrooms": "2",
-      "kitchen": "2",
-      "title": "Exquisitely finished detached 6 Bedroom mansion",
-      "location": "123 Happy street alpharetta",
-      "cost": "85,60,000",
-      "propertyImage":"assets/others/home.png"
-    },
-    {
-      "sqrFit": "A",
-      "bedrooms": "2",
-      "kitchen": "2",
-      "title": "Exquisitely finished detached 6 Bedroom mansion",
-      "location": "123 Happy street alpharetta",
-      "cost": "85,60,000",
-      "propertyImage":"assets/others/home.png"
-    },
-  ];
+  List<Tag> transList = [];
+
+  String arrayObjsText =
+      '{"tags": [{"name": "USD Coin", "value": 100.0,"quantity": 75.0,"quantity": 100.0,"image": "assets/icon/usd-circle.png","coin": "USD"},'
+      ' {"name": "Ethereum","value": 12585.0, "quantity": 1105.0,"quantity": 100.85,"image": "assets/icon/ethereum.png","coin": "ETH"},'
+      ' {"name": "Tether", "value": 1.0,"quantity": 1000.0,"quantity": 1200.85,"image": "assets/icon/tether.png","coin": "USDT"},'
+      ' {"name": "Binance","value": 305.8, "quantity": 128556.0,"quantity": 182200.8571,"image": "assets/icon/binance.png","coin": "BNB"}]}';
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    var tagObjsJson = jsonDecode(arrayObjsText)['tags'] as List;
+    transList = tagObjsJson.map((tagJson) => Tag.fromJson(tagJson)).toList();
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.appColor,
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.black, //change your color here
-        ),
-        backgroundColor: AppColors.appColor,
-        elevation: 0.5,
-        title: Text(
-          AppLocalizations.instance.text("loc_wallet"),
-          style: CustomWidget(context: context).CustomSizedTextStyle(
-              18.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
-        ),
-        centerTitle: true,
-      ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -149,8 +109,8 @@ class _WalletState extends State<Wallet> {
                   activeTextColor: Colors.black,
                   inactiveColor: Colors.white,
                   inactiveTextColor: Colors.black,
-                  activeText:'Funds',
-                  inactiveText:'Property',
+                  activeText: 'Funds',
+                  inactiveText: 'Property',
                   onChanged: (test) {
                     setState(() {
                       switchVal = test;
@@ -172,13 +132,13 @@ class _WalletState extends State<Wallet> {
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(35.0),
                   topLeft: Radius.circular(35.0)),
-              color: AppColors.backgroundColor,
+              color: AppColors.whiteColor,
             ),
-            child:SingleChildScrollView(
+            child: SingleChildScrollView(
               physics: ScrollPhysics(),
               child: Column(
                 children: [
-                  switchVal?transUI():propertyUI(),
+                  switchVal ? transUI() : propertyUI(),
                 ],
               ),
             ),
@@ -188,17 +148,18 @@ class _WalletState extends State<Wallet> {
     );
   }
 
-  Widget propertyUI(){
+  Widget propertyUI() {
     return Container(
       padding: EdgeInsets.all(5.0),
       child: ListView.builder(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemCount: 3,
-          itemBuilder: (BuildContext context,index){
+          itemBuilder: (BuildContext context, index) {
             return InkWell(
-              onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BuyProperty()));
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => BuyProperty()));
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -209,8 +170,9 @@ class _WalletState extends State<Wallet> {
                       Container(
                         width: MediaQuery.of(context).size.width,
                         height: 250.0,
-                        decoration:BoxDecoration(
-                          image:DecorationImage(image: AssetImage("assets/others/house.png"),
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("assets/others/house.png"),
                               fit: BoxFit.fill),
                           borderRadius: BorderRadius.circular(15.0),
                         ),
@@ -223,16 +185,18 @@ class _WalletState extends State<Wallet> {
                           children: [
                             Row(
                               children: [
-                                Icon(Icons.verified_outlined,color: Colors.white,),
-                                SizedBox(width: 5.0,),
+                                Icon(
+                                  Icons.verified_outlined,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 5.0,
+                                ),
                                 Text(
                                   "Verified",
                                   style: CustomWidget(context: context)
-                                      .CustomSizedTextStyle(
-                                      14.0,
-                                      Colors.white,
-                                      FontWeight.w600,
-                                      'FontRegular'),
+                                      .CustomSizedTextStyle(14.0, Colors.white,
+                                          FontWeight.w600, 'FontRegular'),
                                   textAlign: TextAlign.center,
                                 ),
                               ],
@@ -242,22 +206,22 @@ class _WalletState extends State<Wallet> {
                                 borderRadius: BorderRadius.circular(15.0),
                                 color: AppColors.appColor,
                               ),
-                              padding: EdgeInsets.only(top: 8.0,bottom: 8.0,left: 15.0,right: 15.0),
+                              padding: EdgeInsets.only(
+                                  top: 8.0,
+                                  bottom: 8.0,
+                                  left: 15.0,
+                                  right: 15.0),
                               child: Text(
                                 "For Sale",
                                 style: CustomWidget(context: context)
-                                    .CustomSizedTextStyle(
-                                    14.0,
-                                    Colors.black,
-                                    FontWeight.w400,
-                                    'FontRegular'),
+                                    .CustomSizedTextStyle(14.0, Colors.black,
+                                        FontWeight.w400, 'FontRegular'),
                                 textAlign: TextAlign.center,
                               ),
                             ),
                           ],
                         ),
                       ),
-
                     ],
                   ),
                   SizedBox(height: 10.0),
@@ -267,48 +231,48 @@ class _WalletState extends State<Wallet> {
                     children: [
                       Row(
                         children: [
-                          Image.asset("assets/others/bed.png",height: 24.0,width: 24.0),
-                          SizedBox(width: 5.0,),
+                          Image.asset("assets/others/bed.png",
+                              height: 24.0, width: 24.0),
+                          SizedBox(
+                            width: 5.0,
+                          ),
                           Text(
                             "2 bedrooms",
                             style: CustomWidget(context: context)
-                                .CustomSizedTextStyle(
-                                14.0,
-                                Color(0xFF696969),
-                                FontWeight.w600,
-                                'FontRegular'),
+                                .CustomSizedTextStyle(14.0, Color(0xFF696969),
+                                    FontWeight.w600, 'FontRegular'),
                             textAlign: TextAlign.center,
                           ),
                         ],
                       ),
                       Row(
                         children: [
-                          Image.asset("assets/others/Kitchen.png",height: 24.0,width: 24.0),
-                          SizedBox(width: 5.0,),
+                          Image.asset("assets/others/Kitchen.png",
+                              height: 24.0, width: 24.0),
+                          SizedBox(
+                            width: 5.0,
+                          ),
                           Text(
                             "2 Kitchen",
                             style: CustomWidget(context: context)
-                                .CustomSizedTextStyle(
-                                14.0,
-                                Color(0xFF696969),
-                                FontWeight.w600,
-                                'FontRegular'),
+                                .CustomSizedTextStyle(14.0, Color(0xFF696969),
+                                    FontWeight.w600, 'FontRegular'),
                             textAlign: TextAlign.center,
                           ),
                         ],
                       ),
                       Row(
                         children: [
-                          Image.asset("assets/others/Bathtub.png",height: 24.0,width: 24.0),
-                          SizedBox(width: 5.0,),
+                          Image.asset("assets/others/Bathtub.png",
+                              height: 24.0, width: 24.0),
+                          SizedBox(
+                            width: 5.0,
+                          ),
                           Text(
                             "4000 Sq Ft",
                             style: CustomWidget(context: context)
-                                .CustomSizedTextStyle(
-                                14.0,
-                                Color(0xFF696969),
-                                FontWeight.w600,
-                                'FontRegular'),
+                                .CustomSizedTextStyle(14.0, Color(0xFF696969),
+                                    FontWeight.w600, 'FontRegular'),
                             textAlign: TextAlign.center,
                           ),
                         ],
@@ -318,8 +282,7 @@ class _WalletState extends State<Wallet> {
                   SizedBox(height: 10.0),
                   Text(
                     "Exquisitely finished detached 6 \nBedroom mansion",
-                    style: CustomWidget(context: context)
-                        .CustomSizedTextStyle(
+                    style: CustomWidget(context: context).CustomSizedTextStyle(
                         24.0,
                         AppColors.blackColor,
                         FontWeight.w600,
@@ -328,8 +291,7 @@ class _WalletState extends State<Wallet> {
                   SizedBox(height: 5.0),
                   Text(
                     "123 Happy Street Alpharetta",
-                    style: CustomWidget(context: context)
-                        .CustomSizedTextStyle(
+                    style: CustomWidget(context: context).CustomSizedTextStyle(
                         16.0,
                         AppColors.blackColor,
                         FontWeight.w400,
@@ -344,68 +306,163 @@ class _WalletState extends State<Wallet> {
                       Text(
                         "cost : ",
                         style: CustomWidget(context: context)
-                            .CustomSizedTextStyle(
-                            14.0,
-                            Color(0xFF696969),
-                            FontWeight.w600,
-                            'FontRegular'),
+                            .CustomSizedTextStyle(14.0, Color(0xFF696969),
+                                FontWeight.w600, 'FontRegular'),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         "\$ 8,560,000",
                         style: CustomWidget(context: context)
-                            .CustomSizedTextStyle(
-                            18.0,
-                            Colors.black,
-                            FontWeight.w700,
-                            'FontRegular'),
+                            .CustomSizedTextStyle(18.0, Colors.black,
+                                FontWeight.w700, 'FontRegular'),
                         textAlign: TextAlign.center,
                       ),
                     ],
                   ),
-                  SizedBox(height: 10.0,),
+                  SizedBox(
+                    height: 10.0,
+                  ),
                 ],
               ),
             );
-          }
-      ),
+          }),
     );
   }
 
-  Widget transUI(){
+  Widget transUI() {
     return Container(
-      child: transList.length>0?ListView.builder(
-          shrinkWrap: true,
-          itemCount: transList.length,
-          itemBuilder: (BuildContext context,index){
-            return Container();
-          }
-      ):Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            height: 200,
-          ),
-          SvgPicture.asset("assets/menu/box.svg",
-            height: 100.0,
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Text(
-            "You haven't listed anyproperties, \n but we can fix that.",
-            textAlign: TextAlign.center,
-            style: CustomWidget(context: context)
-                .CustomSizedTextStyle(
-                16.0,
-                AppColors.blackColor,
-                FontWeight.w600,
-                'FontRegular'),
-          ),
-        ],
-      ),
+      child: transList.length > 0
+          ? ListView.builder(
+              shrinkWrap: true,
+              itemCount: transList.length,
+              itemBuilder: (BuildContext context, index) {
+                return Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Image.asset(
+                            transList[index].image.toString(),
+                            height: 35.0,
+                          ),
+                          const SizedBox(width: 10.0,),
+                          Container(
+                              child:  Flexible(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          transList[index].name.toString(),
+                                          style: CustomWidget(context: context)
+                                              .CustomSizedTextStyle(16.0, Colors.black,
+                                              FontWeight.w500, 'FontRegular'),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        const SizedBox(height: 5.0,),
+                                        Text(
+                                          "\$"+ transList[index].value.toString(),
+                                          style: CustomWidget(context: context)
+                                              .CustomSizedTextStyle(14.0, Colors.black.withOpacity(0.8),
+                                              FontWeight.w500, 'FontRegular'),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          "\$"+transList[index].quantity.toString()+" "+transList[index].coin.toString(),
+                                          style: CustomWidget(context: context)
+                                              .CustomSizedTextStyle(15.0, Colors.black,
+                                              FontWeight.w500, 'FontRegular'),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        const SizedBox(height: 5.0,),
+                                        Text(
+                                          "\$"+ transList[index].value.toString(),
+                                          style: CustomWidget(context: context)
+                                              .CustomSizedTextStyle(14.0, Colors.black.withOpacity(0.8),
+                                              FontWeight.w500, 'FontRegular'),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                                flex: 1,
+                              )
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 20.0,),
+                    ],
+                  )
+                );
+              })
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 200,
+                ),
+                SvgPicture.asset(
+                  "assets/menu/box.svg",
+                  height: 100.0,
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Text(
+                  "You haven't listed anyproperties, \n but we can fix that.",
+                  textAlign: TextAlign.center,
+                  style: CustomWidget(context: context).CustomSizedTextStyle(
+                      16.0,
+                      AppColors.blackColor,
+                      FontWeight.w600,
+                      'FontRegular'),
+                ),
+              ],
+            ),
+    );
+  }
+}
+
+class walletList {
+  String image;
+  String name;
+
+  walletList(this.image, this.name);
+}
+
+class Tag {
+  String name;
+  double value;
+  double quantity;
+  String image;
+  String coin;
+
+  Tag(this.name, this.value, this.quantity, this.image, this.coin);
+
+  factory Tag.fromJson(dynamic json) {
+    return Tag(
+      json['name'] as String,
+      json['value'] as double,
+      json['quantity'] as double,
+      json['image'] as String,
+      json['coin'] as String,
     );
   }
 
+  @override
+  String toString() {
+    return '{ ${this.name},${this.value}, ${this.quantity} ,${this.image},${this.coin}}';
+  }
 }
