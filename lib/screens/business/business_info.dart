@@ -2,35 +2,36 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
-import 'package:rabbit/screens/property/property_info_8.dart';
-import 'package:rabbit/screens/side_menu/profile_menu_screen.dart';
+import 'package:rabbit/screens/business/business_info_1.dart';
+import 'package:rabbit/screens/individual/individual_screen.dart';
 
-class PropertyInfo_Screen7 extends StatefulWidget {
-  const PropertyInfo_Screen7({Key? key}) : super(key: key);
+class BusinessInfo_Screen extends StatefulWidget {
+  const BusinessInfo_Screen({Key? key}) : super(key: key);
 
   @override
-  State<PropertyInfo_Screen7> createState() => _PropertyInfo_Screen7State();
+  State<BusinessInfo_Screen> createState() => _BusinessInfo_ScreenState();
 }
 
-class _PropertyInfo_Screen7State extends State<PropertyInfo_Screen7> {
+class _BusinessInfo_ScreenState extends State<BusinessInfo_Screen> {
 
   String? accept;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
       appBar: AppBar(
-        shape: Border(
-            bottom: BorderSide(
-                color: AppColors.appColor,
-                width: 2.0
-            )
-        ),
+        // shape: Border(
+        //     bottom: BorderSide(
+        //         color: AppColors.appColor,
+        //         width: 2.0
+        //     )
+        // ),
         backgroundColor: AppColors.whiteColor,
-        elevation: 0.0,
+        elevation: 0.15,
         leading: Padding(
             padding:
-            EdgeInsets.only(left: 9.0, bottom: 5.0, top: 5.0, right: 2.0),
+            EdgeInsets.only(left: 2.0, bottom: 5.0, top: 5.0, right: 2.0),
             child: InkWell(
               onTap: () {
                 Navigator.pop(context);
@@ -41,28 +42,24 @@ class _PropertyInfo_Screen7State extends State<PropertyInfo_Screen7> {
 
               ),
             )),
-        // title: Text(
-        //   "Profile".toUpperCase(),
-        //   style: CustomWidget(context: context).CustomSizedTextStyle(
-        //       16.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
-        // ),
-        actions: [
-          InkWell(
-            onTap: (){
-             Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: Container(
-              padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),
-              child:  Center(
-                child: Text(
-                  "Cancel",
-                  style: CustomWidget(context: context).CustomSizedTextStyle(
-                      15.0, AppColors.blackColor, FontWeight.w500, 'FontRegular'),
-                ),
-              ),
+        centerTitle: true,
+        title: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset("assets/others/logo.png",
+              color: AppColors.appColor,
+              height: 22,),
+            SizedBox(width: 5.0,),
+            Text(
+              "Rabbit",
+              style: CustomWidget(context: context).CustomSizedTextStyle(
+                  16.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
             ),
-          )
-        ],
+          ],
+        ),
+        //
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -81,10 +78,10 @@ class _PropertyInfo_Screen7State extends State<PropertyInfo_Screen7> {
                   SizedBox(height: 15.0,),
 
                   Text(
-                    "Do you have a survey document?",
+                    "Is this for a business or personal?",
                     style: CustomWidget(context: context)
                         .CustomSizedTextStyle(
-                        15.0,
+                        16.0,
                         AppColors.blackColor,
                         FontWeight.w500,
                         'FontRegular'),
@@ -98,16 +95,16 @@ class _PropertyInfo_Screen7State extends State<PropertyInfo_Screen7> {
                     unselectedWidgetColor: Colors.grey, // Your color
                   ),
                     child: RadioListTile(
-                      title: Text("Yes",
+                      title: Text("Individual",
                         textAlign: TextAlign.start,
                         style: CustomWidget(context: context)
                             .CustomSizedTextStyle(
-                            14.0,
+                            15.0,
                             Colors.black,
                             FontWeight.w600,
                             'FontRegular'),
                       ),
-                      value: "yes",
+                      value: "individual",
                       groupValue: accept,
                       onChanged: (value){
                         setState(() {
@@ -121,16 +118,16 @@ class _PropertyInfo_Screen7State extends State<PropertyInfo_Screen7> {
                     unselectedWidgetColor: Colors.grey, // Your color
                   ),
                     child: RadioListTile(
-                      title: Text("No",
+                      title: Text("Business",
                         textAlign: TextAlign.start,
                         style: CustomWidget(context: context)
                             .CustomSizedTextStyle(
-                            14.0,
+                            15.0,
                             Colors.black,
                             FontWeight.w600,
                             'FontRegular'),
                       ),
-                      value: "no",
+                      value: "business",
                       groupValue: accept,
                       onChanged: (value){
                         setState(() {
@@ -151,10 +148,25 @@ class _PropertyInfo_Screen7State extends State<PropertyInfo_Screen7> {
             InkWell(
               onTap: (){
                 setState(() {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              PropertyInfo_Screen8()));
+                 if(accept == "individual"){
+                   setState(() {
+                     Navigator.of(context).push(
+                         MaterialPageRoute(
+                             builder: (context) =>
+                                 Individual_Screen()));
+                   });
+
+                 }else if(accept == "business"){
+                   setState(() {
+                     Navigator.of(context).push(
+                         MaterialPageRoute(
+                             builder: (context) =>
+                                 BusinessInfo_Screen1()));
+                   });
+
+                 } else{
+
+                 }
                 });
               },
               child: Container(

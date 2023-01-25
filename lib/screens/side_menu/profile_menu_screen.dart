@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
+import 'package:rabbit/screens/business/business_info.dart';
+import 'package:rabbit/screens/business/business_info_1.dart';
 import 'package:rabbit/screens/property/property_info_1.dart';
 import 'package:rabbit/screens/side_menu/offers_screen2.dart';
 import 'package:rabbit/screens/side_menu/sellers_terms_screen.dart';
@@ -270,6 +272,10 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
             InkWell(
               onTap: (){
                 setState(() {
+                  // Navigator.of(context).push(
+                  //     MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             BusinessInfo_Screen1()));
                 });
               },
               child: Container(
@@ -314,6 +320,10 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
             InkWell(
               onTap: (){
                 setState(() {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              BusinessInfo_Screen()));
                 });
               },
               child: Container(

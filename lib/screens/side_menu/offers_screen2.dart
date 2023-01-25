@@ -17,10 +17,10 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.whiteColor,
-        elevation: 0.5,
+        elevation: 0.15,
         leading: Padding(
             padding:
-            EdgeInsets.only(left: 9.0, bottom: 5.0, top: 5.0, right: 2.0),
+            EdgeInsets.only(left: 2.0, bottom: 5.0, top: 5.0, right: 2.0),
             child: InkWell(
               onTap: () {
                 Navigator.pop(context);
@@ -71,11 +71,11 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                   'FontRegular'),
             ),
             SizedBox(
-              height: 10.0,
+              height: 15.0,
             ),
 
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Icon(Icons.location_on_outlined,
@@ -87,14 +87,14 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                   "123 Happy Street Alpharetta",
                   style: CustomWidget(context: context)
                       .CustomSizedTextStyle(
-                      13.0,
+                      11.0,
                       AppColors.blackColor,
                       FontWeight.w500,
                       'FontRegular'),
                 )
               ],
             ),
-            SizedBox(height: 10.0,),
+            SizedBox(height: 15.0,),
             Container(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,7 +102,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                 children: [
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SvgPicture.asset("assets/menu/Sleeping bed.svg",
                         height: 22.0,
@@ -112,7 +112,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                         "2 bedrooms",
                         style: CustomWidget(context: context)
                             .CustomSizedTextStyle(
-                            13.0,
+                            11.0,
                             AppColors.blackColor,
                             FontWeight.w500,
                             'FontRegular'),
@@ -121,7 +121,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SvgPicture.asset("assets/menu/Kitchen.svg",
                         height: 22.0,
@@ -131,7 +131,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                         "2 Kitchen",
                         style: CustomWidget(context: context)
                             .CustomSizedTextStyle(
-                            13.0,
+                            11.0,
                             AppColors.blackColor,
                             FontWeight.w500,
                             'FontRegular'),
@@ -140,7 +140,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SvgPicture.asset("assets/menu/Bathtub.svg",
                         height: 22.0,
@@ -150,7 +150,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                         "4,000 Sq Ft",
                         style: CustomWidget(context: context)
                             .CustomSizedTextStyle(
-                            13.0,
+                            11.0,
                             AppColors.blackColor,
                             FontWeight.w500,
                             'FontRegular'),
@@ -161,13 +161,13 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
               ),
             ),
 
-            SizedBox(height: 20.0,),
+            SizedBox(height: 30.0,),
 
             Container(
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
+                    padding: EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 20.0),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
                         border: Border.all(color: AppColors.hintColor.withOpacity(0.08)),
@@ -198,9 +198,9 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 15.0,),
+                  SizedBox(height: 20.0,),
                   Container(
-                    padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
+                    padding: EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 20.0),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
                         border: Border.all(color: AppColors.hintColor.withOpacity(0.08)),
@@ -231,9 +231,9 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 15.0,),
+                  SizedBox(height: 20.0,),
                   Container(
-                    padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
+                    padding: EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 20.0),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
                         border: Border.all(color: AppColors.hintColor.withOpacity(0.08)),
@@ -264,7 +264,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 15.0,),
+                  SizedBox(height: 25.0,),
 
                   Container(
                     padding: EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 20.0),
@@ -275,14 +275,14 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SvgPicture.asset("assets/menu/Accept.svg",
-                              height: 22.0,
+                              height: 25.0,
                             ),
                             SizedBox(height: 10.0,),
                             Text(
@@ -301,7 +301,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SvgPicture.asset("assets/menu/Handshake.svg",
-                              height: 22.0,
+                              height: 25.0,
                             ),
                             SizedBox(height: 10.0,),
                             Text(
@@ -320,7 +320,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SvgPicture.asset("assets/menu/Cancel.svg",
-                              height: 22.0,
+                              height: 25.0,
                             ),
                             SizedBox(height: 10.0,),
                             Text(

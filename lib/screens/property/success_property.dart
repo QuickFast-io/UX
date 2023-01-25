@@ -22,36 +22,44 @@ class _Success_Property_ScreenState extends State<Success_Property_Screen> {
       padding: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment. center,
+        mainAxisAlignment: MainAxisAlignment. spaceEvenly,
         children: [
-          Image.asset("assets/menu/succcesss.png",
-          height: 250,),
+          Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment. center,
+              children: [
+                Image.asset("assets/menu/succcesss.png",
+                  height: 150,),
 
-          SizedBox(height: 20.0,),
-          Text(
-            "Congratulations",
-            style: CustomWidget(context: context)
-                .CustomSizedTextStyle(
-                28.0,
-                AppColors.blackColor,
-                FontWeight.w600,
-                'FontRegular'),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
+                SizedBox(height: 20.0,),
+                Text(
+                  "Congratulations",
+                  style: CustomWidget(context: context)
+                      .CustomSizedTextStyle(
+                      28.0,
+                      AppColors.blackColor,
+                      FontWeight.w600,
+                      'FontRegular'),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
 
-          Text(
-            "Your property in now listed",
-            style: CustomWidget(context: context)
-                .CustomSizedTextStyle(
-                14.0,
-                AppColors.blackColor,
-                FontWeight.w500,
-                'FontRegular'),
-          ),
+                Text(
+                  "Your property in now listed",
+                  style: CustomWidget(context: context)
+                      .CustomSizedTextStyle(
+                      14.0,
+                      AppColors.blackColor,
+                      FontWeight.w500,
+                      'FontRegular'),
+                ),
 
-          SizedBox(height: 50.0,),
+                SizedBox(height: 100.0,),
+              ],
+            ),
+          ),
 
           GestureDetector(
             onTap: (){
