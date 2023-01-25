@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class CustomSwitch extends StatefulWidget {
   final bool value;
   final ValueChanged<bool>? onChanged;
+  final Image? icon;
+  final Image? inActiveIcon;
   final Color? activeColor;
   final Color? inactiveColor ;
   final String? activeText;
@@ -16,6 +18,8 @@ class CustomSwitch extends StatefulWidget {
   const CustomSwitch({
     Key? key,
     required this.value,
+    this.icon,
+    this.inActiveIcon,
     this.onChanged,
     this.activeColor,
     this.activeText,
@@ -87,7 +91,19 @@ class _CustomSwitchState extends State<CustomSwitch>
                color: Colors.yellow,
                borderRadius: BorderRadius.circular(25.0)
              ),
-             child: Padding(
+             child:widget.icon!=null?Row(
+               children: [
+                 widget.icon!,
+                 SizedBox(width: 3.0,),
+                 Text(
+                   widget.activeText.toString(),
+                   style: TextStyle(
+                       color: widget.activeTextColor,
+                       fontWeight: FontWeight.w700,
+                       fontSize: 14.0),
+                 ),
+               ],
+             ): Padding(
                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                child: Text(
                  widget.activeText.toString(),
@@ -98,7 +114,19 @@ class _CustomSwitchState extends State<CustomSwitch>
                ),
              ),
            )
-                      : Padding(
+                      :widget.icon!=null?Row(
+             children: [
+               widget.icon!,
+               SizedBox(width: 3.0,),
+               Text(
+                 widget.activeText.toString(),
+                 style: TextStyle(
+                     color: widget.activeTextColor,
+                     fontWeight: FontWeight.w700,
+                     fontSize: 14.0),
+               ),
+             ],
+           ):  Padding(
              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
              child: Text(
                widget.activeText.toString(),
@@ -116,7 +144,19 @@ class _CustomSwitchState extends State<CustomSwitch>
                         color: Colors.yellow,
                         borderRadius: BorderRadius.circular(25.0)
                     ),
-                    child: Padding(
+                    child:widget.inActiveIcon!=null?Row(
+                      children: [
+                        widget.inActiveIcon!,
+                        SizedBox(width: 3.0,),
+                        Text(
+                          widget.inactiveText.toString(),
+                          style: TextStyle(
+                              color: widget.inactiveTextColor,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14.0),
+                        ),
+                      ],
+                    ):Padding(
                       padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                       child: Text(
                         widget.inactiveText.toString(),
@@ -125,18 +165,30 @@ class _CustomSwitchState extends State<CustomSwitch>
                             fontWeight: FontWeight.w700,
                             fontSize: 14.0),
                       ),
-                    ),
+                    )
                   )
-                      : Padding(
-                    padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                    child: Text(
-                      widget.inactiveText.toString(),
-                      style: TextStyle(
-                          color: widget.inactiveColor,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14.0),
-                    ),
-                  ),
+                      :widget.inActiveIcon!=null?Row(
+                    children: [
+                      widget.inActiveIcon!,
+                      SizedBox(width: 3.0,),
+                      Text(
+                        widget.inactiveText.toString(),
+                        style: TextStyle(
+                            color: widget.inactiveTextColor,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 14.0),
+                      ),
+                    ],
+                  ):Padding(
+                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                        child: Text(
+                          widget.inactiveText.toString(),
+                          style: TextStyle(
+                              color: widget.inactiveColor,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14.0),
+                        ),
+                      ),
                 ],
               ),
             ),

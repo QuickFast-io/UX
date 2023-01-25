@@ -63,7 +63,7 @@ class _SetpinPageState extends State<SetpinPage> {
 
  Widget setpinUI(){
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Center(

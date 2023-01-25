@@ -15,7 +15,7 @@ class Offers_Screen extends StatefulWidget {
 class _Offers_ScreenState extends State<Offers_Screen> {
 
 
-  bool switchButton=false;
+  bool switchButton=true;
 
   @override
   void initState() {
@@ -92,100 +92,78 @@ class _Offers_ScreenState extends State<Offers_Screen> {
             Expanded(
               flex: 5,
               child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30.0),
-                        topRight: Radius.circular(30.0),
-                      )),
-                  padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-                  child: SingleChildScrollView(
-                    child: switchButton ? Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 200,
-                          ),
-                          SvgPicture.asset("assets/menu/box.svg",
-                            height: 100.0,
-                          ),
-
-                          SizedBox(
-                            height: 20.0,
-                          ),
-
-                          Text(
-                            "You haven't listed anyproperties, \n but we can fix that.",
-                            textAlign: TextAlign.center,
-                            style: CustomWidget(context: context)
-                                .CustomSizedTextStyle(
-                                16.0,
-                                AppColors.blackColor,
-                                FontWeight.w600,
-                                'FontRegular'),
-                          ),
-
-                        ],
-                      ),
-                    ) : Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(35.0),
+                      topLeft: Radius.circular(35.0)),
+                  color: AppColors.backgroundColor,
+                ),
+                child:SingleChildScrollView(
+                  physics: ScrollPhysics(),
                   child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      switchButton?offersUI():listingUI(),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget offersUI(){
+    return Container(
+      padding: EdgeInsets.all(5.0),
+      child: ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 3,
+          itemBuilder: (BuildContext context,index){
+            return InkWell(
+              onTap: (){
+
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Stack(
                     children: [
                       Container(
-                        height: 200,
+                        width: MediaQuery.of(context).size.width,
+                        height: 250.0,
+                        decoration:BoxDecoration(
+                          image:DecorationImage(image: AssetImage("assets/others/house.png"),
+                              fit: BoxFit.fill),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        padding: EdgeInsets.all(5.0),
                       ),
-                      Image.asset("assets/others/logo.png",
-                        height: 100.0,
-                      ),
-
-                      SizedBox(
-                        height: 30.0,
-                      ),
-
-                      Text(
-                        "In order to list real estate, \n Rabbit needs to verify \n your identity.",
-                        textAlign: TextAlign.center,
-                        style: CustomWidget(context: context)
-                            .CustomSizedTextStyle(
-                            16.0,
-                            AppColors.blackColor,
-                            FontWeight.w600,
-                            'FontRegular'),
-                      ),
-
-                      Container(
-                        height: 60.0,
-                      ),
-
-                      InkWell(
-                        onTap: (){
-                          setState(() {
-                            Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        Offers_Screen()));
-                          });
-                        },
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 15.0),
-                          decoration: BoxDecoration(
-                            color: AppColors.appColor,
-                            // border: Border.all(color: Color(0xFF171717), ),
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                          child: Center(
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15.0),
+                              color: AppColors.appColor,
+                            ),
+                            padding: EdgeInsets.only(top: 8.0,bottom: 8.0,left: 15.0,right: 15.0),
                             child: Text(
-                              "Let's Go",
+                              "Response required",
                               style: CustomWidget(context: context)
                                   .CustomSizedTextStyle(
-                                  16.0,
-                                  AppColors.blackColor,
+                                  12.0,
+                                  Colors.black,
                                   FontWeight.w600,
                                   'FontRegular'),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         ),
@@ -193,13 +171,255 @@ class _Offers_ScreenState extends State<Offers_Screen> {
 
                     ],
                   ),
+                  SizedBox(height: 10.0),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Image.asset("assets/others/bed.png",height: 24.0,width: 24.0),
+                          SizedBox(width: 5.0,),
+                          Text(
+                            "2 bedrooms",
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                14.0,
+                                Color(0xFF696969),
+                                FontWeight.w600,
+                                'FontRegular'),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Image.asset("assets/others/Kitchen.png",height: 24.0,width: 24.0),
+                          SizedBox(width: 5.0,),
+                          Text(
+                            "2 Kitchen",
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                14.0,
+                                Color(0xFF696969),
+                                FontWeight.w600,
+                                'FontRegular'),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Image.asset("assets/others/Bathtub.png",height: 24.0,width: 24.0),
+                          SizedBox(width: 5.0,),
+                          Text(
+                            "4000 Sq Ft",
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                14.0,
+                                Color(0xFF696969),
+                                FontWeight.w600,
+                                'FontRegular'),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.0),
+                  Text(
+                    "Exquisitely finished detached 6 \nBedroom mansion",
+                    style: CustomWidget(context: context)
+                        .CustomSizedTextStyle(
+                        24.0,
+                        AppColors.blackColor,
+                        FontWeight.w600,
+                        'FontRegular'),
+                  ),
+                  SizedBox(height: 5.0),
+                  Text(
+                    "123 Happy Street Alpharetta",
+                    style: CustomWidget(context: context)
+                        .CustomSizedTextStyle(
+                        16.0,
+                        AppColors.blackColor,
+                        FontWeight.w400,
+                        'FontRegular'),
+                    textAlign: TextAlign.start,
+                  ),
+                  SizedBox(height: 5.0),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "cost : ",
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            14.0,
+                            Color(0xFF696969),
+                            FontWeight.w600,
+                            'FontRegular'),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        "\$ 8,560,000",
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            18.0,
+                            Colors.black,
+                            FontWeight.w700,
+                            'FontRegular'),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.0,),
+                ],
               ),
-                  )
-              ),
-            )
-          ],
-        ),
+            );
+          }
       ),
     );
   }
+
+  Widget listingUI(){
+    return Container(
+      padding: EdgeInsets.all(5.0),
+      child: ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 3,
+          itemBuilder: (BuildContext context,index){
+            return InkWell(
+              onTap: (){
+
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 250.0,
+                    decoration:BoxDecoration(
+                      image:DecorationImage(image: AssetImage("assets/others/house.png"),
+                          fit: BoxFit.fill),
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    padding: EdgeInsets.all(5.0),
+                  ),
+                  SizedBox(height: 10.0),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Image.asset("assets/others/bed.png",height: 24.0,width: 24.0),
+                          SizedBox(width: 5.0,),
+                          Text(
+                            "2 bedrooms",
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                14.0,
+                                Color(0xFF696969),
+                                FontWeight.w600,
+                                'FontRegular'),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Image.asset("assets/others/Kitchen.png",height: 24.0,width: 24.0),
+                          SizedBox(width: 5.0,),
+                          Text(
+                            "2 Kitchen",
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                14.0,
+                                Color(0xFF696969),
+                                FontWeight.w600,
+                                'FontRegular'),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Image.asset("assets/others/Bathtub.png",height: 24.0,width: 24.0),
+                          SizedBox(width: 5.0,),
+                          Text(
+                            "4000 Sq Ft",
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                14.0,
+                                Color(0xFF696969),
+                                FontWeight.w600,
+                                'FontRegular'),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.0),
+                  Text(
+                    "Exquisitely finished detached 6 \nBedroom mansion",
+                    style: CustomWidget(context: context)
+                        .CustomSizedTextStyle(
+                        24.0,
+                        AppColors.blackColor,
+                        FontWeight.w600,
+                        'FontRegular'),
+                  ),
+                  SizedBox(height: 5.0),
+                  Text(
+                    "123 Happy Street Alpharetta",
+                    style: CustomWidget(context: context)
+                        .CustomSizedTextStyle(
+                        16.0,
+                        AppColors.blackColor,
+                        FontWeight.w400,
+                        'FontRegular'),
+                    textAlign: TextAlign.start,
+                  ),
+                  SizedBox(height: 5.0),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "cost : ",
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            14.0,
+                            Color(0xFF696969),
+                            FontWeight.w600,
+                            'FontRegular'),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        "\$ 8,560,000",
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            18.0,
+                            Colors.black,
+                            FontWeight.w700,
+                            'FontRegular'),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.0,),
+                ],
+              ),
+            );
+          }
+      ),
+    );
+  }
+
+
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/localization/localizations.dart';
+import 'package:rabbit/screens/home/dashboard_detail_page.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -280,24 +281,29 @@ class _DashBoardState extends State<DashBoard>
 
         ),
         itemBuilder: (BuildContext context, int index) {
-          return Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(7), // Image border
-                child: Image.asset(buyList[index], fit: BoxFit.cover),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 5.0),
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Text(
-                    "Newyork",
-                    style: CustomWidget(context: context).CustomSizedTextStyle(
-                        12.0, Colors.white, FontWeight.w400, 'FontRegular'),
+          return InkWell(
+            onTap: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DashboardDetail(path: buyList[index],)));
+            },
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(7), // Image border
+                  child: Image.asset(buyList[index], fit: BoxFit.cover),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 5.0),
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Text(
+                      "Newyork",
+                      style: CustomWidget(context: context).CustomSizedTextStyle(
+                          12.0, Colors.white, FontWeight.w400, 'FontRegular'),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         },
       ),
