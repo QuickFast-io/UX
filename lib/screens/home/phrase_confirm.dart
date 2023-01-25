@@ -54,11 +54,16 @@ class _PhraseConfirmState extends State<PhraseConfirm> {
                     'FontRegular'),
 
               ),
-              SizedBox(height: 25.0),
+              SizedBox(height: 20.0),
               Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Checkbox(
                     value: this.value,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(3.0),
+                    ),
                     checkColor: Colors.white,
                     activeColor: AppColors.appColor,
                     onChanged: (bool? value) {
@@ -66,29 +71,37 @@ class _PhraseConfirmState extends State<PhraseConfirm> {
                         this.value = value!;
                       });
                     },
-                  ), //Checkbox
-                  SizedBox(
-                    width: 5.0,
-                  ), //SizedBox
-                  Text(
-                    'I acknowledge and accept the wallet terms of use',
-                    style: CustomWidget(context: context)
-                        .CustomSizedTextStyle(
-                        14.0,
-                        AppColors.blackColor,
-                        FontWeight.w400,
-                        'FontRegular'),
-                  ), //Text
-                  SizedBox(width: 10), //SizedBox
-                  /** Checkbox Widget **/
+                  ), //Checkbox//SizedBox
+                  Flexible(
+                      child: Container(
+                        margin: EdgeInsets.only(top: 15.0),
+                        child: Text(
+                          'I acknowledge and accept the wallet terms of use',
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(
+                              14.0,
+                              AppColors.blackColor,
+                              FontWeight.w400,
+                              'FontRegular'),
+                          textAlign: TextAlign.start,
+                        ),
+                      )
+                  ),//Text
 
                 ], //<Widget>[]
-              ), //Row
-              SizedBox(height: 15.0),
+              ), //R
+
+
+              SizedBox(height: 10.0),
               Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Checkbox(
                     value: this.value1,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(3.0),
+                    ),
                     checkColor: Colors.white,
                     activeColor: AppColors.appColor,
                     onChanged: (bool? value) {
@@ -96,59 +109,58 @@ class _PhraseConfirmState extends State<PhraseConfirm> {
                         this.value1 = value!;
                       });
                     },
-                  ), //Checkbox
-                  SizedBox(
-                    width: 5.0,
-                  ), //SizedBox
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: Text(
-                      'I understand my digital assets are held and \n controlled on this device.Rabbit has no custody \n access or control over my asset.',
-                      style: CustomWidget(context: context)
-                          .CustomSizedTextStyle(
-                          14.0,
-                          AppColors.blackColor,
-                          FontWeight.w400,
-                          'FontRegular'),
-                      textAlign: TextAlign.start,
-                    ),
-                  ), //Text
-                  SizedBox(width: 10), //SizedBox
-                  /** Checkbox Widget **/
+                  ), //Checkbox//SizedBox
+                  Flexible(
+                      child: Container(
+                        margin: EdgeInsets.only(top: 10.0),
+                        child: Text(
+                          'I understand my digital assets are held and  controlled on this device.Rabbit has no custody  access or control over my asset.',
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(
+                              14.0,
+                              AppColors.blackColor,
+                              FontWeight.w400,
+                              'FontRegular'),
+                          textAlign: TextAlign.start,
+                        ),
+                      )
+                  ),//Text
 
                 ], //<Widget>[]
-              ), //Row
-              SizedBox(height: 10.0),
+              ), //Ro
+              SizedBox(height: 20.0),
               Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Checkbox(
                     value: this.value2,
                     checkColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(3.0),
+                    ),
                     activeColor: AppColors.appColor,
                     onChanged: (bool? value) {
                       setState(() {
                         this.value2 = value!;
                       });
                     },
-                  ), //Checkbox
-                  SizedBox(
-                    width: 5.0,
-                  ), //SizedBox
-                  Padding(
-                    padding: const EdgeInsets.only(top: 30.0),
-                    child: Text(
-                      'Rabbit can never recover my assets for me.it is \nmy responsibility to maintain my 12 words recovery \nphrase. If I lose my recovery phrase,I it can\'t be\nrecovered',
-                      style: CustomWidget(context: context)
-                          .CustomSizedTextStyle(
-                          14.0,
-                          AppColors.blackColor,
-                          FontWeight.w400,
-                          'FontRegular'),
-                      textAlign: TextAlign.start,
-                    ),
-                  ), //Text
-                  SizedBox(width: 10), //SizedBox
-                  /** Checkbox Widget **/
+                  ), //Checkbox//SizedBox
+                  Flexible(
+                    child: Container(
+                      margin: EdgeInsets.only(top: 10.0),
+                      child: Text(
+                        'Rabbit can never recover my assets for me.it is my responsibility to maintain my 12 words recovery phrase. If I lose my recovery phrase,I it can\'t be recovered',
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            14.0,
+                            AppColors.blackColor,
+                            FontWeight.w400,
+                            'FontRegular'),
+                        textAlign: TextAlign.start,
+                      ),
+                    )
+                  ),//Text
 
                 ], //<Widget>[]
               ), //Row

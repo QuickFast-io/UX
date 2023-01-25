@@ -31,7 +31,7 @@ class _Home_ScreenState extends State<Home_Screen> {
     "Rabbit",
     "More",
   ];
-  late Widget screen = Offers_Screen();
+  late Widget screen = RabbitScreen();
   bool dashView =false;
   int currentindex = 2;
   String headerTitle = "";
@@ -39,8 +39,9 @@ class _Home_ScreenState extends State<Home_Screen> {
   List<Widget> bottomPage = [
     DashBoard(),
     ChatScreen(),
-    Wallet(),
     RabbitScreen(),
+    Wallet(),
+
     ProfileMenu_Screen(),
 
   ];

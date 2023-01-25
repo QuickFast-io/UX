@@ -290,7 +290,7 @@ class _PassphraseState extends State<Passphrase> {
                 setState(() {
                   proceedValue = true;
                   _processIndex = 3;
-                /*  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PhraseConfirm()));*/
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PhraseConfirm()));
                 });
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
