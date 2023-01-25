@@ -3,29 +3,38 @@ import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/textformfield_custom.dart';
-import 'package:rabbit/screens/property/property_info_5.dart';
-import 'package:rabbit/screens/side_menu/profile_menu_screen.dart';
+import 'package:rabbit/screens/business/business_info_3.dart';
+import 'package:rabbit/screens/property/property_info_3.dart';
 
-class PropertyInfo_Screen4 extends StatefulWidget {
-  const PropertyInfo_Screen4({Key? key}) : super(key: key);
+class BusinessInfo_Screen2 extends StatefulWidget {
+  const BusinessInfo_Screen2({Key? key}) : super(key: key);
 
   @override
-  State<PropertyInfo_Screen4> createState() => _PropertyInfo_Screen4State();
+  State<BusinessInfo_Screen2> createState() => _BusinessInfo_Screen2State();
 }
 
-class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
-
-  FocusNode sPriceFocus = FocusNode();
-  FocusNode eMoneyFocus = FocusNode();
-  FocusNode dateFocus = FocusNode();
-  TextEditingController sPriceController = TextEditingController();
-  TextEditingController eMoneyController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
+class _BusinessInfo_Screen2State extends State<BusinessInfo_Screen2> {
 
 
-  DateTime? selectedClosingDate;
-  DateTime? selectedExDate;
+  FocusNode einFocus = FocusNode();
+  FocusNode ownerFocus = FocusNode();
+  TextEditingController einController = TextEditingController();
+  TextEditingController ownerController = TextEditingController();
+  TextEditingController inCopController = TextEditingController();
+  DateTime? selectedIncopDate;
+  DateTime? selectedDate;
 
+  List _selectedStateInCop = [
+    "Tamilnadu","Kerala", "Karnadaka","Andhra",
+  ];
+  String sectedValueCop= "";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    sectedValueCop = _selectedStateInCop.first;
+  }
 
   Future<Null> _selectDate(BuildContext context, bool isDob,
       DateTime initialDate, DateTime firstDate, DateTime lastDate) async {
@@ -52,15 +61,14 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
     if (picked != null)
       setState(() {
         if (isDob) {
-          selectedClosingDate = picked;
-          dateController =
+          selectedIncopDate = picked;
+          inCopController =
               TextEditingController(text: picked.toString().split(' ')[0]);
         } else {
-          selectedExDate = picked;
+          selectedDate = picked;
         }
       });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -68,10 +76,10 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
       backgroundColor: AppColors.whiteColor,
       appBar: AppBar(
         shape: Border(
-            bottom: BorderSide(
-                color: AppColors.appColor,
-                width: 2.0
-            )
+          bottom: BorderSide(
+            color: AppColors.appColor,
+            width: 2.0,
+          ),
         ),
         backgroundColor: AppColors.whiteColor,
         elevation: 0.0,
@@ -88,15 +96,16 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
 
               ),
             )),
-        // title: Text(
-        //   "Profile".toUpperCase(),
-        //   style: CustomWidget(context: context).CustomSizedTextStyle(
-        //       16.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
-        // ),
+        title: Text(
+          "Business",
+          style: CustomWidget(context: context).CustomSizedTextStyle(
+              16.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+        ),
+        centerTitle: true,
         actions: [
           InkWell(
             onTap: (){
-             Navigator.of(context).popUntil((route) => route.isFirst);
+              Navigator.of(context).popUntil((route) => route.isFirst);
             },
             child: Container(
               padding: EdgeInsets.fromLTRB(1.0, 0.0, 15.0, 0.0),
@@ -121,7 +130,6 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-
               Container(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,10 +138,10 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                     SizedBox(height: 15.0,),
 
                     Text(
-                      "Enter Property Pricing Details",
+                      "Enter Relevant Business Info",
                       style: CustomWidget(context: context)
                           .CustomSizedTextStyle(
-                          24.0,
+                          25.0,
                           AppColors.blackColor,
                           FontWeight.w600,
                           'FontRegular'),
@@ -142,7 +150,7 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                       height: 10.0,
                     ),
                     Text(
-                      "Enter the sales price for the property, as well as any earnest money requirements or other relevant pricing details.",
+                      "Please enter relevant business dates, such as the date of incorporation and state of incorporation.",
                       style: CustomWidget(context: context)
                           .CustomSizedTextStyle(
                           13.0,
@@ -157,108 +165,7 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Sales Price ",
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              14.0,
-                              AppColors.blackColor,
-                              FontWeight.w500,
-                              'FontRegular'),
-                        ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        TextFormFieldCustom(
-                          onEditComplete: () {
-                            sPriceFocus.unfocus();
-                            FocusScope.of(context).requestFocus(eMoneyFocus);
-                          },
-                          radius: 20.0,
-                          error: "Enter Sales Price",
-                          textColor: AppColors.blackColor,
-                          borderColor: AppColors.hintColor.withOpacity(0.2),
-                          fillColor: AppColors.whiteColor,
-                          hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
-                              15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
-                          textStyle: CustomWidget(context: context).CustomTextStyle(
-                              AppColors.blackColor, FontWeight.w500, 'FontRegular'),
-                          textInputAction: TextInputAction.next,
-                          focusNode: sPriceFocus,
-                          maxlines: 1,
-                          text: '',
-                          hintText: " ",
-                          obscureText: false,
-                          suffix: Container(
-                            width: 0.0,
-                          ),
-                          textChanged: (value) {},
-                          onChanged: () {},
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Please enter Sales Price";
-                            }
-                            return null;
-                          },
-                          enabled: true,
-                          textInputType: TextInputType.number,
-                          controller: sPriceController,
-                        ),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-
-                        Text(
-                          "Earnest Money ",
-                          style: CustomWidget(context: context)
-                              .CustomSizedTextStyle(
-                              14.0,
-                              AppColors.blackColor,
-                              FontWeight.w500,
-                              'FontRegular'),
-                        ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        TextFormFieldCustom(
-                          onEditComplete: () {
-                            eMoneyFocus.unfocus();
-                          },
-                          radius: 20.0,
-                          error: "Enter Earnest Money Details",
-                          textColor: AppColors.blackColor,
-                          borderColor: AppColors.hintColor.withOpacity(0.2),
-                          fillColor: AppColors.whiteColor,
-                          hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
-                              15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
-                          textStyle: CustomWidget(context: context).CustomTextStyle(
-                              AppColors.blackColor, FontWeight.w500, 'FontRegular'),
-                          textInputAction: TextInputAction.next,
-                          focusNode: eMoneyFocus,
-                          maxlines: 1,
-                          text: '',
-                          hintText: " ",
-                          obscureText: false,
-                          suffix: Container(
-                            width: 0.0,
-                          ),
-                          textChanged: (value) {},
-                          onChanged: () {},
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Please enter Earnest Money Details";
-                            }
-                            return null;
-                          },
-                          enabled: true,
-                          textInputType: TextInputType.number,
-                          controller: eMoneyController,
-                        ),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-
-                        Text(
-                          "Closing Date",
+                          "Date incorporation",
                           style: CustomWidget(context: context)
                               .CustomSizedTextStyle(
                               14.0,
@@ -271,7 +178,7 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                         ),
                         InkWell(
                           onTap: (){
-                            selectedClosingDate = DateTime(
+                            selectedIncopDate = DateTime(
                                 (DateTime.now()).year,
                                 (DateTime.now()).month,
                                 (DateTime.now()).day);
@@ -279,17 +186,17 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                                 context,
                                 true,
                                 DateTime(
-                                    selectedClosingDate!.year,
-                                    selectedClosingDate!.month,
-                                    selectedClosingDate!.day),
+                                    selectedIncopDate!.year,
+                                    selectedIncopDate!.month,
+                                    selectedIncopDate!.day),
                                 DateTime(
-                                    selectedClosingDate!.year - 100,
-                                    selectedClosingDate!.month,
-                                    selectedClosingDate!.day),
+                                    selectedIncopDate!.year - 100,
+                                    selectedIncopDate!.month,
+                                    selectedIncopDate!.day),
                                 DateTime(
-                                    selectedClosingDate!.year,
-                                    selectedClosingDate!.month,
-                                    selectedClosingDate!.day));
+                                    selectedIncopDate!.year,
+                                    selectedIncopDate!.month,
+                                    selectedIncopDate!.day));
                           },
                           child: Container(
                             padding: EdgeInsets.fromLTRB(10.0, 13.0, 10.0, 13.0),
@@ -303,7 +210,7 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  dateController.text.toString(),
+                                  inCopController.text.toString(),
                                   style: CustomWidget(context: context)
                                       .CustomSizedTextStyle(
                                       14.0,
@@ -320,14 +227,184 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                             ),
                           ),
                         ),
+
                         SizedBox(
                           height: 20.0,
                         ),
+
+                        Text(
+                          "State of Incorporation",
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(
+                              14.0,
+                              AppColors.blackColor,
+                              FontWeight.w500,
+                              'FontRegular'),
+                        ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(color: AppColors.hintColor.withOpacity(0.3)),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                          child: DropdownButton(
+                            underline: Container(
+                              height: 0.0,
+                            ),
+                            menuMaxHeight: MediaQuery.of(context).size.height * 0.7,
+                            items: _selectedStateInCop
+                                .map((value) => DropdownMenuItem(
+                              child: Text(
+                                value.toString(),
+                                style: CustomWidget(context: context)
+                                    .CustomSizedTextStyle(
+                                    14.0,
+                                    AppColors.blackColor,
+                                    FontWeight.w500,
+                                    'FontRegular'),
+                              ),
+                              value: value,
+                            ))
+                                .toList(),
+                            onChanged: (value) async {
+                              setState(() {
+                                sectedValueCop=value.toString();
+
+                              });
+                            },
+                            hint: Text(
+                              "Select Category",
+                              style: CustomWidget(context: context).CustomSizedTextStyle(
+                                  12.0,
+                                  Theme.of(context).errorColor,
+                                  FontWeight.w500,
+                                  'FontRegular'),
+                            ),
+                            isExpanded: true,
+                            value: sectedValueCop,
+                            icon: const Icon(
+                              Icons.arrow_drop_down,
+                              // color: AppColors.otherTextColor,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 25.0,
+                        ),
+                        Text(
+                          "EIN ",
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(
+                              14.0,
+                              AppColors.blackColor,
+                              FontWeight.w500,
+                              'FontRegular'),
+                        ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        TextFormFieldCustom(
+                          onEditComplete: () {
+                            einFocus.unfocus();
+                            FocusScope.of(context).requestFocus(ownerFocus);
+                          },
+                          radius: 20.0,
+                          error: "Enter EIN Number",
+                          textColor: AppColors.blackColor,
+                          borderColor: AppColors.hintColor.withOpacity(0.2),
+                          fillColor: AppColors.whiteColor,
+                          hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
+                              15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
+                          textStyle: CustomWidget(context: context).CustomTextStyle(
+                              AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                          textInputAction: TextInputAction.next,
+                          focusNode: einFocus,
+                          maxlines: 1,
+                          text: '',
+                          hintText: " ",
+                          obscureText: false,
+                          suffix: Container(
+                            width: 0.0,
+                          ),
+                          textChanged: (value) {},
+                          onChanged: () {},
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please enter EIN Number";
+                            }
+                            return null;
+                          },
+                          enabled: true,
+                          textInputType: TextInputType.number,
+                          controller: einController,
+                        ),
+
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        Text(
+                          "Number of Owners ",
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(
+                              14.0,
+                              AppColors.blackColor,
+                              FontWeight.w500,
+                              'FontRegular'),
+                        ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        TextFormFieldCustom(
+                          onEditComplete: () {
+                            ownerFocus.unfocus();
+                          },
+                          radius: 20.0,
+                          error: "Enter Number of Owners ",
+                          textColor: AppColors.blackColor,
+                          borderColor: AppColors.hintColor.withOpacity(0.2),
+                          fillColor: AppColors.whiteColor,
+                          hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
+                              15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
+                          textStyle: CustomWidget(context: context).CustomTextStyle(
+                              AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                          textInputAction: TextInputAction.next,
+                          focusNode: ownerFocus,
+                          maxlines: 1,
+                          text: '',
+                          hintText: " ",
+                          obscureText: false,
+                          suffix: Container(
+                            width: 0.0,
+                          ),
+                          textChanged: (value) {},
+                          onChanged: () {},
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please enter Number of Owners ";
+                            }
+                            return null;
+                          },
+                          enabled: true,
+                          textInputType: TextInputType.number,
+                          controller: ownerController,
+                        ),
+
+                        SizedBox(
+                          height: 20.0,
+                        ),
+
                       ],
                     )),
+                    Container(
+                      height: 30.0,
+                    ),
                   ],
                 ),
               ),
+              SizedBox(height: 10.0,),
 
               InkWell(
                 onTap: (){
@@ -335,7 +412,7 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                     Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (context) =>
-                                PropertyInfo_Screen5()));
+                                BusinessInfo_Screen3()));
                   });
                 },
                 child: Container(
@@ -361,9 +438,7 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                 ),
               ),
 
-              SizedBox(
-                height: 10.0,
-              ),
+              SizedBox(height: 20.0,),
             ],
 
           ),
