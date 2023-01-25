@@ -51,7 +51,7 @@ class _Success_Property_ScreenState extends State<Success_Property_Screen> {
                 'FontRegular'),
           ),
 
-          SizedBox(height: 50.0,),
+          SizedBox(height: 100.0,),
 
           GestureDetector(
             onTap: (){
