@@ -282,7 +282,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SvgPicture.asset("assets/menu/Accept.svg",
-                              height: 22.0,
+                              height: 25.0,
                             ),
                             SizedBox(height: 10.0,),
                             Text(
@@ -301,7 +301,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SvgPicture.asset("assets/menu/Handshake.svg",
-                              height: 22.0,
+                              height: 25.0,
                             ),
                             SizedBox(height: 10.0,),
                             Text(
@@ -320,7 +320,7 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SvgPicture.asset("assets/menu/Cancel.svg",
-                              height: 22.0,
+                              height: 25.0,
                             ),
                             SizedBox(height: 10.0,),
                             Text(
