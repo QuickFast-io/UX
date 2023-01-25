@@ -71,75 +71,83 @@ class _PropertyInfo_Screen7State extends State<PropertyInfo_Screen7> {
         color: AppColors.whiteColor,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(height: 15.0,),
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(height: 15.0,),
 
-            Text(
-              "Do you have a survey document?",
-              style: CustomWidget(context: context)
-                  .CustomSizedTextStyle(
-                  15.0,
-                  AppColors.blackColor,
-                  FontWeight.w500,
-                  'FontRegular'),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
+                  Text(
+                    "Do you have a survey document?",
+                    style: CustomWidget(context: context)
+                        .CustomSizedTextStyle(
+                        15.0,
+                        AppColors.blackColor,
+                        FontWeight.w500,
+                        'FontRegular'),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
 
-            Theme(data: ThemeData(
-              primarySwatch: Colors.yellow,
-              unselectedWidgetColor: Colors.grey, // Your color
-            ),
-              child: RadioListTile(
-                title: Text("Yes",
-                  textAlign: TextAlign.start,
-                  style: CustomWidget(context: context)
-                      .CustomSizedTextStyle(
-                      14.0,
-                      Colors.black,
-                      FontWeight.w600,
-                      'FontRegular'),
-                ),
-                value: "yes",
-                groupValue: accept,
-                onChanged: (value){
-                  setState(() {
-                    accept = value.toString();
-                  });
-                },
-              ),),
+                  Theme(data: ThemeData(
+                    primarySwatch: Colors.yellow,
+                    unselectedWidgetColor: Colors.grey, // Your color
+                  ),
+                    child: RadioListTile(
+                      title: Text("Yes",
+                        textAlign: TextAlign.start,
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            14.0,
+                            Colors.black,
+                            FontWeight.w600,
+                            'FontRegular'),
+                      ),
+                      value: "yes",
+                      groupValue: accept,
+                      onChanged: (value){
+                        setState(() {
+                          accept = value.toString();
+                        });
+                      },
+                    ),),
 
-            Theme(data: ThemeData(
-              primarySwatch: Colors.yellow,
-              unselectedWidgetColor: Colors.grey, // Your color
-            ),
-              child: RadioListTile(
-                title: Text("No",
-                  textAlign: TextAlign.start,
-                  style: CustomWidget(context: context)
-                      .CustomSizedTextStyle(
-                      14.0,
-                      Colors.black,
-                      FontWeight.w600,
-                      'FontRegular'),
-                ),
-                value: "no",
-                groupValue: accept,
-                onChanged: (value){
-                  setState(() {
-                    accept = value.toString();
-                  });
-                },
-              ),),
+                  Theme(data: ThemeData(
+                    primarySwatch: Colors.yellow,
+                    unselectedWidgetColor: Colors.grey, // Your color
+                  ),
+                    child: RadioListTile(
+                      title: Text("No",
+                        textAlign: TextAlign.start,
+                        style: CustomWidget(context: context)
+                            .CustomSizedTextStyle(
+                            14.0,
+                            Colors.black,
+                            FontWeight.w600,
+                            'FontRegular'),
+                      ),
+                      value: "no",
+                      groupValue: accept,
+                      onChanged: (value){
+                        setState(() {
+                          accept = value.toString();
+                        });
+                      },
+                    ),),
 
-            SizedBox(
-              height: 25.0,
+                  SizedBox(
+                    height: 25.0,
+                  ),
+                ],
+              ),
             ),
             Container(
-              height: 250.0,
+              height: 50.0,
             ),
-
             InkWell(
               onTap: (){
                 setState(() {
@@ -171,6 +179,8 @@ class _PropertyInfo_Screen7State extends State<PropertyInfo_Screen7> {
                 ),
               ),
             ),
+
+            SizedBox(height: 10.0,)
           ],
 
         ),

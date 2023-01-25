@@ -119,248 +119,256 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
           color: AppColors.whiteColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(height: 15.0,),
 
-              Text(
-                "Enter Property Pricing Details",
-                style: CustomWidget(context: context)
-                    .CustomSizedTextStyle(
-                    24.0,
-                    AppColors.blackColor,
-                    FontWeight.w600,
-                    'FontRegular'),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Text(
-                "Enter the sales price for the property, as well as any earnest money requirements or other relevant pricing details.",
-                style: CustomWidget(context: context)
-                    .CustomSizedTextStyle(
-                    13.0,
-                    AppColors.hintColor,
-                    FontWeight.w500,
-                    'FontRegular'),
-              ),
-              SizedBox(
-                height: 25.0,
-              ),
-              Form(child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Sales Price ",
-                    style: CustomWidget(context: context)
-                        .CustomSizedTextStyle(
-                        14.0,
-                        AppColors.blackColor,
-                        FontWeight.w500,
-                        'FontRegular'),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  TextFormFieldCustom(
-                    onEditComplete: () {
-                      sPriceFocus.unfocus();
-                      FocusScope.of(context).requestFocus(eMoneyFocus);
-                    },
-                    radius: 20.0,
-                    error: "Enter Sales Price",
-                    textColor: AppColors.blackColor,
-                    borderColor: AppColors.hintColor.withOpacity(0.2),
-                    fillColor: AppColors.whiteColor,
-                    hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
-                        15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
-                    textStyle: CustomWidget(context: context).CustomTextStyle(
-                        AppColors.blackColor, FontWeight.w500, 'FontRegular'),
-                    textInputAction: TextInputAction.next,
-                    focusNode: sPriceFocus,
-                    maxlines: 1,
-                    text: '',
-                    hintText: " ",
-                    obscureText: false,
-                    suffix: Container(
-                      width: 0.0,
-                    ),
-                    textChanged: (value) {},
-                    onChanged: () {},
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Please enter Sales Price";
-                      }
-                      return null;
-                    },
-                    enabled: true,
-                    textInputType: TextInputType.number,
-                    controller: sPriceController,
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-
-                  Text(
-                    "Earnest Money ",
-                    style: CustomWidget(context: context)
-                        .CustomSizedTextStyle(
-                        14.0,
-                        AppColors.blackColor,
-                        FontWeight.w500,
-                        'FontRegular'),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  TextFormFieldCustom(
-                    onEditComplete: () {
-                      eMoneyFocus.unfocus();
-                    },
-                    radius: 20.0,
-                    error: "Enter Earnest Money Details",
-                    textColor: AppColors.blackColor,
-                    borderColor: AppColors.hintColor.withOpacity(0.2),
-                    fillColor: AppColors.whiteColor,
-                    hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
-                        15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
-                    textStyle: CustomWidget(context: context).CustomTextStyle(
-                        AppColors.blackColor, FontWeight.w500, 'FontRegular'),
-                    textInputAction: TextInputAction.next,
-                    focusNode: eMoneyFocus,
-                    maxlines: 1,
-                    text: '',
-                    hintText: " ",
-                    obscureText: false,
-                    suffix: Container(
-                      width: 0.0,
-                    ),
-                    textChanged: (value) {},
-                    onChanged: () {},
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Please enter Earnest Money Details";
-                      }
-                      return null;
-                    },
-                    enabled: true,
-                    textInputType: TextInputType.number,
-                    controller: eMoneyController,
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-
-                  Text(
-                    "Closing Date",
-                    style: CustomWidget(context: context)
-                        .CustomSizedTextStyle(
-                        14.0,
-                        AppColors.blackColor,
-                        FontWeight.w500,
-                        'FontRegular'),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  // TextFormFieldCustom(
-                  //   onEditComplete: () {
-                  //     // yearbuildFocus.unfocus();
-                  //     // FocusScope.of(context).requestFocus(squareFocus);
-                  //   },
-                  //   radius: 20.0,
-                  //   error: "Enter Date Details",
-                  //   textColor: AppColors.blackColor,
-                  //   borderColor: AppColors.hintColor.withOpacity(0.2),
-                  //   fillColor: AppColors.whiteColor,
-                  //   hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
-                  //       15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
-                  //   textStyle: CustomWidget(context: context).CustomTextStyle(
-                  //       AppColors.blackColor, FontWeight.w500, 'FontRegular'),
-                  //   textInputAction: TextInputAction.next,
-                  //   focusNode: dateFocus,
-                  //   maxlines: 1,
-                  //   text: '',
-                  //   hintText: "mm/dd/yy",
-                  //   obscureText: false,
-                  //   suffix: Container(
-                  //     child: Icon(
-                  //       Icons.date_range_outlined,
-                  //       size: 20.0,
-                  //       color: AppColors.blackColor,
-                  //     ),
-                  //   ),
-                  //   textChanged: (value) {},
-                  //   onChanged: () {},
-                  //   validator: (value) {
-                  //     if (value!.isEmpty) {
-                  //       return "Please enter Date Details";
-                  //     }
-                  //     return null;
-                  //   },
-                  //   enabled: true,
-                  //   textInputType: TextInputType.datetime,
-                  //   controller: dateController,
-                  // ),
-
-                  InkWell(
-                    onTap: (){
-                      selectedClosingDate = DateTime(
-                          (DateTime.now()).year,
-                          (DateTime.now()).month,
-                          (DateTime.now()).day);
-                      _selectDate(
-                          context,
-                          true,
-                          DateTime(
-                              selectedClosingDate!.year,
-                              selectedClosingDate!.month,
-                              selectedClosingDate!.day),
-                          DateTime(
-                              selectedClosingDate!.year - 100,
-                              selectedClosingDate!.month,
-                              selectedClosingDate!.day),
-                          DateTime(
-                              selectedClosingDate!.year,
-                              selectedClosingDate!.month,
-                              selectedClosingDate!.day));
-                    },
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(10.0, 13.0, 10.0, 13.0),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.0),
-                          border: Border.all(color: AppColors.hintColor.withOpacity(0.3)),
-                          color: Colors.white
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            dateController.text.toString(),
-                            style: CustomWidget(context: context)
-                                .CustomSizedTextStyle(
-                                14.0,
-                                AppColors.blackColor,
-                                FontWeight.w500,
-                                'FontRegular'),
-                          ),
-                          Icon(
-                            Icons.date_range_outlined,
-                            size: 20.0,
-                            color: AppColors.blackColor,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                ],
-              )),
               Container(
-                height: 50.0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 15.0,),
+
+                    Text(
+                      "Enter Property Pricing Details",
+                      style: CustomWidget(context: context)
+                          .CustomSizedTextStyle(
+                          24.0,
+                          AppColors.blackColor,
+                          FontWeight.w600,
+                          'FontRegular'),
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    Text(
+                      "Enter the sales price for the property, as well as any earnest money requirements or other relevant pricing details.",
+                      style: CustomWidget(context: context)
+                          .CustomSizedTextStyle(
+                          13.0,
+                          AppColors.hintColor,
+                          FontWeight.w500,
+                          'FontRegular'),
+                    ),
+                    SizedBox(
+                      height: 25.0,
+                    ),
+                    Form(child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Sales Price ",
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(
+                              14.0,
+                              AppColors.blackColor,
+                              FontWeight.w500,
+                              'FontRegular'),
+                        ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        TextFormFieldCustom(
+                          onEditComplete: () {
+                            sPriceFocus.unfocus();
+                            FocusScope.of(context).requestFocus(eMoneyFocus);
+                          },
+                          radius: 20.0,
+                          error: "Enter Sales Price",
+                          textColor: AppColors.blackColor,
+                          borderColor: AppColors.hintColor.withOpacity(0.2),
+                          fillColor: AppColors.whiteColor,
+                          hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
+                              15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
+                          textStyle: CustomWidget(context: context).CustomTextStyle(
+                              AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                          textInputAction: TextInputAction.next,
+                          focusNode: sPriceFocus,
+                          maxlines: 1,
+                          text: '',
+                          hintText: " ",
+                          obscureText: false,
+                          suffix: Container(
+                            width: 0.0,
+                          ),
+                          textChanged: (value) {},
+                          onChanged: () {},
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please enter Sales Price";
+                            }
+                            return null;
+                          },
+                          enabled: true,
+                          textInputType: TextInputType.number,
+                          controller: sPriceController,
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+
+                        Text(
+                          "Earnest Money ",
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(
+                              14.0,
+                              AppColors.blackColor,
+                              FontWeight.w500,
+                              'FontRegular'),
+                        ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        TextFormFieldCustom(
+                          onEditComplete: () {
+                            eMoneyFocus.unfocus();
+                          },
+                          radius: 20.0,
+                          error: "Enter Earnest Money Details",
+                          textColor: AppColors.blackColor,
+                          borderColor: AppColors.hintColor.withOpacity(0.2),
+                          fillColor: AppColors.whiteColor,
+                          hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
+                              15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
+                          textStyle: CustomWidget(context: context).CustomTextStyle(
+                              AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                          textInputAction: TextInputAction.next,
+                          focusNode: eMoneyFocus,
+                          maxlines: 1,
+                          text: '',
+                          hintText: " ",
+                          obscureText: false,
+                          suffix: Container(
+                            width: 0.0,
+                          ),
+                          textChanged: (value) {},
+                          onChanged: () {},
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please enter Earnest Money Details";
+                            }
+                            return null;
+                          },
+                          enabled: true,
+                          textInputType: TextInputType.number,
+                          controller: eMoneyController,
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+
+                        Text(
+                          "Closing Date",
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(
+                              14.0,
+                              AppColors.blackColor,
+                              FontWeight.w500,
+                              'FontRegular'),
+                        ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        // TextFormFieldCustom(
+                        //   onEditComplete: () {
+                        //     // yearbuildFocus.unfocus();
+                        //     // FocusScope.of(context).requestFocus(squareFocus);
+                        //   },
+                        //   radius: 20.0,
+                        //   error: "Enter Date Details",
+                        //   textColor: AppColors.blackColor,
+                        //   borderColor: AppColors.hintColor.withOpacity(0.2),
+                        //   fillColor: AppColors.whiteColor,
+                        //   hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
+                        //       15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
+                        //   textStyle: CustomWidget(context: context).CustomTextStyle(
+                        //       AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                        //   textInputAction: TextInputAction.next,
+                        //   focusNode: dateFocus,
+                        //   maxlines: 1,
+                        //   text: '',
+                        //   hintText: "mm/dd/yy",
+                        //   obscureText: false,
+                        //   suffix: Container(
+                        //     child: Icon(
+                        //       Icons.date_range_outlined,
+                        //       size: 20.0,
+                        //       color: AppColors.blackColor,
+                        //     ),
+                        //   ),
+                        //   textChanged: (value) {},
+                        //   onChanged: () {},
+                        //   validator: (value) {
+                        //     if (value!.isEmpty) {
+                        //       return "Please enter Date Details";
+                        //     }
+                        //     return null;
+                        //   },
+                        //   enabled: true,
+                        //   textInputType: TextInputType.datetime,
+                        //   controller: dateController,
+                        // ),
+
+                        InkWell(
+                          onTap: (){
+                            selectedClosingDate = DateTime(
+                                (DateTime.now()).year,
+                                (DateTime.now()).month,
+                                (DateTime.now()).day);
+                            _selectDate(
+                                context,
+                                true,
+                                DateTime(
+                                    selectedClosingDate!.year,
+                                    selectedClosingDate!.month,
+                                    selectedClosingDate!.day),
+                                DateTime(
+                                    selectedClosingDate!.year - 100,
+                                    selectedClosingDate!.month,
+                                    selectedClosingDate!.day),
+                                DateTime(
+                                    selectedClosingDate!.year,
+                                    selectedClosingDate!.month,
+                                    selectedClosingDate!.day));
+                          },
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(10.0, 13.0, 10.0, 13.0),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20.0),
+                                border: Border.all(color: AppColors.hintColor.withOpacity(0.3)),
+                                color: Colors.white
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  dateController.text.toString(),
+                                  style: CustomWidget(context: context)
+                                      .CustomSizedTextStyle(
+                                      14.0,
+                                      AppColors.blackColor,
+                                      FontWeight.w500,
+                                      'FontRegular'),
+                                ),
+                                Icon(
+                                  Icons.date_range_outlined,
+                                  size: 20.0,
+                                  color: AppColors.blackColor,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                      ],
+                    )),
+                  ],
+                ),
               ),
+
               InkWell(
                 onTap: (){
                   setState(() {
@@ -391,6 +399,10 @@ class _PropertyInfo_Screen4State extends State<PropertyInfo_Screen4> {
                     ),
                   ),
                 ),
+              ),
+
+              SizedBox(
+                height: 10.0,
               ),
             ],
 

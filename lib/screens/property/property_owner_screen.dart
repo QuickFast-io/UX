@@ -80,193 +80,199 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
           color: AppColors.whiteColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(height: 15.0,),
-
-              Text(
-                "Provide Other Property Owner's Information",
-                style: CustomWidget(context: context)
-                    .CustomSizedTextStyle(
-                    28.0,
-                    AppColors.blackColor,
-                    FontWeight.w600,
-                    'FontRegular'),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Text(
-                "If there are multiple owners of the property, enter their names and contact information here.",
-                style: CustomWidget(context: context)
-                    .CustomSizedTextStyle(
-                    13.0,
-                    AppColors.hintColor,
-                    FontWeight.w500,
-                    'FontRegular'),
-              ),
-              SizedBox(
-                height: 25.0,
-              ),
-             Form(child: Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
-               children: [
-                 Text(
-                   "Legal name ",
-                   style: CustomWidget(context: context)
-                       .CustomSizedTextStyle(
-                       14.0,
-                       AppColors.blackColor,
-                       FontWeight.w500,
-                       'FontRegular'),
-                 ),
-                 SizedBox(
-                   height: 10.0,
-                 ),
-                 TextFormFieldCustom(
-                   onEditComplete: () {
-                     nameFocus.unfocus();
-                     FocusScope.of(context).requestFocus(emailFocus);
-                   },
-                   radius: 20.0,
-                   error: "Enter Legal Name",
-                   textColor: AppColors.blackColor,
-                   borderColor: AppColors.hintColor.withOpacity(0.2),
-                   fillColor: AppColors.whiteColor,
-                   hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
-                       15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
-                   textStyle: CustomWidget(context: context).CustomTextStyle(
-                       AppColors.blackColor, FontWeight.w500, 'FontRegular'),
-                   textInputAction: TextInputAction.next,
-                   focusNode: nameFocus,
-                   maxlines: 1,
-                   text: '',
-                   hintText: " ",
-                   obscureText: false,
-                   suffix: Container(
-                     width: 0.0,
-                   ),
-                   textChanged: (value) {},
-                   onChanged: () {},
-                   validator: (value) {
-                     if (value!.isEmpty) {
-                       return "Please enter legal name";
-                     }
-                     return null;
-                   },
-                   enabled: true,
-                   textInputType: TextInputType.emailAddress,
-                   controller: nameController,
-                 ),
-                 const SizedBox(
-                   height: 25.0,
-                 ),
-
-                 Text(
-                   "Active email",
-                   style: CustomWidget(context: context)
-                       .CustomSizedTextStyle(
-                       14.0,
-                       AppColors.blackColor,
-                       FontWeight.w500,
-                       'FontRegular'),
-                 ),
-                 SizedBox(
-                   height: 10.0,
-                 ),
-                 TextFormFieldCustom(
-                   onEditComplete: () {
-                     emailFocus.unfocus();
-                   },
-                   radius: 20.0,
-                   error: "Enter Legal Name",
-                   textColor: AppColors.blackColor,
-                   borderColor: AppColors.hintColor.withOpacity(0.2),
-                   fillColor: AppColors.whiteColor,
-                   hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
-                       15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
-                   textStyle: CustomWidget(context: context).CustomTextStyle(
-                       AppColors.blackColor, FontWeight.w500, 'FontRegular'),
-                   textInputAction: TextInputAction.next,
-                   focusNode: emailFocus,
-                   maxlines: 1,
-                   text: '',
-                   hintText: " ",
-                   obscureText: false,
-                   suffix: Container(
-                     width: 0.0,
-                   ),
-                   textChanged: (value) {},
-                   onChanged: () {},
-                   validator: (value) {
-                     if (value!.isEmpty) {
-                       return "Please enter email";
-                     }else if (!RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                         .hasMatch(value)) {
-                       return "Please enter valid email";
-                     }
-                     return null;
-                   },
-                   enabled: true,
-                   textInputType: TextInputType.emailAddress,
-                   controller: emailController,
-                 ),
-                 SizedBox(
-                   height: 20.0,
-                 ),
-
-                 InkWell(
-                   onTap: (){
-                     setState(() {
-                       // Navigator.of(context).push(
-                       //     MaterialPageRoute(
-                       //         builder: (context) =>
-                       //             CongratsScreen()));
-                     });
-                   },
-                   child: Container(
-                     padding: EdgeInsets.fromLTRB(5.0, 12.0, 5.0, 12.0),
-                     decoration: BoxDecoration(
-                       color: AppColors.whiteColor,
-                       border: Border.all(
-                           color: AppColors.blackColor
-                       ),
-                       borderRadius: BorderRadius.circular(15.0),
-                     ),
-                     child: Center(
-                       child: Text(
-                         "Add Owner",
-                         style: CustomWidget(context: context)
-                             .CustomSizedTextStyle(
-                             15.0,
-                             AppColors.blackColor,
-                             FontWeight.w600,
-                             'FontRegular'),
-                       ),
-                     ),
-                   ),
-                 ),
-
-               ],
-             )),
               Container(
-                height: 60.0,
-              ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 15.0,),
 
-              SizedBox(
-                height: 15.0,
-              ),
+                    Text(
+                      "Provide Other Property Owner's Information",
+                      style: CustomWidget(context: context)
+                          .CustomSizedTextStyle(
+                          28.0,
+                          AppColors.blackColor,
+                          FontWeight.w600,
+                          'FontRegular'),
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    Text(
+                      "If there are multiple owners of the property, enter their names and contact information here.",
+                      style: CustomWidget(context: context)
+                          .CustomSizedTextStyle(
+                          13.0,
+                          AppColors.hintColor,
+                          FontWeight.w500,
+                          'FontRegular'),
+                    ),
+                    SizedBox(
+                      height: 25.0,
+                    ),
+                    Form(child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Legal name ",
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(
+                              14.0,
+                              AppColors.blackColor,
+                              FontWeight.w500,
+                              'FontRegular'),
+                        ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        TextFormFieldCustom(
+                          onEditComplete: () {
+                            nameFocus.unfocus();
+                            FocusScope.of(context).requestFocus(emailFocus);
+                          },
+                          radius: 20.0,
+                          error: "Enter Legal Name",
+                          textColor: AppColors.blackColor,
+                          borderColor: AppColors.hintColor.withOpacity(0.2),
+                          fillColor: AppColors.whiteColor,
+                          hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
+                              15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
+                          textStyle: CustomWidget(context: context).CustomTextStyle(
+                              AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                          textInputAction: TextInputAction.next,
+                          focusNode: nameFocus,
+                          maxlines: 1,
+                          text: '',
+                          hintText: " ",
+                          obscureText: false,
+                          suffix: Container(
+                            width: 0.0,
+                          ),
+                          textChanged: (value) {},
+                          onChanged: () {},
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please enter legal name";
+                            }
+                            return null;
+                          },
+                          enabled: true,
+                          textInputType: TextInputType.emailAddress,
+                          controller: nameController,
+                        ),
+                        const SizedBox(
+                          height: 25.0,
+                        ),
 
-              Text(
-                "List of Owners".toUpperCase(),
-                style: CustomWidget(context: context)
-                    .CustomSizedTextStyle(
-                    14.0,
-                    AppColors.blackColor,
-                    FontWeight.w700,
-                    'FontRegular'),
-              ),
-              Container(
-                height: 100.0,
+                        Text(
+                          "Active email",
+                          style: CustomWidget(context: context)
+                              .CustomSizedTextStyle(
+                              14.0,
+                              AppColors.blackColor,
+                              FontWeight.w500,
+                              'FontRegular'),
+                        ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        TextFormFieldCustom(
+                          onEditComplete: () {
+                            emailFocus.unfocus();
+                          },
+                          radius: 20.0,
+                          error: "Enter Legal Name",
+                          textColor: AppColors.blackColor,
+                          borderColor: AppColors.hintColor.withOpacity(0.2),
+                          fillColor: AppColors.whiteColor,
+                          hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
+                              15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
+                          textStyle: CustomWidget(context: context).CustomTextStyle(
+                              AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                          textInputAction: TextInputAction.next,
+                          focusNode: emailFocus,
+                          maxlines: 1,
+                          text: '',
+                          hintText: " ",
+                          obscureText: false,
+                          suffix: Container(
+                            width: 0.0,
+                          ),
+                          textChanged: (value) {},
+                          onChanged: () {},
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please enter email";
+                            }else if (!RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                .hasMatch(value)) {
+                              return "Please enter valid email";
+                            }
+                            return null;
+                          },
+                          enabled: true,
+                          textInputType: TextInputType.emailAddress,
+                          controller: emailController,
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+
+                        InkWell(
+                          onTap: (){
+                            setState(() {
+                              // Navigator.of(context).push(
+                              //     MaterialPageRoute(
+                              //         builder: (context) =>
+                              //             CongratsScreen()));
+                            });
+                          },
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(5.0, 12.0, 5.0, 12.0),
+                            decoration: BoxDecoration(
+                              color: AppColors.whiteColor,
+                              border: Border.all(
+                                  color: AppColors.blackColor
+                              ),
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Add Owner",
+                                style: CustomWidget(context: context)
+                                    .CustomSizedTextStyle(
+                                    15.0,
+                                    AppColors.blackColor,
+                                    FontWeight.w600,
+                                    'FontRegular'),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                      ],
+                    )),
+                    Container(
+                      height: 60.0,
+                    ),
+
+                    SizedBox(
+                      height: 15.0,
+                    ),
+
+                    Text(
+                      "List of Owners".toUpperCase(),
+                      style: CustomWidget(context: context)
+                          .CustomSizedTextStyle(
+                          14.0,
+                          AppColors.blackColor,
+                          FontWeight.w700,
+                          'FontRegular'),
+                    ),
+                  ],
+                ),
               ),
 
               SizedBox(
@@ -304,6 +310,11 @@ class _Property_Owner_ScreenState extends State<Property_Owner_Screen> {
                   ),
                 ),
               ),
+
+              SizedBox(
+                height: 10.0,
+              ),
+
             ],
 
           ),
