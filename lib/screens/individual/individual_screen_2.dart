@@ -1,42 +1,44 @@
-import 'package:country_calling_code_picker/functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
-import 'package:rabbit/common/country.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/textformfield_custom.dart';
-import 'package:rabbit/screens/individual/individual_screen_2.dart';
+import 'package:rabbit/screens/individual/individual_screen_3.dart';
 
-class Individual_Screen extends StatefulWidget {
-  const Individual_Screen({Key? key}) : super(key: key);
+class Individual_Screen2 extends StatefulWidget {
+  const Individual_Screen2({Key? key}) : super(key: key);
 
   @override
-  State<Individual_Screen> createState() => _Individual_ScreenState();
+  State<Individual_Screen2> createState() => _Individual_Screen2State();
 }
 
-class _Individual_ScreenState extends State<Individual_Screen> {
+class _Individual_Screen2State extends State<Individual_Screen2> {
 
-  // Country? _selectedCountry;
-  bool mobileVerify = true;
-  bool countryB = false;
+  FocusNode addressFocus = FocusNode();
+  FocusNode suiteFocus = FocusNode();
+  FocusNode zipFocus = FocusNode();
+  TextEditingController addressController = TextEditingController();
+  TextEditingController zipController = TextEditingController();
+  TextEditingController suiteController = TextEditingController();
 
-  FocusNode fnameFocus = FocusNode();
-  FocusNode lnameFocus = FocusNode();
-  FocusNode emailFocus = FocusNode();
-  FocusNode mobileFocus = FocusNode();
-  TextEditingController fnameController = TextEditingController();
-  TextEditingController lnameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController mobileController = TextEditingController();
+  List _selectedCity = [
+    "Chennai","Madurai","Ramanathapuram","Trichy","Theni","Thanjavur","Sivagangai","Puthukottai","chengalpat"
+  ];
 
-  // void initCountry() async {
-  //   final country = await getDefaultCountry(context);
-  //   setState(() {
-  //     _selectedCountry = country;
-  //     countryB = true;
-  //
-  //   });
-  // }
+  List _selectedState = [
+    "Tamilnadu","Kerala", "Karnadaka","Andhra",
+  ];
+  String seectedValue= "";
+  String seelectedState= "";
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    seectedValue = _selectedCity.first;
+    seelectedState = _selectedState.first;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +109,7 @@ class _Individual_ScreenState extends State<Individual_Screen> {
                       SizedBox(height: 15.0,),
 
                       Text(
-                        "Provide Personal Information",
+                        "Provide Location Details",
                         style: CustomWidget(context: context)
                             .CustomSizedTextStyle(
                             25.0,
@@ -119,7 +121,7 @@ class _Individual_ScreenState extends State<Individual_Screen> {
                         height: 10.0,
                       ),
                       Text(
-                        "Pease enter your legal personal information, including your name, email, and phone number.",
+                        "Please provide your location details, including your city, state, zip code, and address.",
                         style: CustomWidget(context: context)
                             .CustomSizedTextStyle(
                             13.0,
@@ -133,8 +135,9 @@ class _Individual_ScreenState extends State<Individual_Screen> {
                       Form(child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+
                           Text(
-                            "First Name ",
+                            "Address ",
                             style: CustomWidget(context: context)
                                 .CustomSizedTextStyle(
                                 14.0,
@@ -147,11 +150,11 @@ class _Individual_ScreenState extends State<Individual_Screen> {
                           ),
                           TextFormFieldCustom(
                             onEditComplete: () {
-                              fnameFocus.unfocus();
-                              FocusScope.of(context).requestFocus(lnameFocus);
+                              addressFocus.unfocus();
+                              FocusScope.of(context).requestFocus(suiteFocus);
                             },
                             radius: 20.0,
-                            error: "Enter First Name",
+                            error: "Enter address",
                             textColor: AppColors.blackColor,
                             borderColor: AppColors.hintColor.withOpacity(0.2),
                             fillColor: AppColors.whiteColor,
@@ -160,8 +163,8 @@ class _Individual_ScreenState extends State<Individual_Screen> {
                             textStyle: CustomWidget(context: context).CustomTextStyle(
                                 AppColors.blackColor, FontWeight.w500, 'FontRegular'),
                             textInputAction: TextInputAction.next,
-                            focusNode: fnameFocus,
-                            maxlines: 1,
+                            focusNode: addressFocus,
+                            maxlines: 5,
                             text: '',
                             hintText: " ",
                             obscureText: false,
@@ -172,72 +175,20 @@ class _Individual_ScreenState extends State<Individual_Screen> {
                             onChanged: () {},
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return "Please enter First Name";
+                                return "Please enter Address";
                               }
                               return null;
                             },
                             enabled: true,
-                            textInputType: TextInputType.name,
-                            controller: fnameController,
-                          ),
-
-                          SizedBox(
-                            height: 20.0,
-                          ),
-
-                          Text(
-                            "Last Name ",
-                            style: CustomWidget(context: context)
-                                .CustomSizedTextStyle(
-                                14.0,
-                                AppColors.blackColor,
-                                FontWeight.w500,
-                                'FontRegular'),
-                          ),
-                          SizedBox(
-                            height: 10.0,
-                          ),
-                          TextFormFieldCustom(
-                            onEditComplete: () {
-                              lnameFocus.unfocus();
-                              FocusScope.of(context).requestFocus(emailFocus);
-                            },
-                            radius: 20.0,
-                            error: "Enter Last Name",
-                            textColor: AppColors.blackColor,
-                            borderColor: AppColors.hintColor.withOpacity(0.2),
-                            fillColor: AppColors.whiteColor,
-                            hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
-                                15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
-                            textStyle: CustomWidget(context: context).CustomTextStyle(
-                                AppColors.blackColor, FontWeight.w500, 'FontRegular'),
-                            textInputAction: TextInputAction.next,
-                            focusNode: lnameFocus,
-                            maxlines: 1,
-                            text: '',
-                            hintText: " ",
-                            obscureText: false,
-                            suffix: Container(
-                              width: 0.0,
-                            ),
-                            textChanged: (value) {},
-                            onChanged: () {},
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return "Please enter Last Name";
-                              }
-                              return null;
-                            },
-                            enabled: true,
-                            textInputType: TextInputType.name,
-                            controller: lnameController,
+                            textInputType: TextInputType.streetAddress,
+                            controller: addressController,
                           ),
                           const SizedBox(
                             height: 25.0,
                           ),
 
                           Text(
-                            "Email Address",
+                            "Suite or Number ",
                             style: CustomWidget(context: context)
                                 .CustomSizedTextStyle(
                                 14.0,
@@ -250,23 +201,23 @@ class _Individual_ScreenState extends State<Individual_Screen> {
                           ),
                           TextFormFieldCustom(
                             onEditComplete: () {
-                              emailFocus.unfocus();
-                              // FocusScope.of(context).requestFocus(emailFocus);
+                              suiteFocus.unfocus();
+                              FocusScope.of(context).requestFocus(zipFocus);
                             },
                             radius: 20.0,
-                            error: "Enter Email Address",
+                            error: "Enter Suite or Number",
                             textColor: AppColors.blackColor,
                             borderColor: AppColors.hintColor.withOpacity(0.2),
                             fillColor: AppColors.whiteColor,
                             hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
-                                15.0, AppColors.hintColor.withOpacity(0.5), FontWeight.w500, 'FontRegular'),
+                                15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
                             textStyle: CustomWidget(context: context).CustomTextStyle(
                                 AppColors.blackColor, FontWeight.w500, 'FontRegular'),
                             textInputAction: TextInputAction.next,
-                            focusNode: emailFocus,
+                            focusNode: suiteFocus,
                             maxlines: 1,
                             text: '',
-                            hintText: "First,last name@",
+                            hintText: " ",
                             obscureText: false,
                             suffix: Container(
                               width: 0.0,
@@ -275,20 +226,23 @@ class _Individual_ScreenState extends State<Individual_Screen> {
                             onChanged: () {},
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return "Please enter Email Address";
+                                return "Please enter Suite or Number";
                               }
                               return null;
                             },
                             enabled: true,
-                            textInputType: TextInputType.emailAddress,
-                            controller: emailController,
-                          ),
-                          SizedBox(
-                            height: 25.0,
+                            textInputType: TextInputType.number,
+                            controller: suiteController,
                           ),
 
+                          SizedBox(
+                            height: 20.0,
+                          ),
+
+
+
                           Text(
-                            "Phone ",
+                            "City",
                             style: CustomWidget(context: context)
                                 .CustomSizedTextStyle(
                                 14.0,
@@ -299,79 +253,166 @@ class _Individual_ScreenState extends State<Individual_Screen> {
                           SizedBox(
                             height: 10.0,
                           ),
-                          // Row(
-                          //   children: [
-                          //     Container(
-                          //         padding: const EdgeInsets.only(
-                          //             left: 10.0, right: 10.0, top: 14.0, bottom: 14.0),
-                          //         decoration: BoxDecoration(
-                          //           border: Border.all(
-                          //               color: AppColors.appColor,
-                          //               width: 1.0),
-                          //           color: AppColors.appColor,
-                          //           borderRadius: BorderRadius.only(
-                          //             topLeft: Radius.circular(5.0),
-                          //             bottomLeft: Radius.circular(5.0),
-                          //           ),
-                          //         ),
-                          //         child: Row(
-                          //           children: [
-                          //             InkWell(
-                          //               onTap: _onPressedShowBottomSheet,
-                          //               child: Row(
-                          //                 children: [
-                          //                   Text(
-                          //                     countryB
-                          //                         ? _selectedCountry!.callingCode.toString()
-                          //                         : "+1",
-                          //                     style: CustomWidget(context: context)
-                          //                         .CustomTextStyle(
-                          //                         Theme.of(context).splashColor,
-                          //                         FontWeight.normal,
-                          //                         'FontRegular'),
-                          //                   ),
-                          //                   const SizedBox(
-                          //                     width: 3.0,
-                          //                   ),
-                          //                   const Icon(
-                          //                     Icons.keyboard_arrow_down_outlined,
-                          //                     size: 15.0,
-                          //                     color: AppColors.backgroundColor,
-                          //                   )
-                          //                 ],
-                          //               ),
-                          //             ),
-                          //             const SizedBox(
-                          //               width: 10.0,
-                          //             ),
-                          //           ],
-                          //         )),
-                          //     Flexible(
-                          //       child: TextFormField(
-                          //         controller: mobileController,
-                          //         focusNode: mobileFocus,
-                          //         maxLines: 1,
-                          //         enabled: mobileVerify,
-                          //         textInputAction: TextInputAction.next,
-                          //         keyboardType: TextInputType.number,
-                          //         style: CustomWidget(context: context).CustomTextStyle(
-                          //             Theme.of(context).splashColor,
-                          //             FontWeight.w400,
-                          //             'FontRegular'),
-                          //         decoration: InputDecoration(
-                          //           contentPadding: const EdgeInsets.only(
-                          //               left: 12, right: 0, top: 2, bottom: 2),
-                          //           hintText: "Please enter Mobile",
-                          //           suffixIcon: Container(
-                          //             height: 0.0,
-                          //             ),
-                          //           ),
-                          //           ),
-                          //         )
-                          //       ),
-                          //     ),
-                          //   ],
-                          // ),
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: AppColors.hintColor.withOpacity(0.3)),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                            child: DropdownButton(
+                              underline: Container(
+                                height: 0.0,
+                              ),
+                              menuMaxHeight: MediaQuery.of(context).size.height * 0.7,
+                              items: _selectedCity
+                                  .map((value) => DropdownMenuItem(
+                                child: Text(
+                                  value.toString(),
+                                  style: CustomWidget(context: context)
+                                      .CustomSizedTextStyle(
+                                      14.0,
+                                      AppColors.blackColor,
+                                      FontWeight.w500,
+                                      'FontRegular'),
+                                ),
+                                value: value,
+                              ))
+                                  .toList(),
+                              onChanged: (value) async {
+                                setState(() {
+                                  seectedValue=value.toString();
+
+                                });
+                              },
+                              hint: Text(
+                                "Select Category",
+                                style: CustomWidget(context: context).CustomSizedTextStyle(
+                                    12.0,
+                                    Theme.of(context).errorColor,
+                                    FontWeight.w500,
+                                    'FontRegular'),
+                              ),
+                              isExpanded: true,
+                              value: seectedValue,
+                              icon: const Icon(
+                                Icons.arrow_drop_down,
+                                // color: AppColors.otherTextColor,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 25.0,
+                          ),
+
+                          Text(
+                            "State ",
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                14.0,
+                                AppColors.blackColor,
+                                FontWeight.w500,
+                                'FontRegular'),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: AppColors.hintColor.withOpacity(0.3)),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                            child: DropdownButton(
+                              underline: Container(
+                                height: 0.0,
+                              ),
+                              menuMaxHeight: MediaQuery.of(context).size.height * 0.7,
+                              items: _selectedState
+                                  .map((value) => DropdownMenuItem(
+                                child: Text(
+                                  value.toString(),
+                                  style: CustomWidget(context: context)
+                                      .CustomSizedTextStyle(
+                                      14.0,
+                                      AppColors.blackColor,
+                                      FontWeight.w500,
+                                      'FontRegular'),
+                                ),
+                                value: value,
+                              ))
+                                  .toList(),
+                              onChanged: (value) async {
+                                setState(() {
+                                  seelectedState=value.toString();
+
+                                });
+                              },
+                              hint: Text(
+                                "Select Category",
+                                style: CustomWidget(context: context).CustomSizedTextStyle(
+                                    12.0,
+                                    Theme.of(context).errorColor,
+                                    FontWeight.w500,
+                                    'FontRegular'),
+                              ),
+                              isExpanded: true,
+                              value: seelectedState,
+                              icon: const Icon(
+                                Icons.arrow_drop_down,
+                                // color: AppColors.otherTextColor,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+
+                          Text(
+                            "Zip ",
+                            style: CustomWidget(context: context)
+                                .CustomSizedTextStyle(
+                                14.0,
+                                AppColors.blackColor,
+                                FontWeight.w500,
+                                'FontRegular'),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          TextFormFieldCustom(
+                            onEditComplete: () {
+                              zipFocus.unfocus();
+                            },
+                            radius: 20.0,
+                            error: "Enter Zip Code",
+                            textColor: AppColors.blackColor,
+                            borderColor: AppColors.hintColor.withOpacity(0.2),
+                            fillColor: AppColors.whiteColor,
+                            hintStyle: CustomWidget(context: context).CustomSizedTextStyle(
+                                15.0, AppColors.hintColor, FontWeight.w500, 'FontRegular'),
+                            textStyle: CustomWidget(context: context).CustomTextStyle(
+                                AppColors.blackColor, FontWeight.w500, 'FontRegular'),
+                            textInputAction: TextInputAction.next,
+                            focusNode: zipFocus,
+                            maxlines: 1,
+                            text: '',
+                            hintText: " ",
+                            obscureText: false,
+                            suffix: Container(
+                              width: 0.0,
+                            ),
+                            textChanged: (value) {},
+                            onChanged: () {},
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Please enter Zip code";
+                              }
+                              return null;
+                            },
+                            enabled: true,
+                            textInputType: TextInputType.number,
+                            controller: zipController,
+                          ),
 
                           SizedBox(
                             height: 20.0,
@@ -394,7 +435,7 @@ class _Individual_ScreenState extends State<Individual_Screen> {
                     Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (context) =>
-                                Individual_Screen2()));
+                                Individual_Screen3()));
                   });
                 },
                 child: Container(
@@ -426,15 +467,4 @@ class _Individual_ScreenState extends State<Individual_Screen> {
       ),
     );
   }
-
-  // void _onPressedShowBottomSheet() async {
-  //   final country = await showCountryPickerSheets(
-  //     context,
-  //   );
-  //   if (country != null) {
-  //     setState(() {
-  //       _selectedCountry = country;
-  //     });
-  //   }
-  // }
 }
