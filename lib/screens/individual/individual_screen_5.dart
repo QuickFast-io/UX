@@ -48,6 +48,7 @@ class _Individual_Screen5State extends State<Individual_Screen5> {
                   SizedBox(
                     height: 10.0,
                   ),
+
                   Text(
                     "We are hunting this information down",
                     style: CustomWidget(context: context)
