@@ -28,9 +28,20 @@ class _Offers_ScreenState extends State<Offers_Screen> {
       appBar: AppBar(
         backgroundColor: AppColors.appColor,
         elevation: 0.5,
-        leading: Container(
-          height: 0.0,
-        ),
+        leading: Padding(
+            padding:
+            EdgeInsets.only(left: 9.0, bottom: 5.0, top: 5.0, right: 2.0),
+            child: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(
+                Icons.arrow_back_rounded,
+                color: AppColors.blackColor,
+
+              ),
+            )),
+
         title: Text(
           "Offers",
           style: CustomWidget(context: context).CustomSizedTextStyle(

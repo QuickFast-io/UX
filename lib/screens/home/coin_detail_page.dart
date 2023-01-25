@@ -3,9 +3,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/localization/localizations.dart';
+import 'package:rabbit/screens/home/wallet_page.dart';
 
 class CoinDetailsPage extends StatefulWidget {
-  const CoinDetailsPage({Key? key}) : super(key: key);
+  Tag? coinDetails;
+   CoinDetailsPage({Key? key,required this.coinDetails}) : super(key: key);
 
   @override
   State<CoinDetailsPage> createState() => _CoinDetailsPageState();
@@ -23,7 +25,7 @@ class _CoinDetailsPageState extends State<CoinDetailsPage> {
         backgroundColor: AppColors.appColor,
         elevation: 0.5,
         title: Text(
-          "Ethereum",
+          widget.coinDetails!.name.toString(),
           style: CustomWidget(context: context).CustomSizedTextStyle(
               18.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
         ),
@@ -53,7 +55,7 @@ class _CoinDetailsPageState extends State<CoinDetailsPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.asset("assets/others/eth.png",width: 80.0,height: 60.0,),
+              Image.asset(widget.coinDetails!.image.toString(),width: 80.0,height: 60.0,),
               SizedBox(
                 height: 10.0,
               ),
@@ -62,7 +64,7 @@ class _CoinDetailsPageState extends State<CoinDetailsPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "4,956 ETH",
+                   widget.coinDetails!.quantity.toString()+" "+ widget.coinDetails!.coin.toString(),
                     style: CustomWidget(context: context).CustomSizedTextStyle(
                         38.0,
                         AppColors.blackColor,
@@ -73,7 +75,7 @@ class _CoinDetailsPageState extends State<CoinDetailsPage> {
                   Padding(
                     padding: EdgeInsets.only(top: 5.0),
                     child: Text(
-                      "\$ 40,567,456.24",
+                      "\$ "+ widget.coinDetails!.value.toString(),
                       style: CustomWidget(context: context)
                           .CustomSizedTextStyle(16.0, AppColors.blackColor,
                           FontWeight.w600, 'FontRegular'),

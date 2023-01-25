@@ -7,6 +7,8 @@ import 'package:rabbit/common/custom_switch.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/localization/localizations.dart';
 import 'package:rabbit/screens/home/buy_property.dart';
+import 'package:rabbit/screens/home/coin_detail_page.dart';
+import 'package:rabbit/screens/side_menu/offers_screen.dart';
 
 class Wallet extends StatefulWidget {
   const Wallet({Key? key}) : super(key: key);
@@ -336,74 +338,83 @@ class _WalletState extends State<Wallet> {
               shrinkWrap: true,
               itemCount: transList.length,
               itemBuilder: (BuildContext context, index) {
-                return Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Column(
-                    children: [
-                      Row(
+                return InkWell(
+                  onTap: (){
+                    Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                CoinDetailsPage(coinDetails: transList[index],)));
+
+                  },
+                  child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Column(
                         children: [
-                          Image.asset(
-                            transList[index].image.toString(),
-                            height: 35.0,
-                          ),
-                          const SizedBox(width: 10.0,),
-                          Container(
-                              child:  Flexible(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                          Row(
+                            children: [
+                              Image.asset(
+                                transList[index].image.toString(),
+                                height: 35.0,
+                              ),
+                              const SizedBox(width: 10.0,),
+                              Container(
+                                  child:  Flexible(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          transList[index].name.toString(),
-                                          style: CustomWidget(context: context)
-                                              .CustomSizedTextStyle(16.0, Colors.black,
-                                              FontWeight.w500, 'FontRegular'),
-                                          textAlign: TextAlign.center,
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              transList[index].name.toString(),
+                                              style: CustomWidget(context: context)
+                                                  .CustomSizedTextStyle(16.0, Colors.black,
+                                                  FontWeight.w500, 'FontRegular'),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            const SizedBox(height: 5.0,),
+                                            Text(
+                                              "\$"+ transList[index].value.toString(),
+                                              style: CustomWidget(context: context)
+                                                  .CustomSizedTextStyle(14.0, Colors.black.withOpacity(0.8),
+                                                  FontWeight.w500, 'FontRegular'),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ],
                                         ),
-                                        const SizedBox(height: 5.0,),
-                                        Text(
-                                          "\$"+ transList[index].value.toString(),
-                                          style: CustomWidget(context: context)
-                                              .CustomSizedTextStyle(14.0, Colors.black.withOpacity(0.8),
-                                              FontWeight.w500, 'FontRegular'),
-                                          textAlign: TextAlign.center,
-                                        ),
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              "\$"+transList[index].quantity.toString()+" "+transList[index].coin.toString(),
+                                              style: CustomWidget(context: context)
+                                                  .CustomSizedTextStyle(15.0, Colors.black,
+                                                  FontWeight.w500, 'FontRegular'),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            const SizedBox(height: 5.0,),
+                                            Text(
+                                              "\$"+ transList[index].value.toString(),
+                                              style: CustomWidget(context: context)
+                                                  .CustomSizedTextStyle(14.0, Colors.black.withOpacity(0.8),
+                                                  FontWeight.w500, 'FontRegular'),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ],
+                                        )
                                       ],
                                     ),
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          "\$"+transList[index].quantity.toString()+" "+transList[index].coin.toString(),
-                                          style: CustomWidget(context: context)
-                                              .CustomSizedTextStyle(15.0, Colors.black,
-                                              FontWeight.w500, 'FontRegular'),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        const SizedBox(height: 5.0,),
-                                        Text(
-                                          "\$"+ transList[index].value.toString(),
-                                          style: CustomWidget(context: context)
-                                              .CustomSizedTextStyle(14.0, Colors.black.withOpacity(0.8),
-                                              FontWeight.w500, 'FontRegular'),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                flex: 1,
+                                    flex: 1,
+                                  )
                               )
-                          )
+                            ],
+                          ),
+                          const SizedBox(height: 20.0,),
                         ],
-                      ),
-                      const SizedBox(height: 20.0,),
-                    ],
-                  )
+                      )
+                  ),
                 );
               })
           : Column(
