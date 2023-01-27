@@ -95,28 +95,31 @@ class _TransferState extends State<Transfer> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              "200 ETH",
-              style: CustomWidget(context: context).CustomSizedTextStyle(
-                  34.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              "="+"\$234,568.45",
-              style: CustomWidget(context: context).CustomSizedTextStyle(
-                  18.0, Color(0xFFacacac), FontWeight.w600, 'FontRegular'),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-
-        Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Align(
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "200 ETH",
+                    style: CustomWidget(context: context).CustomSizedTextStyle(
+                        34.0, AppColors.blackColor, FontWeight.w600, 'FontRegular'),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    "="+"\$234,568.45",
+                    style: CustomWidget(context: context).CustomSizedTextStyle(
+                        18.0, Color(0xFFacacac), FontWeight.w600, 'FontRegular'),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 15.0,),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -180,7 +183,7 @@ class _TransferState extends State<Transfer> {
             SizedBox(height: 15.0,),
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 1.0,
+              height: 0.5,
               color:Color(0xFFacacac) ,
             ),
             SizedBox(height: 15.0,),

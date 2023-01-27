@@ -229,7 +229,7 @@ class _CoinDetailsPageState extends State<CoinDetailsPage> {
       return Container(
         height: MediaQuery.of(context).size.height * 0.7,
         color: Colors.transparent,
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(15.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -241,7 +241,7 @@ class _CoinDetailsPageState extends State<CoinDetailsPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                   "Deposit",
+                   "Deposit "+widget.coinDetails!.coin,
                     style: CustomWidget(context: context).CustomSizedTextStyle(
                         24.0,
                         AppColors.blackColor,
@@ -271,7 +271,7 @@ class _CoinDetailsPageState extends State<CoinDetailsPage> {
                 Text(
                   "Wallet  address",
                   style: CustomWidget(context: context).CustomSizedTextStyle(
-                      16.0,
+                      14.0,
                       AppColors.blackColor,
                       FontWeight.w600,
                       'FontRegular'),
@@ -279,9 +279,9 @@ class _CoinDetailsPageState extends State<CoinDetailsPage> {
                 ),
                 SizedBox(height: 5.0,),
                 Text(
-                  "0x9ba84A2275c45...ca6588235189FDE76",
+                  "0x9ba84A2275c45......ca6588235189FDE76",
                   style: CustomWidget(context: context).CustomSizedTextStyle(
-                      12.0,
+                      16.0,
                       Color(0xFFb6b6b6),
                       FontWeight.w400,
                       'FontRegular'),
@@ -308,7 +308,7 @@ class _CoinDetailsPageState extends State<CoinDetailsPage> {
                             style: CustomWidget(context: context).CustomSizedTextStyle(
                                 14.0,
                                 Colors.black,
-                                FontWeight.w400,
+                                FontWeight.w600,
                                 'FontRegular'),
                             textAlign: TextAlign.center,
                           ),
@@ -333,7 +333,7 @@ class _CoinDetailsPageState extends State<CoinDetailsPage> {
                             style: CustomWidget(context: context).CustomSizedTextStyle(
                                 14.0,
                                 Colors.black,
-                                FontWeight.w400,
+                                FontWeight.w600,
                                 'FontRegular'),
                             textAlign: TextAlign.center,
                           ),
