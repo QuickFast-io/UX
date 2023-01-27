@@ -5,9 +5,16 @@ import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/screens/business/business_info.dart';
 import 'package:rabbit/screens/business/business_info_1.dart';
+import 'package:rabbit/screens/home/notification_screen.dart';
+import 'package:rabbit/screens/home/recovery_pharse.dart';
 import 'package:rabbit/screens/property/property_info_1.dart';
+import 'package:rabbit/screens/side_menu/offer_success.dart';
 import 'package:rabbit/screens/side_menu/offers_screen2.dart';
 import 'package:rabbit/screens/side_menu/sellers_terms_screen.dart';
+import 'package:rabbit/screens/success/listing_add_screen.dart';
+import 'package:rabbit/screens/success/offer_to_seller.dart';
+import 'package:rabbit/screens/success/success_to_buy_sell.dart';
+import 'package:rabbit/screens/success/updated_terms_screen.dart';
 
 class ProfileMenu_Screen extends StatefulWidget {
   const ProfileMenu_Screen({Key? key}) : super(key: key);
@@ -227,7 +234,7 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
                   Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
-                              Offers_Screen2()));
+                              Listing_Add_Screen()));
                 });
               },
               child: Container(
@@ -272,10 +279,10 @@ class _ProfileMenu_ScreenState extends State<ProfileMenu_Screen> {
             InkWell(
               onTap: (){
                 setState(() {
-                  // Navigator.of(context).push(
-                  //     MaterialPageRoute(
-                  //         builder: (context) =>
-                  //             BusinessInfo_Screen1()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Updated_Terms_Screen()));
                 });
               },
               child: Container(

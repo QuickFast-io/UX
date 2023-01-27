@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
+import 'package:rabbit/screens/side_menu/offer_success.dart';
 
 class Offers_Screen2 extends StatefulWidget {
   const Offers_Screen2({Key? key}) : super(key: key);
@@ -277,24 +278,32 @@ class _Offers_Screen2State extends State<Offers_Screen2> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SvgPicture.asset("assets/menu/Accept.svg",
-                              height: 25.0,
-                            ),
-                            SizedBox(height: 10.0,),
-                            Text(
-                              "Accept",
-                              style: CustomWidget(context: context)
-                                  .CustomSizedTextStyle(
-                                  13.0,
-                                  AppColors.blackColor,
-                                  FontWeight.w500,
-                                  'FontRegular'),
-                            )
-                          ],
+                        InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Offer_Success_Screen()));
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SvgPicture.asset("assets/menu/Accept.svg",
+                                height: 25.0,
+                              ),
+                              SizedBox(height: 10.0,),
+                              Text(
+                                "Accept",
+                                style: CustomWidget(context: context)
+                                    .CustomSizedTextStyle(
+                                    13.0,
+                                    AppColors.blackColor,
+                                    FontWeight.w500,
+                                    'FontRegular'),
+                              )
+                            ],
+                          ),
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,

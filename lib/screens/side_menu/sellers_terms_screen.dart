@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
+import 'package:rabbit/screens/side_menu/offer_success.dart';
+import 'package:rabbit/screens/side_menu/offers_screen.dart';
+import 'package:rabbit/screens/side_menu/offers_screen2.dart';
 
 class Sellers_Terms_Screen extends StatefulWidget {
   const Sellers_Terms_Screen({Key? key}) : super(key: key);
@@ -232,10 +235,10 @@ class _Sellers_Terms_ScreenState extends State<Sellers_Terms_Screen> {
                   InkWell(
                     onTap: (){
                       setState(() {
-                        // Navigator.of(context).push(
-                        //     MaterialPageRoute(
-                        //         builder: (context) =>
-                        //             CongratsScreen()));
+                        Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    Offers_Screen2()));
                       });
                     },
                     child: Container(
