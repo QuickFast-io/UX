@@ -107,7 +107,7 @@ class _Listing_Add_ScreenState extends State<Listing_Add_Screen> {
 
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Theme(data: ThemeData(
                         primarySwatch: Colors.yellow,
@@ -176,7 +176,7 @@ class _Listing_Add_ScreenState extends State<Listing_Add_Screen> {
 
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Theme(data: ThemeData(
                         primarySwatch: Colors.yellow,
