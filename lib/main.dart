@@ -11,20 +11,17 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    // navigation bar color
     statusBarColor: Color(0xFFf5e100),
     statusBarBrightness: Brightness.dark,
     statusBarIconBrightness: Brightness.dark, // status bar icon color
     systemNavigationBarIconBrightness:
     Brightness.dark, // color of navigation controls
   ));
-
     runApp(new MyApp());
 }
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
-
   @override
   _MyAppState createState() => _MyAppState();
 }
