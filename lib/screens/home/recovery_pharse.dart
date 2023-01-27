@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
+import 'package:rabbit/screens/home/pass_phrase.dart';
 import 'package:rabbit/screens/home/recovery_pharse2.dart';
 
 class Recovery_Pharse extends StatefulWidget {
@@ -112,7 +113,7 @@ class _Recovery_PharseState extends State<Recovery_Pharse> {
                   Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
-                              Recovery_Pharse2()));
+                              Passphrase()));
                 });
               },
               child: Container(

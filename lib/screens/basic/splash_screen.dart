@@ -1,5 +1,5 @@
 
-import 'package:rabbit/screens/basic/change_pin.dart';
+import 'package:rabbit/screens/wallet/change_pin.dart';
 import 'package:rabbit/screens/basic/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:rabbit/screens/home/coin_detail_page.dart';
@@ -7,7 +7,7 @@ import 'package:rabbit/screens/home/pass_phrase.dart';
 import 'package:rabbit/screens/home/phrase_confirm.dart';
 import 'package:rabbit/screens/home/property_details_screen.dart';
 import 'package:rabbit/screens/home/seller_terms.dart';
-import 'package:rabbit/screens/home/set_pin.dart';
+import 'package:rabbit/screens/wallet/set_pin.dart';
 import 'package:rabbit/screens/home/wallet_page.dart';
 import 'package:rabbit/screens/side_menu/offers_screen.dart';
 
@@ -62,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) =>
-                                    Home_Screen()));
+                                    Home_Screen(index: -1,)));
                 });
               },
               child: Container(

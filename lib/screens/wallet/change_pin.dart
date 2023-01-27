@@ -5,6 +5,7 @@ import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/localization/localizations.dart';
 import 'package:rabbit/screens/home/pass_phrase.dart';
+import 'package:rabbit/screens/wallet/wallet_setup.dart';
 
 class ChangePin extends StatefulWidget {
   const ChangePin({Key? key}) : super(key: key);
@@ -66,7 +67,7 @@ class _ChangePinState extends State<ChangePin> {
           if (confirmValue == pinValues) {
             /*loading=true;
             SubmitPin();*/
-            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Passphrase()));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>WalletSetup()));
           } else {
             CustomWidget(context: context)
                 .custombar("Pin", "Pins do not match", false);

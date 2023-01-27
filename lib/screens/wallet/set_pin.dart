@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/localization/localizations.dart';
-import 'package:rabbit/screens/basic/change_pin.dart';
+import 'package:rabbit/screens/wallet/change_pin.dart';
 
 class SetpinPage extends StatefulWidget {
   const SetpinPage({Key? key}) : super(key: key);

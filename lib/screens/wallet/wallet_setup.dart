@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/common/localization/localizations.dart';
+import 'package:rabbit/screens/home/recovery_pharse.dart';
+import 'package:rabbit/screens/home/recovery_pharse2.dart';
 
 class WalletSetup extends StatefulWidget {
   const WalletSetup({Key? key}) : super(key: key);
@@ -99,7 +101,7 @@ class _WalletSetupState extends State<WalletSetup> {
           children: [
             InkWell(
               onTap: () {
-                // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ChangePin()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Recovery_Pharse()));
               },
               child: Container(
                 width: MediaQuery.of(context).size.width,
@@ -125,7 +127,7 @@ class _WalletSetupState extends State<WalletSetup> {
             SizedBox(height: 10.0),
             InkWell(
               onTap: () {
-                // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ChangePin()));
+                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Recovery_Pharse2()));
               },
               child: Container(
                 width: MediaQuery.of(context).size.width,

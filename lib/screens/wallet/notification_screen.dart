@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
-import 'package:rabbit/screens/home/set_pin.dart';
+import 'package:rabbit/screens/wallet/set_pin.dart';
 
 class Notification_Screen extends StatefulWidget {
   const Notification_Screen({Key? key}) : super(key: key);
