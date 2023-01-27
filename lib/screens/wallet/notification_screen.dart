@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
+import 'package:rabbit/screens/home/set_pin.dart';
 
 class Notification_Screen extends StatefulWidget {
   const Notification_Screen({Key? key}) : super(key: key);
@@ -109,7 +110,11 @@ class _Notification_ScreenState extends State<Notification_Screen> {
                children: [
                  GestureDetector(
                    onTap: (){
-                     Navigator.of(context).popUntil((route) => route.isFirst);
+
+                     Navigator.of(context).push(
+                         MaterialPageRoute(
+                             builder: (context) =>
+                                 SetpinPage()));
                    },
                    child: Container(
                      padding: EdgeInsets.fromLTRB(5.0, 12.0, 5.0, 12.0),
@@ -137,7 +142,7 @@ class _Notification_ScreenState extends State<Notification_Screen> {
 
                  GestureDetector(
                    onTap: (){
-                     Navigator.of(context).popUntil((route) => route.isFirst);
+                     Navigator.pop(context);
                    },
                    child: Container(
                      padding: EdgeInsets.fromLTRB(5.0, 12.0, 5.0, 12.0),

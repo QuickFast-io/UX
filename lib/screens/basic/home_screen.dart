@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rabbit/screens/home/chat_menu_screen.dart';
 import 'package:rabbit/screens/home/chat_screen.dart';
 import 'package:rabbit/screens/home/dashboard.dart';
-import 'package:rabbit/screens/home/rabbit_page.dart';
+import 'package:rabbit/screens/wallet/rabbit_page.dart';
 import 'package:rabbit/screens/home/wallet_page.dart';
 import 'package:rabbit/screens/side_menu/offers_screen.dart';
 import 'package:rabbit/screens/side_menu/profile_menu_screen.dart';

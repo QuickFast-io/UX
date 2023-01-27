@@ -5,7 +5,7 @@ import 'package:rabbit/common/colors.dart';
 import 'package:rabbit/common/custom_widget.dart';
 import 'package:rabbit/screens/business/business_info.dart';
 import 'package:rabbit/screens/business/business_info_1.dart';
-import 'package:rabbit/screens/home/notification_screen.dart';
+import 'package:rabbit/screens/wallet/notification_screen.dart';
 import 'package:rabbit/screens/home/recovery_pharse.dart';
 import 'package:rabbit/screens/property/property_info_1.dart';
 import 'package:rabbit/screens/side_menu/offer_success.dart';

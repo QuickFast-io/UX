@@ -6,6 +6,7 @@ import 'package:rabbit/common/localization/localizations.dart';
 import 'package:rabbit/screens/home/congrats_page.dart';
 import 'package:rabbit/screens/home/pass_phrase.dart';
 import 'package:rabbit/screens/home/set_pin.dart';
+import 'package:rabbit/screens/wallet/notification_screen.dart';
 
 class RabbitScreen extends StatefulWidget {
   const RabbitScreen({Key? key}) : super(key: key);
@@ -64,7 +65,7 @@ class _RabbitScreenState extends State<RabbitScreen> {
                 Navigator.of(context).push(
                     MaterialPageRoute(
                         builder: (context) =>
-                            SetpinPage()));
+                            Notification_Screen()));
               });
             },
             child: Container(
