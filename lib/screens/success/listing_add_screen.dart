@@ -86,9 +86,11 @@ class _Listing_Add_ScreenState extends State<Listing_Add_Screen> {
                         FontWeight.w600,
                         'FontRegular'),
                   ),
+
                   SizedBox(
                     height: 10.0,
                   ),
+
                   Text(
                     "Let us help you improve your listings",
                     style: CustomWidget(context: context)
