@@ -59,7 +59,7 @@ class _SendScreenState extends State<SendScreen> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(15.0),
         child: Stack(
           children: [
            sendUI(),
@@ -74,8 +74,7 @@ class _SendScreenState extends State<SendScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Align(
-          alignment:Alignment.topLeft,
+        Form(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,14 +100,9 @@ class _SendScreenState extends State<SendScreen> {
                     FontWeight.w500,
                     'FontRegular'),
               ),
-            ],
-          ),
-        ),
-        Form(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+              SizedBox(
+                height: 45.0,
+              ),
               Text(
                 "Address ",
                 style: CustomWidget(context: context)
@@ -142,6 +136,7 @@ class _SendScreenState extends State<SendScreen> {
                 hintText: "Long press and paste,Address,ENS etc..",
                 obscureText: false,
                 suffix: Container(
+                  padding: EdgeInsets.only(right: 10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -262,6 +257,7 @@ class _SendScreenState extends State<SendScreen> {
                 hintText: " ",
                 obscureText: false,
                 suffix: Container(
+                  padding: EdgeInsets.only(right: 10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,

@@ -78,7 +78,7 @@ class TextFormFieldCustom extends StatelessWidget {
           hintText: hintText,
           hintStyle: hintStyle,
           suffixIcon: suffix,
-
+          isDense: true,
           filled: true,
           fillColor: fillColor,
           border:  OutlineInputBorder(
